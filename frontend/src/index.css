@@ -1,1 +1,497 @@
-/* TODO Add site wide styles */
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
+}
+
+html {
+    margin-bottom: 80px;
+}
+
+/* * {
+  border: 1px solid black;
+} */
+
+nav {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #323b9e;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+nav>button>img {
+    width: 40px;
+    height: 20px;
+}
+
+nav>button {
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+nav>a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+}
+
+nav>button>span {
+    padding-bottom: 10px;
+    color: white;
+}
+
+.auto-english-home-page-container {
+    background: #1e2b3a;
+}
+
+.auto-english-home-page {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100vh;
+}
+
+.home-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 30px;
+    padding: 20px;
+    border: 1px solid #f1eded;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #f2f2f2;
+    width: 200px;
+    height: 300px;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+}
+
+.home-card:hover {
+    color: #666;
+    transform: scale(1.05);
+}
+
+.grey {
+    background-color: rgb(240, 235, 235);
+    color: #ffffff;
+}
+
+.grey:hover {
+    background-color: rgb(220, 216, 216);
+}
+
+.green {
+    background-color: #75c387;
+    color: #ffffff;
+}
+
+.green:hover {
+    background-color: #5da36d;
+}
+
+.yellow {
+    background-color: #f2c643;
+    color: #212529;
+}
+
+.yellow:hover {
+    background-color: #f2c131;
+}
+
+.red {
+    background-color: #dd919a;
+    color: #ffffff;
+}
+
+.red:hover {
+    background-color: #c76f78;
+}
+
+.home-card a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.home-card span {
+    color: #000000;
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+
+.card-description {
+    color: black;
+    opacity: 0.8;
+    font-size: 14px;
+}
+
+/* Traffic sign card css */
+.traffic-sign-card {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 50px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.traffic-sign-card__number {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.traffic-sign-card__image {
+    display: inline-block;
+    vertical-align: middle;
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+
+.traffic-signs-list {
+    margin-top: 100px;
+}
+
+.learn-list {
+    margin-top: 100px;
+}
+
+/* Learn card css */
+.learn-card {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 50px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.learn-card__number {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.learn-card__question,
+.learn-card__answer {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.learn-card__question-text,
+.learn-card__answer-text {
+    font-size: 15px;
+    display: inline-block;
+}
+
+.learn-card__question-section {
+    margin-bottom: 30px;
+}
+
+.learn-card__image {
+    display: inline-block;
+    vertical-align: middle;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+/* FullTestPage.css */
+.test-page {
+    margin-top: 100px;
+    margin-bottom: 40px;
+}
+
+
+.test-page__submit-btn {
+    background-color: #4CAF50;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 40px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+.test-page__submit-btn:hover {
+    background-color: #45a049;
+}
+
+.test-page-card__answers label span {
+    font-weight: normal;
+}
+
+/* FullTestPageCard.css for (russian and english version */
+.test-page-card {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 50px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.test-page-card__number {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.test-page-card__content {
+    margin-top: 10px;
+}
+
+.test-page-card__image {
+    display: inline-block;
+    vertical-align: middle;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.test-page-card__question {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.test-page-card__answers label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 15px;
+    font-weight: normal;
+}
+
+.test-page-card__answers input[type="radio"] {
+    margin-right: 10px;
+}
+
+.test-page-card__result {
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.test-page-card__result-correct {
+    color: #038003;
+}
+
+.test-page-card__result-incorrect {
+    color: #FF0000;
+}
+
+.test-page-card__answer-image {
+    display: inline-block;
+    vertical-align: middle;
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+}
+
+.test-page-card__correct-answer-image {
+    vertical-align: middle;
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+}
+
+.test-page-result {
+    margin: 40px;
+}
+
+.test-page__result-pass {
+    color: green;
+    font-size: 18px;
+}
+
+.test-page__result-fail {
+    color: red;
+    font-size: 18px;
+}
+
+.home-icon {
+    font-size: 28px;
+}
+
+
+
+/* Making responsive for other devices */
+@media screen and (max-width: 900px) {
+    .home {
+        flex-direction: column;
+        margin-top: 100px;
+        justify-content: start;
+    }
+
+    .home-card span {
+        font-size: 14px;
+    }
+
+    .card-description {
+        font-size: 12px;
+    }
+
+    .home-card {
+        max-height: 140px;
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+
+    .traffic-sign-card__image {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 10px;
+    }
+
+    .traffic-sign-card__description {
+        font-size: 14px;
+    }
+
+    .test-page__result-fail,
+    .test-page__result-pass {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+
+    .learn-card__number {
+        font-size: 16px;
+    }
+
+    .test-page-card__question {
+        font-size: 14px;
+    }
+
+    .test-page-card__answers label span {
+        font-size: 13px;
+    }
+
+    .test-page-card__answers label {
+        font-size: 13px;
+    }
+
+    .learn-card {
+        padding: 10px;
+    }
+
+    .learn-card__question,
+    .learn-card__answer {
+        height: 5px;
+    }
+
+    .learn-card__question-section {
+        margin-bottom: 15px;
+    }
+
+    .test-page-card {
+        padding: 10px;
+    }
+
+    .test-page-card__number {
+        font-size: 16px;
+    }
+
+    .test-page-card__question {
+        margin-bottom: 20px;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+
+    .home {
+        margin-top: 50px;
+    }
+
+    .home-card {
+        max-height: 100px;
+        margin-bottom: 5px;
+    }
+
+    nav a {
+        font-size: 14px;
+    }
+
+    nav button span {
+        font-size: 12px;
+    }
+
+    .home-icon {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .traffic-sign-card {
+        padding: 5px;
+    }
+
+    .traffic-sign-card__image {
+        height: 40px;
+        width: 40px;
+    }
+
+    .traffic-sign-card__description {
+        font-size: 13px;
+    }
+
+    .test-page-card {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .test-page-card__question {
+        font-size: 13px;
+        margin: 10px 0;
+    }
+
+    .test-page-card__answers label span {
+        font-size: 12px;
+    }
+
+    .test-page-card__answer-image {
+        width: 30px;
+        height: 30px;
+    }
+
+    .test-page-card__number {
+        margin-bottom: 0;
+    }
+
+    .test-page-card__result {
+        font-size: 12px;
+    }
+
+    .test-page-card__correct-answer-image {
+        width: 30px;
+        height: 30px;
+    }
+
+    .test-page-result span {
+        font-size: 13px;
+    }
+}
