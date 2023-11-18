@@ -1,0 +1,28 @@
+.home-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100vh;
+    background: #1e2b3a;
+}
+
+.section {
+    text-align: center;
+    color: white;
+}
+
+.section img {
+    width: 500px;
+    height: 600px;
+    border-radius: 5px;
+}
+
+.section p {
+    margin: 10px auto;
+    color: white;
+    font-size: 20px;
+}
+
+.section a {
+    text-decoration: none;
+}

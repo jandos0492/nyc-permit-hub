@@ -55,6 +55,7 @@ function LoginFormPage() {
                         type="text"
                         value={credential}
                         onChange={(e) => setCredential(e.target.value)}
+                        autoComplete="username"
                         required
                     />
                 </label>
@@ -62,9 +63,10 @@ function LoginFormPage() {
                     Password
                     <input
                         className="form-input"
-                        type="text"
+                        type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        autoComplete="current-password"
                         required
                     />
                 </label>

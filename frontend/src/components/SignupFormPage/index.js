@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import * as sessionActions from "../../store/session";
@@ -14,9 +14,11 @@ function SignupFormPage() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [errors, setErrors] = useState([]);
 
-    if (sessionUser) {
-        return navigate("/");
-    }
+    useEffect(() => {
+        if (sessionUser) {
+            return navigate("/");
+        }
+    }, [sessionUser, navigate])
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -64,6 +66,7 @@ function SignupFormPage() {
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        autoComplete="new-password"
                         required
                     />
                 </label>
@@ -74,6 +77,7 @@ function SignupFormPage() {
                         type="password"
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
+                        autoComplete="new-password"
                         required
                     />
                 </label>
