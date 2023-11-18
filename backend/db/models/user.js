@@ -32,6 +32,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     resetToken: {
       type: DataTypes.STRING,
+      allowNull: true,
     },
   }, {
     defaultScope: {
