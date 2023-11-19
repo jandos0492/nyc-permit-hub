@@ -2,9 +2,11 @@ const express = require("express");
 const router = express.Router();
 const apiRouter = require("./api");
 const apiEnglishRoute = require("./api/englishTestRouter");
+const apiRussianRoute = require("./api/russianTestRouter");
 
 router.use("/api", apiRouter);
 router.use("/api", apiEnglishRoute);
+router.use("/api", apiRussianRoute);
 
 // Static routes
 // Serve React build files in produciton
