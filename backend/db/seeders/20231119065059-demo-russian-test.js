@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    return queryInterface.bulkInsert("RussianTests", [
+    return await queryInterface.bulkInsert("RussianTests", [
       {
         no: 1,
         question: 'Какая из приведённых фигур имеет форму знака "Уступи"?',
