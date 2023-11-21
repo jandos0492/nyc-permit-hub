@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { CDLGeneralKnowladgeTest } = require("../../db/models");
 
-router.get("/cdl-general-knowladge", async (req, res) => {
+router.get("/cdl/general-knowladge", async (req, res) => {
     try {
         const generalKnowladgeTest = await CDLGeneralKnowladgeTest.findAll();
         res.json(generalKnowladgeTest);
@@ -11,13 +11,13 @@ router.get("/cdl-general-knowladge", async (req, res) => {
     }
 });
 
-router.get("/cdl-general-knowladge/:id", async (req, res) => {
+router.get("/cdl/general-knowladge/:id", async (req, res) => {
     const questionId = req.params.id;
     try {
         const question = await CDLGeneralKnowladgeTest.findByPk(questionId);
 
         if (!question) {
-            return res.status(404).json({ message: "Question for CDL General knowladge test not found."});
+            return res.status(404).json({ message: `Question number: ${questionId} for CDL General knowladge test not found.`});
         }
         res.json(question);
     } catch (err) {
