@@ -4,11 +4,13 @@ const apiRouter = require("./api");
 const apiEnglishRoute = require("./api/englishTestRouter");
 const apiRussianRoute = require("./api/russianTestRouter");
 const apiTrafficSignsRoute = require("./api/trafficSignsRouter");
+const apiCDLGeneralKnowladgeRoute = require("./api/cdlGeneralKnowladgeRouter");
 
 router.use("/api", apiRouter);
 router.use("/api", apiEnglishRoute);
 router.use("/api", apiRussianRoute);
 router.use("/api", apiTrafficSignsRoute);
+router.use("/api", apiCDLGeneralKnowladgeRoute);
 
 // Static routes
 // Serve React build files in produciton

@@ -12,7 +12,7 @@ router.get("/auto/english", async (req, res) => {
 });
 
 router.get("/auto/english/:id", async  (req, res) => {
-    const questinId = req.params.id;
+    const questionId = req.params.id;
     try {
         const question = await EnglishTest.findByPk(questionId);
 
