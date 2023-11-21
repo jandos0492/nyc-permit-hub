@@ -3,8 +3,8 @@ const { CDLGeneralKnowladgeTest } = require("../../db/models");
 
 router.get("/cdl-general-knowladge", async (req, res) => {
     try {
-        const GeneralKnowladgeTest = await CDLGeneralKnowladgeTest.findAll();
-        res.json(GeneralKnowladgeTest);
+        const generalKnowladgeTest = await CDLGeneralKnowladgeTest.findAll();
+        res.json(generalKnowladgeTest);
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: "Server Error" });
