@@ -11,7 +11,7 @@ const AutoEnglishHomePage = () => {
                         Learn all the traffic signs for the NYC permit test
                     </p>
                 </Link>
-                <Link to="/learn" className="home-card green">
+                <Link to="/auto/english/learn" className="home-card green">
                     <span className="home-card-span">Learn</span>
                     <p className="card-description">
                         Learn all the questions and prepare for the NYC permit test

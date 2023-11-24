@@ -1,0 +1,73 @@
+.learn-list-container {
+    background: #1e2b3a;
+    padding: 40px 0;
+}
+
+/* Learn card css */
+.learn-card {
+    background-color: #e3e2e2;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 40px 40px 0 40px;
+}
+
+.learn-card__number {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.learn-card__question,
+.learn-card__answer {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.learn-card__question-text,
+.learn-card__answer-text {
+    font-size: 15px;
+    display: inline-block;
+}
+
+.learn-card__question-section {
+    margin-bottom: 30px;
+}
+
+.learn-card__image {
+    display: inline-block;
+    vertical-align: middle;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+@media screen and (max-width: 700px) {
+
+    .learn-card__number {
+        font-size: 16px;
+    }
+
+    .test-page-card__question {
+        font-size: 14px;
+    }
+
+    .test-page-card__answers label span {
+        font-size: 13px;
+    }
+
+    .test-page-card__answers label {
+        font-size: 13px;
+    }
+
+    .learn-card {
+        padding: 10px;
+    }
+
+    .learn-card__question,
+    .learn-card__answer {
+        height: 5px;
+    }
+
+    .learn-card__question-section {
+        margin-bottom: 15px;
+    }
+}

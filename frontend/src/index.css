@@ -216,6 +216,14 @@ nav>button>span {
     margin-right: 10px;
 }
 
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #1e2b3a;
+}
+
 /* FullTestPage.css */
 .test-page {
     margin-top: 100px;
