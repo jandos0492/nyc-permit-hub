@@ -62,6 +62,7 @@ import ResetPassword from './components/ResetPassword';
 import Home from './components/Home';
 import AutoEnglishHomePage from './components/AutoEnglishHomePage';
 import AutoLearnPage from './components/AutoLearnPage';
+import TrafficSignsPage from './components/TrafficSignsPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -85,6 +86,7 @@ function App() {
           {isAuthenticated && <Route path="/" element={<Home />} />}
           {isAuthenticated && <Route path="/auto" element={<AutoEnglishHomePage />} />}
           {isAuthenticated && <Route path="/auto/english/learn" element={<AutoLearnPage />} />}
+          {isAuthenticated && <Route path="/auto/english/traffic-signs/learn" element={<TrafficSignsPage />} />}
         </Routes>
       )}
     </>

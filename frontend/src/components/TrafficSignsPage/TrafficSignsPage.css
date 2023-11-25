@@ -1,0 +1,56 @@
+.traffic-signs-list-container {
+    background: #1e2b3a;
+    padding: 40px 0;
+}
+
+.traffic-sign-card {
+    background-color: #e3e2e2;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 40px 40px 0 40px;
+}
+
+.traffic-sign-card__number {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.traffic-sign-card__image {
+    display: inline-block;
+    vertical-align: middle;
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+
+.traffic-signs-list {
+    margin-top: 100px;
+}
+
+@media screen and (max-width: 900px) {
+    .traffic-sign-card__image {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 10px;
+    }
+
+    .traffic-sign-card__description {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .traffic-sign-card {
+        padding: 5px;
+    }
+
+    .traffic-sign-card__image {
+        height: 40px;
+        width: 40px;
+    }
+
+    .traffic-sign-card__description {
+        font-size: 13px;
+    }
+}

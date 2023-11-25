@@ -15,7 +15,7 @@ const AutoLearnPage = () => {
                     setData(result);
                     setLoading(false);
             } catch (err) {
-                console.error("Error fetching the Auto Learn data", console.error());
+                console.error("Error fetching the Auto Learn data", err);
                 setLoading(false);
             }
         }
