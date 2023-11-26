@@ -12,7 +12,7 @@ const router = express.Router();
 
 const validateSignup = [
     check("email")
-        .exists({ checkFalsy: true})
+        .exists({ checkFalsy: true })
         .isEmail()
         .withMessage("Please provide a valid email."),
     check("username")
@@ -38,12 +38,6 @@ const validateSignup = [
                 throw new Error("Password must contain at least one uppercase letter.");
             }
 
-            // Custom validation function to check for at least one special character
-            if (!/[!@#$%^&*(),.?":{}|<>]/.test(value)) {
-                throw new Error(`Password must contain at least one special character.
-                !@#$%^&*(),.?": {} |<>`);
-            }
-
             return true;
         }),
     handleValidationErrors,
@@ -53,15 +47,44 @@ const validateSignup = [
 router.post(
     "",
     validateSignup,
-    asyncHandler(async (req, res) => {
+    asyncHandler(async (req, res, next) => {
         const { email, password, username } = req.body;
-        const user = await User.signup({ email, username, password });
 
-        await setTokenCookie(res, user);
+        try {
+            const user = await User.signup({ email, username, password });
 
-        return res.json({
-            user,
-        });
+            await setTokenCookie(res, user);
+
+            return res.json({
+                user,
+            });
+        } catch (err) {
+            const registeredUserWithEmail = await User.findOne({
+                where: {
+                    email
+                }
+            });
+            if (registeredUserWithEmail) {
+                return res.status(401).json({
+                    errors: ["This email is already registered with NYC Permit Hub. Please Login."]
+                });
+            }
+
+            const registeredUserWithUsername = await User.findOne({
+                where: {
+                    username
+                }
+            });
+
+            if (registeredUserWithUsername) {
+                return res.status(401).json({
+                    errors: ["This username is already registered with NYC Permit Hub. Please Choose another one."]
+                })
+            }
+
+            console.error("Signup failed.", err);
+            return next(err);
+        }
     }),
 );
 

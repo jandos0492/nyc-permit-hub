@@ -33,7 +33,7 @@ const AutoLearnPage = () => {
 
     return (
         <div className="learn-list-container">
-            {data.map((learnCard) => (
+            {data?.map((learnCard) => (
                 <LearnCard
                     key={learnCard.id}
                     no={learnCard.no}

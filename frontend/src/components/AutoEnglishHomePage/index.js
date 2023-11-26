@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./AutoEnglishHomePage.css";
 
 const AutoEnglishHomePage = () => {
     return (
@@ -17,7 +18,7 @@ const AutoEnglishHomePage = () => {
                         Learn all the questions and prepare for the NYC permit test
                     </p>
                 </Link>
-                <Link to="/full-test" className="home-card yellow">
+                <Link to="/auto/english/full-test" className="home-card yellow">
                     <span className="home-card-span">Full Test</span>
                     <p className="card-description">
                         Pass all the questions test and get the result

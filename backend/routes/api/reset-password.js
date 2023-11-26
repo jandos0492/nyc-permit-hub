@@ -94,12 +94,6 @@ const validateResetPasswordWithToken = [
                 throw new Error("Password must contain at least one uppercase letter.");
             }
 
-            // Custom validation function to check for at least one special character
-            if (!/[!@#$%^&*(),.?":{}|<>]/.test(value)) {
-                throw new Error(`Password must contain at least one special character.
-                !@#$%^&*(),.?": {} |<>`);
-            }
-
             return true;
         }),
     handleValidationErrors,

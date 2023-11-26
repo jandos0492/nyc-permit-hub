@@ -1,0 +1,91 @@
+.auto-english-home-page-container {
+    background: #1e2b3a;
+}
+
+.auto-english-home-page {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100vh;
+}
+
+.home-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 30px;
+    padding: 20px;
+    border: 1px solid #f1eded;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #f2f2f2;
+    width: 200px;
+    height: 300px;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+}
+
+.home-card-span {
+    font-weight: 600;
+}
+
+.home-card:hover {
+    color: #666;
+    transform: scale(1.05);
+}
+
+.grey {
+    background-color: rgb(240, 235, 235);
+    color: #ffffff;
+}
+
+.grey:hover {
+    background-color: rgb(220, 216, 216);
+}
+
+.green {
+    background-color: #75c387;
+    color: #ffffff;
+}
+
+.green:hover {
+    background-color: #5da36d;
+}
+
+.yellow {
+    background-color: #f2c643;
+    color: #212529;
+}
+
+.yellow:hover {
+    background-color: #f2c131;
+}
+
+.red {
+    background-color: #dd919a;
+    color: #ffffff;
+}
+
+.red:hover {
+    background-color: #c76f78;
+}
+
+.home-card a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.home-card span {
+    color: #000000;
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+
+.card-description {
+    color: black;
+    opacity: 0.8;
+    font-size: 14px;
+}
