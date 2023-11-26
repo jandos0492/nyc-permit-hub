@@ -1,7 +1,6 @@
 import React from "react";
 
 const LearnCard = ({ no, question, answer, image }) => {
-    console.log(image);
     return (
         <article className="learn-card">
             <h4 className="learn-card__number">{no}</h4>

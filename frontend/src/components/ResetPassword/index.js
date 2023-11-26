@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "./ResetPassword.css"
 
 const ResetPassword = () => {
@@ -8,6 +8,7 @@ const ResetPassword = () => {
     const [message, setMessage] = useState("");
     const [isPasswordUpdated, setIsPasswordUpdated] = useState(false);
     const [errors, setErrors] = useState([]);
+    const navigate = useNavigate();
 
     const handleResetPassword = async () => {
         try {
@@ -31,6 +32,9 @@ const ResetPassword = () => {
                 setMessage("Password reset successful. You can now log in with your new password.");
                 setIsPasswordUpdated(true);
                 setPassword("");
+                setTimeout(() => {
+                    navigate("/login");
+                }, 1000);
             } else {
                 // const data = await response.json();
                 setErrors(data.errors);
