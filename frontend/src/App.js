@@ -64,6 +64,7 @@ import AutoEnglishHomePage from './components/AutoEnglishHomePage';
 import AutoLearnPage from './components/AutoLearnPage';
 import TrafficSignsPage from './components/TrafficSignsPage';
 import AutoFullTestPage from './components/AutoFullTestPage';
+import AutoExpressTestPage from './components/AutoExpressTestPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -89,6 +90,7 @@ function App() {
           {isAuthenticated && <Route path="/auto/english/learn" element={<AutoLearnPage />} />}
           {isAuthenticated && <Route path="/auto/english/traffic-signs/learn" element={<TrafficSignsPage />} />}
           {isAuthenticated && <Route path="/auto/english/full-test" element={<AutoFullTestPage />} />}
+          {isAuthenticated && <Route path="/auto/english/express-test" element={<AutoExpressTestPage />} />}
         </Routes>
       )}
     </>

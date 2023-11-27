@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
-import AutoFullTestPageCard from "./AutoFullTestPageCard";
-import "./AutoFullTestPage.css";
+import AutoExpressTestCard from "./AutoExpressTestCard";
+import "./AutoExpressTestPage.css";
 import { InfinitySpin } from "react-loader-spinner";
 
-const AutoFullTestPage = () => {
+const AutoExpressTestPage = () => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [submitted, setSubmitted] = useState(false);
     const [selectedAnswers, setSelectedAnswers] = useState(new Array(data.length).fill(null));
+    const [randomEnglishData, setRandomEnglishData] = useState([]);
     const [correctAnswerCount, setCorrectAnswerCount] = useState(0);
     const [errors, setErrors] = useState([]);
 
@@ -19,10 +20,10 @@ const AutoFullTestPage = () => {
                 setData(result);
                 setLoading(false);
             } catch (err) {
-                console.error("Error fetching the Auto Full Test data", err);
+                console.error("Error fetching the Auto Express Test data", err);
                 setLoading(false);
             }
-        };
+        }
         fetchData();
     }, []);
 
@@ -38,6 +39,12 @@ const AutoFullTestPage = () => {
     };
 
     useEffect(() => {
+        const shuffledArray = [...data].sort(() => Math.random() - 0.5);
+        const randomData = shuffledArray.slice(0, 20);
+        setRandomEnglishData(randomData);
+    }, [data]);
+
+    useEffect(() => {
         if (submitted) {
             window.scrollTo({ top: 0, behavior: "smooth" });
         }
@@ -48,7 +55,6 @@ const AutoFullTestPage = () => {
             setCorrectAnswerCount((prevCount) => prevCount + 1);
         }
 
-        // Update selected answers array
         setSelectedAnswers(prevAnswers => {
             const newAnswers = [...prevAnswers];
             newAnswers[index] = isAnswerCorrect;
@@ -57,7 +63,7 @@ const AutoFullTestPage = () => {
     };
 
     const calculatePercentage = () => {
-        const totalQuestions = data.length;
+        const totalQuestions = randomEnglishData.length;
         const percentage = (correctAnswerCount / totalQuestions) * 100;
         return percentage.toFixed(0);
     };
@@ -71,7 +77,7 @@ const AutoFullTestPage = () => {
                         Congratulations! You passed the test. Your score is: {percentage}%.
                     </span>
                 </div>
-            );
+            )
         } else if (submitted && percentage <= 70) {
             return (
                 <div className="test-page-result">
@@ -79,18 +85,19 @@ const AutoFullTestPage = () => {
                         You failed. Your score is: {percentage}%. You need to get at least 70% to pass the test.
                     </span>
                 </div>
-            );
+            )
         } else {
             return null;
         }
     };
 
     if (loading) {
-        return (
-            <div className="loading">
-                <InfinitySpin width="200" color="white" />
-            </div>
-        );
+        return <div className="loading">
+            <InfinitySpin
+                width="200"
+                color="white"
+            />
+        </div>
     }
 
     return (
@@ -98,11 +105,12 @@ const AutoFullTestPage = () => {
             {renderResultMessage()}
             <div className="test-page__card-list">
                 <form onSubmit={handleSubmit}>
-                    {data.map((testCard, index) => (
-                        <AutoFullTestPageCard
+                    {randomEnglishData.map((testCard, index) => (
+                        <AutoExpressTestCard
                             key={testCard.id}
                             data={testCard}
                             submitted={submitted}
+                            index={index}
                             onAnswerSubmit={(isAnswerCorrect) => handleAnswerSubmit(isAnswerCorrect, index)}
                         />
                     ))}
@@ -115,4 +123,4 @@ const AutoFullTestPage = () => {
     );
 };
 
-export default AutoFullTestPage;
+export default AutoExpressTestPage;

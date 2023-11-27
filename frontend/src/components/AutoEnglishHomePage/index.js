@@ -24,7 +24,7 @@ const AutoEnglishHomePage = () => {
                         Pass all the questions test and get the result
                     </p>
                 </Link>
-                <Link to="/express-test" className="home-card red">
+                <Link to="/auto/english/express-test" className="home-card red">
                     <span className="home-card-span">Express Test</span>
                     <p className="card-description">
                         Pass only 20 random questions, like the real test in NYC DMV

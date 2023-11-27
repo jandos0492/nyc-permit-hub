@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState } from "react" ;
 
-const AutoFullTestPageCard = ({ data, submitted, onAnswerSubmit }) => {
+const AutoExpressTestCard = ({ data, submitted, index, onAnswerSubmit }) => {
     const { no, question, answers, correctAnswerIndex, image } = data;
     const [selectedAnswer, setSelectedAnswer] = useState("");
 
@@ -20,18 +20,18 @@ const AutoFullTestPageCard = ({ data, submitted, onAnswerSubmit }) => {
 
     return (
         <div className="test-page-card">
-            <h4 className="test-page-card__number">{no}</h4>
+            <h4 className="test-page-card__number">{index + 1}</h4>
             <div className="test-page-card__content">
                 {isImage && <img src={`${process.env.PUBLIC_URL}/${image}`} alt="Question" className="test-page-card__image" />}
                 <h3 className="test-page-card__question">{question}</h3>
                 <div className="test-page-card__answers">
-                    {answers.map((answer, index) => (
-                        <label key={index} className="test-page-card__label">
-                            <input
+                    {answers.map((answer, idx) => (
+                        <label key={idx} className="test-page-card__label">
+                            <input 
                                 type="radio"
                                 name={`question-${no}`}
-                                value={index}
-                                checked={selectedAnswer === String(index)}
+                                value={idx}
+                                checked={selectedAnswer === String(idx)}
                                 onChange={handleAnswerChange}
                                 disabled={submitted}
                                 required
@@ -53,4 +53,4 @@ const AutoFullTestPageCard = ({ data, submitted, onAnswerSubmit }) => {
     );
 };
 
-export default AutoFullTestPageCard;
+export default AutoExpressTestCard;
