@@ -4,8 +4,8 @@ import "./AutoEnglishHomePage.css";
 
 const AutoEnglishHomePage = () => {
     return (
-        <div className="auto-english-home-page-container">
-            <div className="auto-english-home-page">
+        <div className="auto-home-page-container">
+            <div className="auto-home-page">
                 <Link to="/auto/english/traffic-signs/learn" className="home-card grey">
                     <span className="home-card-span">Learn Traffic Signs</span>
                     <p className="card-description">

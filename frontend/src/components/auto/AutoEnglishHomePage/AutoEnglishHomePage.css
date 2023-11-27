@@ -1,8 +1,8 @@
-.auto-english-home-page-container {
+.auto-home-page-container {
     background: #1e2b3a;
 }
 
-.auto-english-home-page {
+.auto-home-page {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -26,7 +26,7 @@
     text-decoration: none;
 }
 
-.home-card-span {
+.home-card span {
     font-weight: 600;
 }
 

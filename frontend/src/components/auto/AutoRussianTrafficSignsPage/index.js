@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import TrafficSignsCard from "./TrafficSignsCard";
-import "./TrafficSignsPage.css";
+import AutoRussianTrafficSignsCard from "./AutoRussianTrafficSignsCard";
 import { InfinitySpin } from "react-loader-spinner";
 
-const TrafficSignsPage = () => {
+const AutoRussianTrafficSignsPage = () => {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -33,15 +32,15 @@ const TrafficSignsPage = () => {
     return (
         <div className="traffic-signs-list-container">
             {data.map((trafficSignsCard) => (
-                <TrafficSignsCard
+                <AutoRussianTrafficSignsCard
                     key={trafficSignsCard.id}
                     no={trafficSignsCard.no}
                     image={trafficSignsCard.image}
-                    descriptionEnglish={trafficSignsCard.descriptionEnglish}
+                    descriptionRussian={trafficSignsCard.descriptionRussian}
                 />
             ))}
         </div>
     );
 };
 
-export default TrafficSignsPage;
+export default AutoRussianTrafficSignsPage;
