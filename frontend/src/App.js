@@ -67,6 +67,7 @@ import AutoRussianHomePage from './components/auto/AutoRussianHomePage';
 import AutoRussianTrafficSignsPage from './components/auto/AutoRussianTrafficSignsPage';
 import AutoRussianLearnPage from './components/auto/AutoRussianLearnPage';
 import AutoRussianFullTestPage from './components/auto/AutoRussianFullTestPage';
+import AutoRussianExpressTestPage from './components/auto/AutoRussianExpressTestPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -98,6 +99,7 @@ function App() {
           {isAuthenticated && <Route path="/auto/ru/traffic-signs/learn" element={<AutoRussianTrafficSignsPage />} />}
           {isAuthenticated && <Route path="/auto/ru/learn" element={<AutoRussianLearnPage />} />}
           {isAuthenticated && <Route path="/auto/ru/full-test" element={<AutoRussianFullTestPage />} />}
+          {isAuthenticated && <Route path="/auto/ru/express-test" element={<AutoRussianExpressTestPage />} />}
         </Routes>
       )}
     </>

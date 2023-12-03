@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const AutoRussianFullTestCard = ({ data, submitted, onAnswerSubmit }) => {
+const AutoRussianExpressTestCard = ({ data, submitted, onAnswerSubmit, index }) => {
     const { no, question, answers, correctAnswerIndex, image } = data;
     const [selectedAnswer, setSelectedAnswer] = useState("");
 
@@ -8,7 +8,7 @@ const AutoRussianFullTestCard = ({ data, submitted, onAnswerSubmit }) => {
         setSelectedAnswer(e.target.value);
         const isAnswerCorrect = e.target.value === String(correctAnswerIndex);
         onAnswerSubmit(isAnswerCorrect);
-    }
+    };
 
     const isImage = image !== null;
 
@@ -20,7 +20,7 @@ const AutoRussianFullTestCard = ({ data, submitted, onAnswerSubmit }) => {
 
     return (
         <div className="test-page-card">
-            <h4 className="test-page-card__number">{no}</h4>
+            <h4 className="test-page-card__number">{index + 1}</h4>
             <div className="test-page-card__content">
                 {isImage && (
                     <img
@@ -76,6 +76,6 @@ const AutoRussianFullTestCard = ({ data, submitted, onAnswerSubmit }) => {
             </div>
         </div>
     );
-};
+}
 
-export default AutoRussianFullTestCard;
+export default AutoRussianExpressTestCard;

@@ -1,26 +1,25 @@
 import React, { useState, useEffect } from "react";
-import AutoExpressTestCard from "./AutoExpressTestCard";
-import "./AutoExpressTestPage.css";
+import AutoRussianExpressTestCard from "./AutoRussianExpressTestCard";
 import { InfinitySpin } from "react-loader-spinner";
 
-const AutoExpressTestPage = () => {
+const AutoRussianExpressTestPage = () => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [submitted, setSubmitted] = useState(false);
     const [selectedAnswers, setSelectedAnswers] = useState(new Array(data.length).fill(null));
-    const [randomEnglishData, setRandomEnglishData] = useState([]);
+    const [randomRussianData, setRandomRussianData] = useState([]);
     const [correctAnswerCount, setCorrectAnswerCount] = useState(0);
     const [errors, setErrors] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch("/api/auto/english");
+                const response = await fetch("/api/auto/russian");
                 const result = await response.json();
                 setData(result);
                 setLoading(false);
             } catch (err) {
-                console.error("Error fetching the Auto Express Test data", err);
+                console.error("Error fetching the Auto Russian Express Test data", err);
                 setLoading(false);
             }
         }
@@ -32,7 +31,7 @@ const AutoExpressTestPage = () => {
         setErrors([]);
 
         if (selectedAnswers.every(answer => answer === null)) {
-            return setErrors(["Please answer all questions."]);
+            return setErrors(["Пожалуйста, ответьте на все вопросы."]);
         }
 
         setSubmitted(true);
@@ -41,7 +40,7 @@ const AutoExpressTestPage = () => {
     useEffect(() => {
         const shuffledArray = [...data].sort(() => Math.random() - 0.5);
         const randomData = shuffledArray.slice(0, 20);
-        setRandomEnglishData(randomData);
+        setRandomRussianData(randomData);
     }, [data]);
 
     useEffect(() => {
@@ -63,7 +62,7 @@ const AutoExpressTestPage = () => {
     };
 
     const calculatePercentage = () => {
-        const totalQuestions = randomEnglishData.length;
+        const totalQuestions = randomRussianData.length;
         const percentage = (correctAnswerCount / totalQuestions) * 100;
         return percentage.toFixed(0);
     };
@@ -74,7 +73,7 @@ const AutoExpressTestPage = () => {
             return (
                 <div className="test-page-result">
                     <span className="test-page__result-pass">
-                        Congratulations! You passed the test. Your score is: {percentage}%.
+                        Поздравляем! Вы успешно прошли тест. Ваш результат: {percentage}%.
                     </span>
                 </div>
             )
@@ -82,7 +81,7 @@ const AutoExpressTestPage = () => {
             return (
                 <div className="test-page-result">
                     <span className="test-page__result-fail">
-                        You failed. Your score is: {percentage}%. You need to get at least 70% to pass the test.
+                        Вы не прошли тест! Ваш результат: {percentage}%. Вам нужно набрать 70% и более, чтобы пройти тест.
                     </span>
                 </div>
             )
@@ -105,8 +104,8 @@ const AutoExpressTestPage = () => {
             {renderResultMessage()}
             <div className="test-page__card-list">
                 <form onSubmit={handleSubmit}>
-                    {randomEnglishData.map((testCard, index) => (
-                        <AutoExpressTestCard
+                    {randomRussianData.map((testCard, index) => (
+                        <AutoRussianExpressTestCard
                             key={testCard.id}
                             data={testCard}
                             submitted={submitted}
@@ -123,4 +122,4 @@ const AutoExpressTestPage = () => {
     );
 };
 
-export default AutoExpressTestPage;
+export default AutoRussianExpressTestPage;

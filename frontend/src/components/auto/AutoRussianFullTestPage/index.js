@@ -30,7 +30,7 @@ const AutoRussianFullTestPage = () => {
         setErrors([]);
 
         if (selectedAnswers.every(answer => answer === null)) {
-            return setErrors(["Пожалуйста ответьте на все вопросы."]);
+            return setErrors(["Пожалуйста, ответьте на все вопросы."]);
         }
 
         setSubmitted(true);
@@ -99,6 +99,9 @@ const AutoRussianFullTestPage = () => {
             {renderResultMessage()}
             <div className="test-page__card-list">
                 <form onSubmit={handleSubmit}>
+                    {errors && (
+                        <div>{errors[0]}</div>
+                    )}
                     {data?.map((testCard, index) => (
                         <AutoRussianFullTestCard
                             key={testCard.id}
@@ -107,10 +110,10 @@ const AutoRussianFullTestPage = () => {
                             onAnswerSubmit={(isAnswerCorrect) => handleAnswerSubmit(isAnswerCorrect, index)}
                         />
                     ))}
-                    <button 
+                    <button
                         className="test-page__submit-btn"
                         type="submit"
-                        disabled={selectedAnswers.includes(null)}
+                        disabled={submitted}
                     >
                         Отправить
                     </button>

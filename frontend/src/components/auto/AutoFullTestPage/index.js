@@ -106,7 +106,7 @@ const AutoFullTestPage = () => {
                             onAnswerSubmit={(isAnswerCorrect) => handleAnswerSubmit(isAnswerCorrect, index)}
                         />
                     ))}
-                    <button type="submit" disabled={selectedAnswers.includes(null)} className="test-page__submit-btn">
+                    <button type="submit" disabled={submitted} className="test-page__submit-btn">
                         Submit
                     </button>
                 </form>
