@@ -69,6 +69,8 @@ import AutoRussianLearnPage from './components/auto/AutoRussianLearnPage';
 import AutoRussianFullTestPage from './components/auto/AutoRussianFullTestPage';
 import AutoRussianExpressTestPage from './components/auto/AutoRussianExpressTestPage';
 import CDLHomePage from './components/CDL/CDLHomePage';
+import CDLGeneralKnowledgeHomePage from './components/CDL/CDLGenaralKnowledgeHomePage';
+import CDLGeneralKnowledgeLearnPage from './components/CDL/CDLGeneralKnowledgeLearnPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -102,6 +104,8 @@ function App() {
           {isAuthenticated && <Route path="/auto/ru/full-test" element={<AutoRussianFullTestPage />} />}
           {isAuthenticated && <Route path="/auto/ru/express-test" element={<AutoRussianExpressTestPage />} />}
           {isAuthenticated && <Route path="/cdl" element={<CDLHomePage />} />}
+          {isAuthenticated && <Route path="/cdl/general-knowledge" element={<CDLGeneralKnowledgeHomePage />} />}
+          {isAuthenticated && <Route path="/cdl/general-knowledge/learn" element={<CDLGeneralKnowledgeLearnPage />} />}
         </Routes>
       )}
     </>

@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { CDLGeneralKnowladgeTest } = require("../../db/models");
 
-router.get("/cdl/general-knowladge", async (req, res) => {
+router.get("/cdl/general-knowledge", async (req, res) => {
     try {
         const generalKnowladgeTest = await CDLGeneralKnowladgeTest.findAll();
         res.json(generalKnowladgeTest);
