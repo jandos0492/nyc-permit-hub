@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import CDLAirBrakesExpressTestCard from "./CDLAirBrakesExpressTestCard";
+import CDLCombinationVehiclesExpressTestCard from "./CDLCombinationVehiclesExpressTestCard";
 import { InfinitySpin } from "react-loader-spinner";
 
-const CDLAirBrakesExpressTestPage = () => {
+const CDLCombinationVehiclesExpressTestPage = () => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [submitted, setSubmitted] = useState(false);
@@ -14,12 +14,12 @@ const CDLAirBrakesExpressTestPage = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch("/api/cdl/air-brakes");
+                const response = await fetch("/api/cdl/combination-vehicles");
                 const result = await response.json();
                 setData(result);
                 setLoading(false);
             } catch (err) {
-                console.error("Error fetching the CDL Air Brakes Express Test data", err);
+                console.error("Error fetching the CDL Combination Vehicles Express Test data", err);
                 setLoading(false);
             }
         }
@@ -39,7 +39,7 @@ const CDLAirBrakesExpressTestPage = () => {
 
     useEffect(() => {
         const shuffledArray = [...data].sort(() => Math.random() - 0.5);
-        const randomGeneralKnowledgeData = shuffledArray.slice(0, 30);
+        const randomGeneralKnowledgeData = shuffledArray.slice(0, 25);
         setRandomData(randomGeneralKnowledgeData);
     }, [data]);
 
@@ -105,7 +105,7 @@ const CDLAirBrakesExpressTestPage = () => {
             <div className="test-page__card-list">
                 <form onSubmit={handleSubmit}>
                     {randomData?.map((testCard, index) => (
-                        <CDLAirBrakesExpressTestCard
+                        <CDLCombinationVehiclesExpressTestCard
                             key={testCard.id}
                             data={testCard}
                             submitted={submitted}
@@ -122,4 +122,4 @@ const CDLAirBrakesExpressTestPage = () => {
     );
 };
 
-export default CDLAirBrakesExpressTestPage;
+export default CDLCombinationVehiclesExpressTestPage;
