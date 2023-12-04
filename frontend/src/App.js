@@ -28,6 +28,8 @@ import CDLAirBrakesHomePage from "./components/CDL/CDLAirBrakesHomePage";
 import CDLAirBrakesLearnPage from './components/CDL/CDLAirBrakesLearnPage';
 import CDLAirBrakesFullTestPage from './components/CDL/CDLAirBrakesFullTestPage';
 import CDLAirBrakesExpressTestPage from './components/CDL/CDLAirBrakesExpressTestPage';
+import CDLCombinationVehicles from './components/CDL/CDLCombinationVehiclesHomePage';
+import CDLCombinationVehiclesLearnPage from './components/CDL/CDLCombinationVehiclesLearnPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -69,6 +71,8 @@ function App() {
           {isAuthenticated && <Route path="/cdl/air-brakes/learn" element={<CDLAirBrakesLearnPage />} />}
           {isAuthenticated && <Route path="/cdl/air-brakes/full-test" element={<CDLAirBrakesFullTestPage />} />}
           {isAuthenticated && <Route path="/cdl/air-brakes/express-test" element={<CDLAirBrakesExpressTestPage />} />}
+          {isAuthenticated && <Route path="/cdl/combination-vehicles" element={<CDLCombinationVehicles />} />}
+          {isAuthenticated && <Route path="/cdl/combination-vehicles/learn" element={<CDLCombinationVehiclesLearnPage />} />}
         </Routes>
       )}
     </>

@@ -12,7 +12,7 @@ const CDLHomePage = () => {
                 <Link to="/cdl/air-brakes" className="home-card green">
                     <span className="home-card-span">Air Brakes</span>
                 </Link>
-                <Link to="/cdl/combination-vehicle" className="home-card yellow">
+                <Link to="/cdl/combination-vehicles" className="home-card yellow">
                     <span className="home-card-span">Combination Vehicle</span>
                 </Link>
             </div>
