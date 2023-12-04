@@ -11,7 +11,7 @@ const CDLGeneralKnowledgeExpressTestPage = () => {
     const [correctAnswerCount, setCorrectAnswerCount] = useState(0);
     const [errors, setErrors] = useState([]);
 
-    useEffect = (() => {
+    useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await fetch("/api/cdl/general-knowledge");
@@ -42,4 +42,84 @@ const CDLGeneralKnowledgeExpressTestPage = () => {
         const randomGeneralKnowledgeData = shuffledArray.slice(0, 50);
         setRandomData(randomGeneralKnowledgeData);
     }, [data]);
-}
+
+    useEffect(() => {
+        if (submitted) {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    }, [submitted]);
+
+    const handleAnswerSubmit = (isAnswerCorrect, index) => {
+        if (isAnswerCorrect) {
+            setCorrectAnswerCount((prevCount) => prevCount + 1);
+        }
+
+        setSelectedAnswers(prevAnswers => {
+            const newAnswers = [...prevAnswers];
+            newAnswers[index] = isAnswerCorrect;
+            return newAnswers;
+        });
+    };
+
+    const calculatePercentage = () => {
+        const totalQuestions = randomData.length;
+        const percentage = (correctAnswerCount / totalQuestions) * 100;
+        return percentage.toFixed(0);
+    };
+
+    const renderResultMessage = () => {
+        const percentage = calculatePercentage();
+        if (submitted && percentage >= 70) {
+            return (
+                <div className="test-page-result">
+                    <span className="test-page__result-pass">
+                        Congratulations! You passed the test. Your score is: {percentage}%.
+                    </span>
+                </div>
+            )
+        } else if (submitted && percentage <= 70) {
+            return (
+                <div className="test-page-result">
+                    <span className="test-page__result-fail">
+                        You failed. Your score is: {percentage}%. You need to get at least 70% to pass the test.
+                    </span>
+                </div>
+            )
+        } else {
+            return null;
+        }
+    };
+
+    if (loading) {
+        return <div className="loading">
+            <InfinitySpin
+                width="200"
+                color="white"
+            />
+        </div>
+    }
+
+    return (
+        <div className="test-page">
+            {renderResultMessage()}
+            <div className="test-page__card-list">
+                <form onSubmit={handleSubmit}>
+                    {randomData?.map((testCard, index) => (
+                        <CDLGeneralKnowledgeExpressTestCard
+                            key={testCard.id}
+                            data={testCard}
+                            submitted={submitted}
+                            index={index}
+                            onAnswerSubmit={(isAnswerCorrect) => handleAnswerSubmit(isAnswerCorrect, index)}
+                        />
+                    ))}
+                    <button type="submit" disabled={submitted} className="test-page__submit-btn">
+                        Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+    );
+};
+
+export default CDLGeneralKnowledgeExpressTestPage;

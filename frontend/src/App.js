@@ -72,6 +72,7 @@ import CDLHomePage from './components/CDL/CDLHomePage';
 import CDLGeneralKnowledgeHomePage from './components/CDL/CDLGenaralKnowledgeHomePage';
 import CDLGeneralKnowledgeLearnPage from './components/CDL/CDLGeneralKnowledgeLearnPage';
 import CDLGeneralKnowledgeFullTestPage from './components/CDL/CDLGeneralKnowledgeFullTestPage';
+import CDLGeneralKnowledgeExpressTestPage from './components/CDL/CDLGeneralKnowledgeExpressTestPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -108,6 +109,7 @@ function App() {
           {isAuthenticated && <Route path="/cdl/general-knowledge" element={<CDLGeneralKnowledgeHomePage />} />}
           {isAuthenticated && <Route path="/cdl/general-knowledge/learn" element={<CDLGeneralKnowledgeLearnPage />} />}
           {isAuthenticated && <Route path="/cdl/general-knowledge/full-test" element={<CDLGeneralKnowledgeFullTestPage />} />}
+          {isAuthenticated && <Route path="/cdl/general-knowledge/express-test" element={<CDLGeneralKnowledgeExpressTestPage />} />}
         </Routes>
       )}
     </>
