@@ -72,7 +72,7 @@ const AutoFullTestPage = () => {
                     </span>
                 </div>
             );
-        } else if (submitted && percentage <= 70) {
+        } else if (submitted && percentage < 70) {
             return (
                 <div className="test-page-result">
                     <span className="test-page__result-fail">

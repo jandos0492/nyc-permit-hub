@@ -69,7 +69,7 @@ const CDLGeneralKnowledgeExpressTestPage = () => {
 
     const renderResultMessage = () => {
         const percentage = calculatePercentage();
-        if (submitted && percentage >= 70) {
+        if (submitted && percentage >= 80) {
             return (
                 <div className="test-page-result">
                     <span className="test-page__result-pass">
@@ -77,11 +77,11 @@ const CDLGeneralKnowledgeExpressTestPage = () => {
                     </span>
                 </div>
             )
-        } else if (submitted && percentage <= 70) {
+        } else if (submitted && percentage < 80) {
             return (
                 <div className="test-page-result">
                     <span className="test-page__result-fail">
-                        You failed. Your score is: {percentage}%. You need to get at least 70% to pass the test.
+                        You failed. Your score is: {percentage}%. You need to get at least 80% to pass the test.
                     </span>
                 </div>
             )
