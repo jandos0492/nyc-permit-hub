@@ -6,9 +6,7 @@ const CDLGeneralKnowledgeFullTestPage = () => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [submitted, setSubmitted] = useState(false);
-    const [selectedAnswers, setSelectedAnswers] = useState(new Array(data.length).fill(null));
     const [correctAnswerCount, setCorrectAnswerCount] = useState(0);
-    const [errors, setErrors] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -27,12 +25,6 @@ const CDLGeneralKnowledgeFullTestPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setErrors([]);
-
-        if (selectedAnswers.every(answer => answer === null)) {
-            return setErrors(["Please answer all questions."]);
-        }
-
         setSubmitted(true);
     }
 
@@ -46,12 +38,6 @@ const CDLGeneralKnowledgeFullTestPage = () => {
         if (isAnswerCorrect) {
             setCorrectAnswerCount((prevCount) => prevCount + 1);
         }
-
-        setSelectedAnswers(prevAnswers => {
-            const newAnswers = [...prevAnswers];
-            newAnswers[index] = isAnswerCorrect;
-            return newAnswers;
-        });
     };
 
     const calculatePercentage = () => {

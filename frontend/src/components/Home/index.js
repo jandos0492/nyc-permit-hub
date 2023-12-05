@@ -13,7 +13,7 @@ const Home = () => {
             </div>
             <div className="section">
                 <Link to="/cdl">
-                    <img src={`${process.env.PUBLIC_URL}/images/vehicle_type/truck1.jpg`} alt="Truck" />
+                    <img src={`${process.env.PUBLIC_URL}/images/vehicle_type/truck.jpg`} alt="Truck" />
                     <p>CDL Permit</p>
                 </Link>
             </div>

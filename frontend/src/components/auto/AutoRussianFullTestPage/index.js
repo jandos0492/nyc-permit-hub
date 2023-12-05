@@ -6,9 +6,7 @@ const AutoRussianFullTestPage = () => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [submitted, setSubmitted] = useState(false);
-    const [selectedAnswers, setSelectedAnswers] = useState(new Array(data.length).fill(null));
     const [correctAnswerCount, setCorrectAnswerCount] = useState(0);
-    const [errors, setErrors] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -27,12 +25,6 @@ const AutoRussianFullTestPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setErrors([]);
-
-        if (selectedAnswers.every(answer => answer === null)) {
-            return setErrors(["Пожалуйста, ответьте на все вопросы."]);
-        }
-
         setSubmitted(true);
     };
 
@@ -46,12 +38,6 @@ const AutoRussianFullTestPage = () => {
         if (isAnswerCorrect) {
             setCorrectAnswerCount((prevCount) => prevCount + 1);
         }
-
-        setSelectedAnswers(prevAnswers => {
-            const newAnswers = [...prevAnswers];
-            newAnswers[index] = isAnswerCorrect;
-            return newAnswers;
-        });
     };
 
     const calculatePercentage = () => {
@@ -99,9 +85,6 @@ const AutoRussianFullTestPage = () => {
             {renderResultMessage()}
             <div className="test-page__card-list">
                 <form onSubmit={handleSubmit}>
-                    {errors && (
-                        <div>{errors[0]}</div>
-                    )}
                     {data?.map((testCard, index) => (
                         <AutoRussianFullTestCard
                             key={testCard.id}
