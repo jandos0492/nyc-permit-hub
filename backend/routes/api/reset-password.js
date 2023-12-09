@@ -8,7 +8,6 @@ const asyncHandler = require("express-async-handler");
 const nodemailer = require("nodemailer");
 const bcrypt = require("bcryptjs/dist/bcrypt");
 require("dotenv").config();
-const zxcvbn = require("zxcvbn");
 
 const csrfProtection = csrf({ cookie: true, header: 'X-XSRF-TOKEN' });
 const router = express.Router();
