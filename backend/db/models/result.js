@@ -34,6 +34,7 @@ module.exports = (sequelize, DataTypes) => {
     testLanguage: {
       type: DataTypes.STRING,
       allowNull: true,
+      defaultValue: null,
     },
     createdAt: {
       allowNull: false,

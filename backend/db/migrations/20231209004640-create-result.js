@@ -29,7 +29,8 @@ module.exports = {
       },
       testLanguage: {
         type: Sequelize.STRING(30),
-        allowNull: false,
+        allowNull: true,
+        defaultValue: null,
       },
       createdAt: {
         allowNull: false,

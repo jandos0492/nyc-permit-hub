@@ -7,6 +7,7 @@ const apiTrafficSignsRoute = require("./api/trafficSignsRouter");
 const apiCDLGeneralKnowledgeTestRoute = require("./api/cdlGeneralKnowledgeTestRouter");
 const apiCDLAirBrakesTestRoute = require("./api/cdlAirBrakesTestRouter");
 const apiCDLCombinationVehiclesTestRoute = require("./api/cdlCombinationVehiclesTestRouter");
+const apiResultRoute = require("./api/resultRouter");
 
 router.use("/api", apiRouter);
 router.use("/api", apiEnglishRoute);
@@ -15,6 +16,7 @@ router.use("/api", apiTrafficSignsRoute);
 router.use("/api", apiCDLGeneralKnowledgeTestRoute);
 router.use("/api", apiCDLAirBrakesTestRoute);
 router.use("/api", apiCDLCombinationVehiclesTestRoute);
+router.use("/api", apiResultRoute);
 
 // Static routes
 // Serve React build files in produciton
