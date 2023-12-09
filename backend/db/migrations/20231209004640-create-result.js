@@ -19,6 +19,11 @@ module.exports = {
         type: Sequelize.STRING(10),
         allowNull: false,
       },
+      pass: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+      },
       vehicleType: {
         type: Sequelize.STRING(30),
         allowNull: false,
