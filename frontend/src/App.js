@@ -37,10 +37,11 @@ function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   const isAuthenticated = useSelector((state) => Boolean(state.session.user));
-
+  
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
+  
 
   return (
     <>

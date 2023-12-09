@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import AutoExpressTestCard from "./AutoExpressTestCard";
 import "./AutoExpressTestPage.css";
 import { InfinitySpin } from "react-loader-spinner";
@@ -9,6 +10,7 @@ const AutoExpressTestPage = () => {
     const [submitted, setSubmitted] = useState(false);
     const [randomEnglishData, setRandomEnglishData] = useState([]);
     const [correctAnswerCount, setCorrectAnswerCount] = useState(0);
+    const userId = useSelector((state) => state.session.user.id);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -25,8 +27,33 @@ const AutoExpressTestPage = () => {
         fetchData();
     }, []);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+
+        const xsrfToken = document.cookie
+            .split("; ")
+            .find((row) => row.startsWith("XSRF-TOKEN"))
+            .split("=")[1];
+
+        try {
+            await fetch(`/api/users/${userId}/results`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-XSRF-TOKEN": xsrfToken,
+                },
+                body: JSON.stringify({
+                    score: String(calculatePercentage()),
+                    userId,
+                    vehicleType: "Auto",
+                    testType: "Express test",
+                    testLanguage: "English"
+                }),
+            });
+        } catch (err) {
+            console.error("Error adding result from the AutoExpressTestPage:", err);
+        }
+
         setSubmitted(true);
     };
 

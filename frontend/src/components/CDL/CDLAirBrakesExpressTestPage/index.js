@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import CDLAirBrakesExpressTestCard from "./CDLAirBrakesExpressTestCard";
 import { InfinitySpin } from "react-loader-spinner";
 
@@ -8,6 +9,7 @@ const CDLAirBrakesExpressTestPage = () => {
     const [submitted, setSubmitted] = useState(false);
     const [randomData, setRandomData] = useState([]);
     const [correctAnswerCount, setCorrectAnswerCount] = useState(0);
+    const userId = useSelector((state) => state.session.user.id);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -24,8 +26,32 @@ const CDLAirBrakesExpressTestPage = () => {
         fetchData();
     }, []);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+
+        const xsrfToken = document.cookie
+            .split("; ")
+            .find((row) => row.startsWith("XSRF-TOKEN"))
+            .split("=")[1];
+        
+        try {
+            await fetch(`/api/users/${userId}/results`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "XSRF-TOKEN": xsrfToken,
+                },
+                body: JSON.stringify({
+                    score: String(calculatePercentage()),
+                    userId,
+                    vehicleType: "CDL Air Brakes",
+                    testType: "Express test",
+                    testLanguage: "English",
+                }),
+            });
+        } catch (err) {
+            console.error("Error adding result from the CDLAirBrakesExpressTestPage:", err);
+        }
 
         setSubmitted(true);
     };
