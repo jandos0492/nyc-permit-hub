@@ -46,7 +46,8 @@ const AutoFullTestPage = () => {
                     userId,
                     vehicleType: "Auto",
                     testType: "Full test",
-                    testLanguage: "English"
+                    testLanguage: "English",
+                    pass: calculatePercentage() >= 70,
                 }),
             });
         } catch (err) {

@@ -47,6 +47,7 @@ const CDLAirBrakesExpressTestPage = () => {
                     vehicleType: "CDL Air Brakes",
                     testType: "Express test",
                     testLanguage: "English",
+                    pass: calculatePercentage() >= 80,
                 }),
             });
         } catch (err) {

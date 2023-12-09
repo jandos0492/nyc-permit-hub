@@ -46,7 +46,8 @@ const AutoRussianExpressTestPage = () => {
                     userId,
                     vehicleType: "Auto",
                     testType: "Express Test",
-                    testLanguage: "Russian"
+                    testLanguage: "Russian",
+                    pass: calculatePercentage() >= 70,
                 }),
             });
         } catch (err) {

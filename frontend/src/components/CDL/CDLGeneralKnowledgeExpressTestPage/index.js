@@ -47,6 +47,7 @@ const CDLGeneralKnowledgeExpressTestPage = () => {
                     vehicleType: "CDL General Knowledge",
                     testType: "Express test",
                     testLanguage: "English",
+                    pass: calculatePercentage() >= 80,
                 }),
             });
         } catch (err) {

@@ -46,6 +46,7 @@ const AutoRussianFullTestPage = () => {
                     vehicleType: "Auto",
                     testType: "Full test",
                     testLanguage: "Russian",
+                    pass: calculatePercentage() >= 70,
                 }),
             });
         } catch (err) {

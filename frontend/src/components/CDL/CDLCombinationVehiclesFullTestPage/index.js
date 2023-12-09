@@ -46,6 +46,7 @@ const CDLCombinationVehiclesFullTestPage = () => {
                     vehicleType: "CDL Combination Vehicles",
                     testType: "Full test",
                     testLanguage: "English",
+                    pass: calculatePercentage() >= 80,
                 }),
             });
         } catch (err) {

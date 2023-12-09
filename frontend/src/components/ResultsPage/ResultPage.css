@@ -1,0 +1,28 @@
+.result-page-container {
+    margin: 20px;
+    background: #1e2b3a;
+}
+
+.result-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.result-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.result-pass {
+    background-color: #d3f0cd;
+    color: rgb(0, 102, 0);
+}
+
+.result-fail {
+    background-color: #f8d7da;
+    color: rgb(204, 0, 0);
+}
