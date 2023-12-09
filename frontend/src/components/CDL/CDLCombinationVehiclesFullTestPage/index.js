@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import CDLCombinationVehiclesFullTestCard from "./CDLCombinationVehiclesFullTestCard";
 import { InfinitySpin } from "react-loader-spinner";
 
@@ -7,6 +8,7 @@ const CDLCombinationVehiclesFullTestPage = () => {
     const [loading, setLoading] = useState(true);
     const [submitted, setSubmitted] = useState(false);
     const [correctAnswerCount, setCorrectAnswerCount] = useState(0);
+    const userId = useSelector((state) => state.session.user.id);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -23,8 +25,33 @@ const CDLCombinationVehiclesFullTestPage = () => {
         fetchData()
     }, []);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+
+        const xsrfToken = document.cookie
+            .split("; ")
+            .find((row) => row.startsWith("XSRF-TOKEN"))
+            .split("=")[1];
+        
+        try {
+            await fetch(`/api/users/${userId}/results`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "XSRF-TOKEN": xsrfToken,
+                },
+                body: JSON.stringify({
+                    score: String(calculatePercentage()),
+                    userId,
+                    vehicleType: "CDL Combination Vehicles",
+                    testType: "Full test",
+                    testLanguage: "English",
+                }),
+            });
+        } catch (err) {
+            console.error("Error adding result from the CDLCombinationVehiclesFullTestPage: ", err);
+        }
+
         setSubmitted(true);
     }
 
