@@ -7,12 +7,27 @@ const CDLHomePage = () => {
         <div className="cdl-home-page-container">
             <div className="cdl-home-page">
                 <Link to="/cdl/general-knowledge" className="home-card grey">
+                    <img 
+                        src={`${process.env.PUBLIC_URL}/images/cdl/general-knowledge.jpg`} 
+                        alt="General Knowledge" 
+                        className="card-image"
+                    />
                     <span className="home-card-span">General Knowledge</span>
                 </Link>
-                <Link to="/cdl/air-brakes" className="home-card green">
+                <Link to="/cdl/air-brakes" className="home-card grey">
+                    <img
+                        src={`${process.env.PUBLIC_URL}/images/cdl/air-brakes.jpg`}
+                        alt="General Knowledge"
+                        className="card-image"
+                    />
                     <span className="home-card-span">Air Brakes</span>
                 </Link>
-                <Link to="/cdl/combination-vehicles" className="home-card yellow">
+                <Link to="/cdl/combination-vehicles" className="home-card grey">
+                    <img
+                        src={`${process.env.PUBLIC_URL}/images/cdl/combination-vehicles.jpg`}
+                        alt="General Knowledge"
+                        className="card-image"
+                    />
                     <span className="home-card-span">Combination Vehicle</span>
                 </Link>
             </div>

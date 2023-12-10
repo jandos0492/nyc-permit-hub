@@ -41,34 +41,7 @@
 }
 
 .grey:hover {
-    background-color: rgb(220, 216, 216);
-}
-
-.green {
-    background-color: #75c387;
-    color: #ffffff;
-}
-
-.green:hover {
-    background-color: #5da36d;
-}
-
-.yellow {
-    background-color: #f2c643;
-    color: #212529;
-}
-
-.yellow:hover {
-    background-color: #f2c131;
-}
-
-.red {
-    background-color: #dd919a;
-    color: #ffffff;
-}
-
-.red:hover {
-    background-color: #c76f78;
+    background-color: #0A1726;
 }
 
 .home-card a {
@@ -85,7 +58,7 @@
 }
 
 .card-description {
-    color: black;
+    color: white;
     opacity: 0.8;
     font-size: 14px;
 }

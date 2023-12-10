@@ -37,12 +37,12 @@ const ResultsPage = () => {
             <div className="result-cards">
                 {data?.map((resultCard, index) => (
                     <div key={resultCard.id} className={`result-card ${resultCard.pass ? "result-pass" : "result-fail"}`}>
-                        <p>Date: {new Date(resultCard.createdAt).toLocaleDateString()}</p>
-                        <p>Time: {new Date(resultCard.createdAt).toLocaleTimeString()}</p>
-                        <p>Score: {resultCard.score}%</p>
-                        <p>Status: {resultCard.pass ? "Passed" : "Failed"}</p>
-                        <p>Test type: {`${resultCard.vehicleType} ${resultCard.testType}`}</p>
-                        <p>Language: {resultCard.testLanguage}</p>
+                        <p><strong>Date:</strong> {new Date(resultCard.createdAt).toLocaleDateString()}</p>
+                        <p><strong>Time:</strong> {new Date(resultCard.createdAt).toLocaleTimeString()}</p>
+                        <p><strong>Score:</strong> {resultCard.score}%</p>
+                        <p><strong>Status:</strong> {resultCard.pass ? "Passed" : "Failed"}</p>
+                        <p><strong>type:</strong>Test  {`${resultCard.vehicleType} ${resultCard.testType}`}</p>
+                        <p><strong>Language:</strong> {resultCard.testLanguage}</p>
                     </div>
                 ))}
             </div>
