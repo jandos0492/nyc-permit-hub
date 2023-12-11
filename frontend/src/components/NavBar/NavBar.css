@@ -105,7 +105,6 @@ nav a {
     right: 0;
     background-color: #1C232B;
     width: 150px;
-    /* height: calc(100% - 200px); */
     flex-direction: column;
     align-items: flex-start;
     overflow-y: auto;
