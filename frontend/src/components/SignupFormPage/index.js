@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './SignupFormPage.css';
 function SignupFormPage() {
@@ -83,6 +84,9 @@ function SignupFormPage() {
                     />
                 </label>
                 <button className="submit-button" type="submit">Sign Up</button>
+                <div className="login-text">
+                    Already Member? <Link to="login">Please Sign In here</Link>
+                </div>
             </form>
         </div>
     );

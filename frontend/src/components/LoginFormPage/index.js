@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./LoginFormPage.css";
 
 function LoginFormPage() {
@@ -58,6 +58,9 @@ function LoginFormPage() {
                     <button className="submit-button" type="submit">Log In</button>
                     <div className="forgot-password">
                         <a href="http://localhost:3001/reset-password">Forgot Password?</a>
+                    </div>
+                    <div className="sign-up-text">
+                        Don't have an account? <Link to="/signup">Please Sign Up here</Link>
                     </div>
                 </form>
             </div>

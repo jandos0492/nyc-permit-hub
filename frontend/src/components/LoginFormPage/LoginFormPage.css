@@ -88,6 +88,22 @@
     text-decoration: underline;
 }
 
+.sign-up-text {
+    text-align: center;
+    margin-top: 15px;
+    color: #333;
+    font-size: 16px;
+}
+
+.sign-up-text a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.sign-up-text a:hover {
+    text-decoration: underline;
+}
+
 @media screen and (max-width: 501px) {
     .login-form {
         max-width: 250px;
@@ -98,6 +114,10 @@
     }
 
     .forgot-password a {
+        font-size: 14px;
+    }
+
+    .sign-up-text {
         font-size: 14px;
     }
 }

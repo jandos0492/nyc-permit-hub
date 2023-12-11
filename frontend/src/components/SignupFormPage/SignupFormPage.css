@@ -73,12 +73,32 @@
     border: 1px solid #0056b3;
 }
 
+.login-text {
+    text-align: center;
+    margin-top: 15px;
+    color: #333;
+    font-size: 16px;
+}
+
+.login-text a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.login-text a:hover {
+    text-decoration: underline;
+}
+
 @media screen and (max-width: 501px) {
     .signup-form {
         max-width: 250px;
     }
 
     label.form-label {
+        font-size: 14px;
+    }
+
+    .login-text {
         font-size: 14px;
     }
 }

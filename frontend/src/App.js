@@ -51,11 +51,13 @@ function App() {
       <NavBar isAuthenticated={isAuthenticated} />
       {isLoaded && (
         <Routes>
+          {!isAuthenticated && <Route path="*" element={<LoginFormPage />} />}
           {!isAuthenticated && <Route path="/login" element={<LoginFormPage />} />}
           {!isAuthenticated && <Route path="/signup" element={<SignupFormPage />} />}
           {!isAuthenticated && <Route path="/reset-password" element={<PasswordResetRequest />} />}
           {!isAuthenticated && <Route path="/reset-password/:token" element={<ResetPassword />} />}
  
+          {isAuthenticated && <Route path="*" element={<Home />} />}
           {isAuthenticated && <Route path="/" element={<Home />} />}
           {isAuthenticated && <Route path="/auto/choose-language" element={<AutoChooseLanguage />} />}
           {isAuthenticated && <Route path="/auto/english" element={<AutoEnglishHomePage />} />}
