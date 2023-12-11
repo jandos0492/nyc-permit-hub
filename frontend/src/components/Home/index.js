@@ -7,13 +7,21 @@ const Home = () => {
         <div className="home-container">
             <div className="section">
                 <Link to="/auto/choose-language">
-                    <img src={`${process.env.PUBLIC_URL}/images/vehicle_type/auto.jpg`} alt="Auto" />
+                    <img 
+                        src={`${process.env.PUBLIC_URL}/images/vehicle_type/auto.jpg`} 
+                        alt="Auto" 
+                        className="big-image"
+                    />
                     <p>Auto Permit</p>
                 </Link>
             </div>
             <div className="section">
                 <Link to="/cdl">
-                    <img src={`${process.env.PUBLIC_URL}/images/vehicle_type/truck.jpg`} alt="Truck" />
+                    <img 
+                        src={`${process.env.PUBLIC_URL}/images/vehicle_type/truck.jpg`} 
+                        alt="Truck" 
+                        className="big-image"
+                    />
                     <p>CDL Permit</p>
                 </Link>
             </div>

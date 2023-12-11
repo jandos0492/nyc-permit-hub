@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import LoginFormPage from './components/LoginFormPage';
 import SignupFormPage from './components/SignupFormPage';
 import * as sessionActions from './store/session';
-import Navigation from './components/Navigation';
+// import Navigation from './components/Navigation';
 import PasswordResetRequest from './components/PasswordResetRequest';
 import ResetPassword from './components/ResetPassword';
 import Home from './components/Home';
@@ -33,6 +33,7 @@ import CDLCombinationVehiclesLearnPage from './components/CDL/CDLCombinationVehi
 import CDLCombinationVehiclesFullTestPage from './components/CDL/CDLCombinationVehiclesFullTestPage';
 import CDLCombinationVehiclesExpressTestPage from './components/CDL/CDLCombinationVehiclesExpressTestPage';
 import ResultsPage from './components/ResultsPage';
+import NavBar from './components/NavBar';
 
 function App() {
   const dispatch = useDispatch();
@@ -46,14 +47,15 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
+      {/* <Navigation isLoaded={isLoaded} /> */}
+      <NavBar isAuthenticated={isAuthenticated} />
       {isLoaded && (
         <Routes>
           {!isAuthenticated && <Route path="/login" element={<LoginFormPage />} />}
           {!isAuthenticated && <Route path="/signup" element={<SignupFormPage />} />}
           {!isAuthenticated && <Route path="/reset-password" element={<PasswordResetRequest />} />}
           {!isAuthenticated && <Route path="/reset-password/:token" element={<ResetPassword />} />}
-
+ 
           {isAuthenticated && <Route path="/" element={<Home />} />}
           {isAuthenticated && <Route path="/auto/choose-language" element={<AutoChooseLanguage />} />}
           {isAuthenticated && <Route path="/auto/english" element={<AutoEnglishHomePage />} />}

@@ -41,7 +41,7 @@ const ResultsPage = () => {
                         <p><strong>Time:</strong> {new Date(resultCard.createdAt).toLocaleTimeString()}</p>
                         <p><strong>Score:</strong> {resultCard.score}%</p>
                         <p><strong>Status:</strong> {resultCard.pass ? "Passed" : "Failed"}</p>
-                        <p><strong>type:</strong>Test  {`${resultCard.vehicleType} ${resultCard.testType}`}</p>
+                        <p><strong>Test type: </strong>{`${resultCard.vehicleType} ${resultCard.testType}`}</p>
                         <p><strong>Language:</strong> {resultCard.testLanguage}</p>
                     </div>
                 ))}
