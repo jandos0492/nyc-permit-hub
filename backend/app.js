@@ -25,6 +25,8 @@ app.use(helmet({
     contentSecurityPolicy: false
 }));
 
+app.use(cors({ origin: ["http://localhost:3000", "https://nyc-permit-hub.onrender.com"] }));
+
 // Set th e_csrf token and create req.csrfToken method
 app.use(
     csurf({
