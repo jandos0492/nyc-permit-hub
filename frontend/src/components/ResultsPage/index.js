@@ -37,6 +37,7 @@ const ResultsPage = () => {
             <div className="result-cards">
                 {data?.map((resultCard, index) => (
                     <div key={resultCard.id} className={`result-card ${resultCard.pass ? "result-pass" : "result-fail"}`}>
+                        <h4 className="test-page-card__number">{index + 1}</h4>
                         <p><strong>Date:</strong> {new Date(resultCard.createdAt).toLocaleDateString()}</p>
                         <p><strong>Time:</strong> {new Date(resultCard.createdAt).toLocaleTimeString()}</p>
                         <p><strong>Score:</strong> {resultCard.score}%</p>
