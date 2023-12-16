@@ -49,6 +49,7 @@ const AutoExpressTestPage = () => {
                     testType: "Express test",
                     testLanguage: "English",
                     pass: calculatePercentage() >= 70,
+                    requiredScore: "70%",
                 }),
             });
         } catch (err) {

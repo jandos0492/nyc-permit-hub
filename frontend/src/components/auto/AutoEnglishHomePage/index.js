@@ -5,6 +5,7 @@ import "./AutoEnglishHomePage.css";
 const AutoEnglishHomePage = () => {
     return (
         <div className="auto-home-page-container">
+            <h1 className="header">Auto: English Version</h1>
             <div className="auto-home-page">
                 <Link to="/auto/english/traffic-signs/learn" className="home-card grey">
                     <img

@@ -1,8 +1,12 @@
 .cdl-home-page-container {
     background: #1e2b3a;
+    padding: 0;
+    margin: 0;
 }
 
 .cdl-home-page {
+    margin: 0;
+    padding: 0;
     display: flex;
     align-items: center;
     justify-content: space-evenly;

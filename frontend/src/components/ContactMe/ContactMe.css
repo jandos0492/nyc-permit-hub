@@ -1,9 +1,20 @@
+.contact-me-page-container {
+    margin: 0;
+    background: #1e2b3a;
+}
+
+.header {
+    color: white;
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
 .contact-me-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: #1e2b3a;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

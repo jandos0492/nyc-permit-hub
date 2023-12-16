@@ -1,3 +1,8 @@
+.home-page-container {
+    margin: 0;
+    background: #1E2B3A;
+}
+
 @media screen and (max-width: 901px) {
     .big-image {
         max-height: 400px;

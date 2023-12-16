@@ -5,6 +5,7 @@ import "./CDLHomePage.css"
 const CDLHomePage = () => {
     return (
         <div className="cdl-home-page-container">
+            <h1 className="header">CDL</h1>
             <div className="cdl-home-page">
                 <Link to="/cdl/general-knowledge" className="home-card grey">
                     <img 

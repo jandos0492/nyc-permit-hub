@@ -48,6 +48,7 @@ const AutoFullTestPage = () => {
                     testType: "Full test",
                     testLanguage: "English",
                     pass: calculatePercentage() >= 70,
+                    requiredScore: "70%",
                 }),
             });
         } catch (err) {

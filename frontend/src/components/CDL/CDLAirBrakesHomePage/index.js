@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 const CDLAirBrakesHomePage = () => {
     return (
         <div className="cdl-home-page-container">
+            <h1 className="header">CDL: Air Brakes</h1>
             <div className="cdl-home-page">
                 <Link to="/cdl/air-brakes/learn" className="home-card grey">
                     <img

@@ -47,6 +47,7 @@ const CDLCombinationVehiclesFullTestPage = () => {
                     testType: "Full test",
                     testLanguage: "English",
                     pass: calculatePercentage() >= 80,
+                    requiredScore: "80%",
                 }),
             });
         } catch (err) {

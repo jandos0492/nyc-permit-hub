@@ -10,7 +10,8 @@ const ResetPassword = () => {
     const [errors, setErrors] = useState([]);
     const navigate = useNavigate();
 
-    const handleResetPassword = async () => {
+    const handleResetPassword = async (e) => {
+        e.preventDefault();
         try {
             const xsrfToken = document.cookie
                 .split("; ")
@@ -46,7 +47,10 @@ const ResetPassword = () => {
 
     return (
         <div className="password-reset-container">
-            <div className="password-reset-form">
+            <form
+                 className="password-reset-form"
+                 onSubmit={handleResetPassword}
+            >
                 {errors && (
                     <ul className="error-list">
                         {errors.map((error, idx) => <li className="error-item" key={idx}>{error}</li>)}
@@ -61,12 +65,11 @@ const ResetPassword = () => {
                 />
                 <button
                     className="submit-button"
-                    onClick={handleResetPassword}
                     disabled={isPasswordUpdated}>
                     Reset Password
                 </button>
                 {message && <p className="message">{message}</p>}
-            </div>
+            </form>
         </div>
     );
 };

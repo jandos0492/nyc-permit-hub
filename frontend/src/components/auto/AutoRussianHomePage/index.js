@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 const AutoRussianHomePage = ({ language }) => {
     return (
         <div className="auto-home-page-container">
+            <h1 className="header">Авто: Русская Версия</h1>
             <div className="auto-home-page">
                 <Link to="/auto/ru/traffic-signs/learn" className="home-card grey">
                     <img

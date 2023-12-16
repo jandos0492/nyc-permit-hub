@@ -47,6 +47,7 @@ const AutoRussianFullTestPage = () => {
                     testType: "Full test",
                     testLanguage: "Russian",
                     pass: calculatePercentage() >= 70,
+                    requiredScore: "70%",
                 }),
             });
         } catch (err) {

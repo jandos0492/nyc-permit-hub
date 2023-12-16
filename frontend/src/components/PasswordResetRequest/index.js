@@ -12,7 +12,8 @@ const PasswordResetRequest = () => {
         setValidEmail("");
     };
 
-    const handleResetRequest = async () => {
+    const handleResetRequest = async (e) => {
+        e.preventDefault();
         try {
             const xsrfToken = document.cookie
                 .split("; ")
@@ -32,6 +33,9 @@ const PasswordResetRequest = () => {
 
             if (response.ok) {
                 setValidEmail("The password request was successful. Please check your email.")
+                setTimeout(() => {
+                    setValidEmail("");
+                }, 2000);
                 setEmail("");
             } else {
                 setErrors(data.errors ? data.errors : ["The email is not associated with this NYC Permit Hub."]);
@@ -45,7 +49,10 @@ const PasswordResetRequest = () => {
 
     return (
         <div className="password-reset-request-container">
-            <div className="password-reset-request-form">
+            <form
+                className="password-reset-request-form"
+                onSubmit={handleResetRequest}
+            >
                 {errors && (
                     <ul className="error-list">
                         {errors.map((error, idx) => <li className="error-item" key={idx}>{error}</li>)}
@@ -60,11 +67,11 @@ const PasswordResetRequest = () => {
                 />
                 <button
                     className="submit-button"
-                    onClick={handleResetRequest}>
+                >
                     Request Reset Password
                 </button>
                 {validEmail && <p className="valid-email">{validEmail}</p>}
-            </div>
+            </form>
         </div>
     );
 };

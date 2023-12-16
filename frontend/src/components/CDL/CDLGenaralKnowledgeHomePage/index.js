@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 const CDLGeneralKnowledgeHomePage = () => {
     return (
         <div className="cdl-home-page-container">
+            <h1 className="header">CDL: General Knowledge</h1>
             <div className="cdl-home-page">
                 <Link to="/cdl/general-knowledge/learn" className="home-card grey">
                     <img

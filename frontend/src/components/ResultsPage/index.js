@@ -34,6 +34,7 @@ const ResultsPage = () => {
 
     return (
         <div className="result-page-container">
+            <h1 className="header">Test History</h1>
             <div className="result-cards">
                 {data?.map((resultCard, index) => (
                     <div key={resultCard.id} className={`result-card ${resultCard.pass ? "result-pass" : "result-fail"}`}>
@@ -42,6 +43,7 @@ const ResultsPage = () => {
                         <p><strong>Time:</strong> {new Date(resultCard.createdAt).toLocaleTimeString()}</p>
                         <p><strong>Score:</strong> {resultCard.score}%</p>
                         <p><strong>Status:</strong> {resultCard.pass ? "Passed" : "Failed"}</p>
+                        <p><strong>Required Score To Pass:</strong> {resultCard.requiredScore}</p>
                         <p><strong>Test type: </strong>{`${resultCard.vehicleType} ${resultCard.testType}`}</p>
                         <p><strong>Language:</strong> {resultCard.testLanguage}</p>
                     </div>

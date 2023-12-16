@@ -41,6 +41,12 @@
 
     .result-cards {
         justify-content: center;
-        padding-left: 60px;
+        padding-left: 80px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .result-cards {
+        padding-left: 55px;
     }
 }

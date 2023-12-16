@@ -48,6 +48,7 @@ const CDLAirBrakesExpressTestPage = () => {
                     testType: "Express test",
                     testLanguage: "English",
                     pass: calculatePercentage() >= 80,
+                    requiredScore: "80%",
                 }),
             });
         } catch (err) {
