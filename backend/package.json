@@ -49,6 +49,7 @@
     "zxcvbn": "^4.4.2"
   },
   "devDependencies": {
+    "@types/js-cookie": "^3.0.6",
     "dotenv-cli": "^7.3.0",
     "nodemon": "^3.0.1"
   }

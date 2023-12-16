@@ -47,7 +47,7 @@ const ContactMe = () => {
             }
 
         } catch (error) {
-            setErrors(["Error sending email huinya."]);
+            setErrors(["Error sending email."]);
         }
 
         setName("");

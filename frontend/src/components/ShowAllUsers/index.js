@@ -22,7 +22,7 @@ const ShowAllUsers = () => {
     }, []);
 
     if (loading) {
-        return <div>
+        return <div className="loading">
             <InfinitySpin
                 width="200"
                 color="white"
