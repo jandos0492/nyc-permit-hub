@@ -5,7 +5,7 @@ const { User, Result } = require("../../db/models");
 
 router.post("/users/:userId/results", async (req, res) => {
     const { userId } = req.params;
-    const { score, vehicleType, testType, testLanguage, pass } = req.body;
+    const { score, vehicleType, testType, testLanguage, pass, requiredScore } = req.body;
 
     try {
         const user = await User.findByPk(userId);
@@ -21,6 +21,7 @@ router.post("/users/:userId/results", async (req, res) => {
             testType,
             testLanguage,
             pass,
+            requiredScore
         });
 
         res.status(201).json(result);

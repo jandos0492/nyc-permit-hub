@@ -28,6 +28,10 @@ module.exports = {
         type: Sequelize.STRING(30),
         allowNull: false,
       },
+      requiredScore: {
+        type: Sequelize.STRING(30),
+        allowNull: false,
+      },
       testType: {
         type: Sequelize.STRING(30),
         allowNull: false,

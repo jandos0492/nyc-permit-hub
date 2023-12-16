@@ -36,6 +36,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    requiredScore: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     testLanguage: {
       type: DataTypes.STRING,
       allowNull: true,
