@@ -41,13 +41,11 @@ function ProfileButton({ user }) {
                 <FontAwesomeIcon icon={faUser} />
             </button>
             {showMenu && (
-                <ul className="profile-dropdown">
-                    <li>{user.username}</li>
-                    <li>{user.email}</li>
-                    <li>
-                        <button onClick={logout}>Log Out</button>
-                    </li>
-                </ul>
+                <div className="dropdown-menu">
+                    <p className="profile-text">{`Hello ${user.username}! Do you want to log out?`}</p>
+                    <button className="profile-button yes" onClick={logout}>Yes</button>
+                    <button className="profile-button no" onClick={toggleMenu}>No</button>
+                </div>
             )}
         </div>
     );

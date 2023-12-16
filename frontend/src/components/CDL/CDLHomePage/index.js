@@ -10,7 +10,7 @@ const CDLHomePage = () => {
                     <img 
                         src={`${process.env.PUBLIC_URL}/images/cdl/general-knowledge.jpg`} 
                         alt="General Knowledge" 
-                        className="card-image"
+                        className="card-image cdl"
                     />
                     <span className="home-card-span">General Knowledge</span>
                 </Link>
@@ -18,7 +18,7 @@ const CDLHomePage = () => {
                     <img
                         src={`${process.env.PUBLIC_URL}/images/cdl/air-brakes.jpg`}
                         alt="General Knowledge"
-                        className="card-image"
+                        className="card-image cdl"
                     />
                     <span className="home-card-span">Air Brakes</span>
                 </Link>
@@ -26,7 +26,7 @@ const CDLHomePage = () => {
                     <img
                         src={`${process.env.PUBLIC_URL}/images/cdl/combination-vehicles.jpg`}
                         alt="General Knowledge"
-                        className="card-image"
+                        className="card-image cdl"
                     />
                     <span className="home-card-span">Combination Vehicle</span>
                 </Link>

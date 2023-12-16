@@ -88,9 +88,13 @@
         max-height: 200px;
     }
 
-    .card-image {
-        max-height: 100px;
+    .cdl {
+        max-height: 180px;
         padding-top: 5px;
+    }
+
+    .grey span {
+        font-size: 14px;
     }
 
     .home-card .grey span {

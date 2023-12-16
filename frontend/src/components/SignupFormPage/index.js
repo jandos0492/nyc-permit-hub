@@ -85,7 +85,7 @@ function SignupFormPage() {
                 </label>
                 <button className="submit-button" type="submit">Sign Up</button>
                 <div className="login-text">
-                    Already Member? <Link to="login">Please Sign In here</Link>
+                    Already Member? <Link to="/login">Please Sign In here</Link>
                 </div>
             </form>
         </div>

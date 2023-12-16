@@ -4,7 +4,6 @@ import { Route, Routes } from 'react-router-dom';
 import LoginFormPage from './components/LoginFormPage';
 import SignupFormPage from './components/SignupFormPage';
 import * as sessionActions from './store/session';
-// import Navigation from './components/Navigation';
 import PasswordResetRequest from './components/PasswordResetRequest';
 import ResetPassword from './components/ResetPassword';
 import Home from './components/Home';
@@ -47,7 +46,6 @@ function App() {
 
   return (
     <>
-      {/* <Navigation isLoaded={isLoaded} /> */}
       <NavBar isAuthenticated={isAuthenticated} />
       {isLoaded && (
         <Routes>
