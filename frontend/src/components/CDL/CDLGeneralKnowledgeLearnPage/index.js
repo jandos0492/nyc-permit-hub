@@ -9,7 +9,7 @@ const CDLGeneralKnowledgeLearnPage = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch("/api/cdl/general-knowledge");
+                const response = await fetch("http://localhost:3000/api/cdl/general-knowledge");
                 const result = await response.json();
                 setData(result);
                 setLoading(false);

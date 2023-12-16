@@ -11,7 +11,7 @@ const ResultsPage = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`/api/users/${userId}/results`);
+                const response = await fetch(`http://localhost:3000/api/users/${userId}/results`);
                 const result = await response.json();
                 setData(result);
                 setLoading(false);

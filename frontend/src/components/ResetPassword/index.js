@@ -18,7 +18,7 @@ const ResetPassword = () => {
                 .find((row) => row.startsWith("XSRF-TOKEN="))
                 .split("=")[1];
 
-            const response = await fetch(`/api/reset-password/${token}`, {
+            const response = await fetch(`http://localhost:3000/api/reset-password/${token}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

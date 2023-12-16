@@ -14,7 +14,7 @@ const AutoRussianExpressTestPage = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch("/api/auto/russian");
+                const response = await fetch("http://localhost:3000/api/auto/russian");
                 const result = await response.json();
                 setData(result);
                 setLoading(false);
@@ -35,7 +35,7 @@ const AutoRussianExpressTestPage = () => {
             .split("=")[1];
 
         try {
-            await fetch(`/api/users/${userId}/results`, {
+            await fetch(`http://localhost:3000/api/users/${userId}/results`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

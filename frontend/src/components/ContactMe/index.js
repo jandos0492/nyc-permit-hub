@@ -21,7 +21,7 @@ const ContactMe = () => {
                 .find((row) => row.startsWith("XSRF-TOKEN="))
                 .split("=")[1];
 
-            const response = await fetch("/api/contact-me", {
+            const response = await fetch("http://localhost:3000/api/contact-me", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

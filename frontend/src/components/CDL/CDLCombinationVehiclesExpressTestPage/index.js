@@ -14,7 +14,7 @@ const CDLCombinationVehiclesExpressTestPage = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch("/api/cdl/combination-vehicles");
+                const response = await fetch("http://localhost:3000/api/cdl/combination-vehicles");
                 const result = await response.json();
                 setData(result);
                 setLoading(false);
@@ -35,7 +35,7 @@ const CDLCombinationVehiclesExpressTestPage = () => {
             .split("=")[1];
         
         try {
-            await fetch(`/api/users/${userId}/results`, {
+            await fetch(`http://localhost:3000/api/users/${userId}/results`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
