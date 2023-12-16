@@ -9,7 +9,7 @@ const CDLCombinationVehiclesLearnPage = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch("http://localhost:3000/api/cdl/combination-vehicles");
+                const response = await fetch("/api/cdl/combination-vehicles");
                 const result = await response.json();
                 setData(result);
                 setLoading(false);

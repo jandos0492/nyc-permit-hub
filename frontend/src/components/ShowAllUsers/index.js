@@ -9,7 +9,7 @@ const ShowAllUsers = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch("http://localhost:3000/api/all-users");
+                const response = await fetch("/api/all-users");
                 const result = await response.json();
                 setData(result);
                 setLoading(false);

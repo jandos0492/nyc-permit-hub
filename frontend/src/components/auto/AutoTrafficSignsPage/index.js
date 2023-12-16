@@ -10,7 +10,7 @@ const AutoTrafficSignsPage = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch("http://localhost:3000/api/auto/traffic-signs");
+                const response = await fetch("/api/auto/traffic-signs");
                 const result = await response.json();
                 setData(result);
                 setLoading(false);

@@ -9,7 +9,7 @@ const AutoRussianLearnPage = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch("http://localhost:3000/auto/russian");
+                const response = await fetch("/auto/russian");
                 const result = await response.json();
                 setData(result);
                 setLoading(false);

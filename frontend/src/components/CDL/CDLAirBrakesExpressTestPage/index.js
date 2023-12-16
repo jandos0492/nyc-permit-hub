@@ -14,7 +14,7 @@ const CDLAirBrakesExpressTestPage = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch("http://localhost:3000/api/cdl/air-brakes");
+                const response = await fetch("/api/cdl/air-brakes");
                 const result = await response.json();
                 setData(result);
                 setLoading(false);
@@ -35,7 +35,7 @@ const CDLAirBrakesExpressTestPage = () => {
             .split("=")[1];
         
         try {
-            await fetch(`http://localhost:3000/api/users/${userId}/results`, {
+            await fetch(`/api/users/${userId}/results`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
