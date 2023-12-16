@@ -38,7 +38,7 @@ const PasswordResetRequest = () => {
                 }, 2000);
                 setEmail("");
             } else {
-                setErrors(data.errors ? data.errors : ["The email is not associated with this NYC Permit Hub."]);
+                setErrors(data.errors ? data.errors : ["The email is not associated with NYC Permit Hub."]);
                 setEmail("");
             }
 
@@ -46,7 +46,6 @@ const PasswordResetRequest = () => {
             setErrors(["Error requesting password reset."]);
         }
     };
-
     return (
         <div className="password-reset-request-container">
             <form
