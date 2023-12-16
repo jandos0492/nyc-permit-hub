@@ -34,15 +34,19 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
+    isAdmin: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true,
+    }
   }, {
     defaultScope: {
       attributes: {
-        exclude: ["hashedPassword", "email", "createdAt", "updatedAt", "resetToken"],
+        exclude: ["hashedPassword", "createdAt", "updatedAt", "resetToken,"],
       },
     },
     scopes: {
       currentUser: {
-        attributes: { exclude: ["hashedPassword", "resetToken"] },
+        attributes: { exclude: ["hashedPassword", "resetToken,"] },
       },
       loginUser: {
         attributes: {},
@@ -54,8 +58,8 @@ module.exports = (sequelize, DataTypes) => {
   // model file that will return an object with the User instance information
   // that is safe to save to a JWT. 
   User.prototype.toSafeObject = function () { // remember, this cannot be an arrow funciton
-    const { id, username, email } = this; // context will be the User instance
-    return { id, username, email };
+    const { id, username, email, isAdmin } = this; // context will be the User instance
+    return { id, username, email, isAdmin };
   };
 
   // Define an instance method, User.prototype.validatePassword in the user.js
