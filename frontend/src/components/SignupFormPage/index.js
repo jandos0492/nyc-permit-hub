@@ -22,7 +22,7 @@ function SignupFormPage() {
 
         try {
             await dispatch(sessionActions.signup({ email, username, password }));
-            navigate("/");
+            navigate("/home");
         } catch (res) {
             setEmail("");
             setUsername("");

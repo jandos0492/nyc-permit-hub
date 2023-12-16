@@ -17,7 +17,7 @@ function LoginFormPage() {
 
         try {
             await dispatch(sessionActions.login({ credential, password, }));
-            navigate("/");
+            navigate("/home");
         } catch (res) {
             setPassword("");
             const data = await res.json();

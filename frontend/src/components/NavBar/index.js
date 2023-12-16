@@ -68,7 +68,7 @@ const NavBar = ({ isAuthenticated }) => {
                         </button>
                         {isMenuOpen && isAuthenticated && (
                             <nav className="mobile-nav">
-                                <Link className="home-icon" to="/">
+                                <Link className="home-icon" to="/home">
                                     <FontAwesomeIcon icon={farFaHouse} size={iconSize} />
                                 </Link>
                                 {isAdmin && (
@@ -103,7 +103,7 @@ const NavBar = ({ isAuthenticated }) => {
                 ) : (
                     isAuthenticated ? (
                         <nav>
-                            <Link className="link" to="/">
+                            <Link className="link" to="/home">
                                 <FontAwesomeIcon icon={farFaHouse} size={iconSize} />
                             </Link>
                             {isAdmin && (

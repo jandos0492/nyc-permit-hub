@@ -59,7 +59,7 @@ function App() {
           {!isAuthenticated && <Route path="/reset-password/:token" element={<ResetPassword />} />}
  
           {isAuthenticated && <Route path="*" element={<Home />} />}
-          {isAuthenticated && <Route path="/" element={<Home />} />}
+          {isAuthenticated && <Route path="/home" element={<Home />} />}
           {isAuthenticated && <Route path="/auto/choose-language" element={<AutoChooseLanguage />} />}
           {isAuthenticated && <Route path="/auto/english" element={<AutoEnglishHomePage />} />}
           {isAuthenticated && <Route path="/auto/russian" element={<AutoRussianHomePage />} />}
