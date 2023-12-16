@@ -1,9 +1,9 @@
-.result-page-container {
+.users-page-container {
     background: #1e2b3a;
     min-height: 100vh;
 }
 
-.result-cards {
+.users-cards {
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -11,24 +11,11 @@
     padding: 40px;
 }
 
-.result-card {
+.users-card {
     border: 1px solid #ddd;
     padding: 15px;
     border-radius: 10px;
-}
-
-.result-card p {
-    margin: 10px;
-}
-
-.result-pass {
-    background-color: #d3f0cd;
-    color: rgb(0, 102, 0);
-}
-
-.result-fail {
-    background-color: #f8d7da;
-    color: rgb(204, 0, 0);
+    background-color: white;
 }
 
 @media screen and (max-width: 501px) {
@@ -40,18 +27,18 @@
         font-size: 14px;
     }
 
-    .result-card {
+    .users-card {
         max-width: 220px;
     }
 
-    .result-cards {
+    .users-cards {
         justify-content: center;
         padding-left: 80px;
     }
 }
 
 @media screen and (max-width: 400px) {
-    .result-cards {
+    .users-cards {
         padding-left: 55px;
     }
 }

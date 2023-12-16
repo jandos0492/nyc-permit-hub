@@ -16,7 +16,7 @@ function LoginFormPage() {
         setErrors([]);
 
         try {
-            await dispatch(sessionActions.login({ credential, password }));
+            await dispatch(sessionActions.login({ credential, password, }));
             navigate("/");
         } catch (res) {
             setPassword("");

@@ -34,11 +34,13 @@ import CDLCombinationVehiclesExpressTestPage from './components/CDL/CDLCombinati
 import ResultsPage from './components/ResultsPage';
 import NavBar from './components/NavBar';
 import ContactMe from './components/ContactMe';
+import ShowAllUsers from './components/ShowAllUsers';
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   const isAuthenticated = useSelector((state) => Boolean(state.session.user));
+  const isAdmin = useSelector((state) => Boolean(state.session.user?.isAdmin));
   
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
@@ -84,6 +86,7 @@ function App() {
           {isAuthenticated && <Route path="/cdl/combination-vehicles/express-test" element={<CDLCombinationVehiclesExpressTestPage />} />}
           {isAuthenticated && <Route path="/results" element={<ResultsPage className="result-page" />} />}
           {isAuthenticated && <Route path="/contact-me" element={<ContactMe />} />} 
+          {isAuthenticated && isAdmin && <Route path="/all-users" element={<ShowAllUsers />} />}
         </Routes>
       )}
     </>

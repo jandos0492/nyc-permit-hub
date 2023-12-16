@@ -12,6 +12,7 @@ const NavBar = ({ isAuthenticated }) => {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const menuRef = useRef();
     const sessionUser = useSelector((state) => state.session.user);
+    const isAdmin = useSelector((state) => state.session.user?.isAdmin);
 
     useEffect(() => {
         const handleResize = () => {
@@ -70,6 +71,9 @@ const NavBar = ({ isAuthenticated }) => {
                                 <Link className="home-icon" to="/">
                                     <FontAwesomeIcon icon={farFaHouse} size={iconSize} />
                                 </Link>
+                                {isAdmin && (
+                                    <Link to="/all-users" className="link">All Users</Link>
+                                )}
                                 <Link to="/results" className="link" onClick={toggleMenu}>
                                     Test History
                                 </Link>
@@ -102,6 +106,9 @@ const NavBar = ({ isAuthenticated }) => {
                             <Link className="link" to="/">
                                 <FontAwesomeIcon icon={farFaHouse} size={iconSize} />
                             </Link>
+                            {isAdmin && (
+                                <Link to="/all-users" className="link">All Users</Link>
+                            )}
                             <Link to="/results" className="link">
                                 Test History
                             </Link>
