@@ -6,6 +6,7 @@ const helmet = require("helmet");
 const cookieParser = require("cookie-parser");
 const routes = require("./routes");
 const { ValidationError } = require("sequelize");
+const path = require("path");
 
 const { environment } = require("./config");
 const isProduction = environment === "production";
@@ -26,6 +27,24 @@ app.use(helmet({
 }));
 
 app.use(cors({ origin: ["http://localhost:3000", "https://nyc-permit-hub.onrender.com"] }));
+
+// helmet helps set a variety of headers to better secure your app
+app.use(
+    helmet.crossOriginResourcePolicy({
+        policy: "cross-origin",
+        directives: {
+            defaultSrc: ["'self'"],
+            connectSrc: ["'self'", "http://localhost:8080"],
+        }
+    })
+);
+
+app.use(express.static(path.join(__dirname, "public"))); // Serve static files from the public directory
+
+// Example route
+// const router = require("./routes/index");
+const router = require("./routes/index");
+app.use(router); // Mount the router to the app
 
 // Set th e_csrf token and create req.csrfToken method
 app.use(
