@@ -7,6 +7,8 @@ const { handleValidationErrors } = require("../../utils/validation");
 const asyncHandler = require("express-async-handler");
 const nodemailer = require("nodemailer");
 const bcrypt = require("bcryptjs/dist/bcrypt");
+const { environment } = require("../../config");
+console.log(environment);
 require("dotenv").config();
 
 const csrfProtection = csrf({ cookie: true, header: 'X-XSRF-TOKEN' });
@@ -60,10 +62,11 @@ router.post(
         const resetToken = generateResetToken();
         user.resetToken = resetToken;
         await user.save();
+        const host = environment === "development" ? "http://localhost:3001/reset-password" : "https://nyc-permit-hub.onrender.com/reset-password"
 
         // Send reset token to the user via email
         const emailSubject = "Password Reset";
-        const emailText = `Click the following link to reset your password: http://localhost:3001/reset-password/${resetToken}`
+        const emailText = `Click the following link to reset your password: ${host}/${resetToken}`
 
         await sendEmail(email, emailSubject, emailText);
 
