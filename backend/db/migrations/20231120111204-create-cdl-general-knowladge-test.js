@@ -1,4 +1,9 @@
 'use strict';
+
+let options = {};
+if (process.env.NODE_ENV === 'production') {
+  options.schema = process.env.SCHEMA;  // define your schema in options object
+}
 /** @type {import('sequelize-cli').Migration} */
 
 const { DataTypes } = require("sequelize");
@@ -37,7 +42,7 @@ module.exports = {
         type: Sequelize.DATE,
         defaultValue: Sequelize.fn('now'),
       }
-    });
+    }, options);
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('CDLGeneralKnowladgeTests');

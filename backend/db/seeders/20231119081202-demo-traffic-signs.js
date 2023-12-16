@@ -1,8 +1,13 @@
 'use strict';
 
+let options = {};
+if (process.env.NODE_ENV === 'production') {
+  options.schema = process.env.SCHEMA;  // define your schema in options object
+}
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
+    options.tableName = "TrafficSigns";
     /**
      * Add seed commands here.
      *
@@ -12,7 +17,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    return await queryInterface.bulkInsert("TrafficSigns", [
+    return await queryInterface.bulkInsert(options, [
       {
         no: 1,
         image: "/images/traffic-signs/1.jpg",
