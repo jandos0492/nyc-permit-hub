@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./PasswordResetRequest.css";
 
 const PasswordResetRequest = () => {
@@ -42,16 +42,6 @@ const PasswordResetRequest = () => {
             setErrors(["Error requesting password reset."]);
         }
     };
-
-    // showing the errors and validEmail only for 3 seconds if they appear in the page;
-    // useEffect(() => {
-    //     const timeout = setTimeout(() => {
-    //         setErrors([]);
-    //         setValidEmail("");
-    //     }, 5000);
-
-    //     return () => clearTimeout(timeout);
-    // }, [errors, validEmail])
 
     return (
         <div className="password-reset-request-container">

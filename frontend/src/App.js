@@ -33,6 +33,7 @@ import CDLCombinationVehiclesFullTestPage from './components/CDL/CDLCombinationV
 import CDLCombinationVehiclesExpressTestPage from './components/CDL/CDLCombinationVehiclesExpressTestPage';
 import ResultsPage from './components/ResultsPage';
 import NavBar from './components/NavBar';
+import ContactMe from './components/ContactMe';
 
 function App() {
   const dispatch = useDispatch();
@@ -82,6 +83,7 @@ function App() {
           {isAuthenticated && <Route path="/cdl/combination-vehicles/full-test" element={<CDLCombinationVehiclesFullTestPage />} />}
           {isAuthenticated && <Route path="/cdl/combination-vehicles/express-test" element={<CDLCombinationVehiclesExpressTestPage />} />}
           {isAuthenticated && <Route path="/results" element={<ResultsPage className="result-page" />} />}
+          {isAuthenticated && <Route path="/contact-me" element={<ContactMe />} />} 
         </Routes>
       )}
     </>

@@ -36,7 +36,6 @@ const ResetPassword = () => {
                     navigate("/login");
                 }, 1000);
             } else {
-                // const data = await response.json();
                 setErrors(data.errors);
                 setMessage(data.message || "Password reset failed.");
             }
@@ -44,15 +43,6 @@ const ResetPassword = () => {
             setMessage("Error resetting password.");
         }
     };
-
-    // useEffect(() => {
-    //     const timeout = setTimeout(() => {
-    //         setErrors([]);
-    //         setMessage("")
-    //     }, 5000);
-
-    //     return () => clearTimeout(timeout);
-    // }, [errors, message]);
 
     return (
         <div className="password-reset-container">

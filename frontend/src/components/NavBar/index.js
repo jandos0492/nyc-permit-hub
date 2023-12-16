@@ -79,6 +79,9 @@ const NavBar = ({ isAuthenticated }) => {
                                 <Link to="/cdl" className="link">
                                     CDL
                                 </Link>
+                                <Link to="/contact-me" className="link">
+                                    Contact Me
+                                </Link>
                                 <ProfileButton user={sessionUser} />
                             </nav>
                         )}
@@ -107,6 +110,9 @@ const NavBar = ({ isAuthenticated }) => {
                             </Link>
                             <Link to="/cdl" className="link">
                                 CDL
+                            </Link>
+                            <Link to="/contact-me" className="link">
+                                Contact Me
                             </Link>
                             <ProfileButton user={sessionUser} />
                         </nav>
