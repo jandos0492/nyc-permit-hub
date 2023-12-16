@@ -34,7 +34,7 @@ app.use(
         policy: "cross-origin",
         directives: {
             defaultSrc: ["'self'"],
-            connectSrc: ["'self'", "http://localhost:8080"],
+            connectSrc: ["'self'", "http://localhost:3000"],
         }
     })
 );
