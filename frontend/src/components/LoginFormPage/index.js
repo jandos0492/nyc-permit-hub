@@ -57,7 +57,7 @@ function LoginFormPage() {
                     </label>
                     <button className="submit-button" type="submit">Log In</button>
                     <div className="forgot-password">
-                    <a href="https://nyc-permit-hub.onrender.com/reset-password">Forgot Password?</a>
+                        <a href="https://nyc-permit-hub.onrender.com/reset-password">Forgot Password?</a>
                     </div>
                     <div className="sign-up-text">
                         Don't have an account? <Link to="/signup">Please Sign Up here</Link>

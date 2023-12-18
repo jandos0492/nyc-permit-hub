@@ -65,6 +65,10 @@ nav>button>span {
     background: #1e2b3a
 }
 
+a.home-card.grey {
+    margin-top: -180px !important;
+}
+
 
 
 /* Traffic sign card css */
@@ -280,6 +284,10 @@ nav>button>span {
         font-size: 14px;
         margin-top: 20px;
     } */
+
+        a.home-card.grey {
+            margin-top: 0 !important;
+        }
 
     .card-description {
         font-size: 12px;

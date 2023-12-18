@@ -19,31 +19,31 @@ Here are some screnshots of the NYC DMV Driver Permit Website:
 
 ### Login Page
 
-<img src="./public/images/screenshots/login.jpg" alt="Login Page screenshot" width="300px">
+<img src="./frontend/public/images/screenshots/login.jpg" alt="Login Page screenshot" width="300px">
 
 ### Home Page
 
-<img src="./public/images/screenshots/home.jpg" alt="Home Page screenshots" width="300px">
+<img src="./frontend/public/images/screenshots/home.jpg" alt="Home Page screenshots" width="300px">
 
 ### Auto Page
 
-<img src="./public/images/screenshots/auto.jpg" alt="Auto Page screenshots" width="300px">
+<img src="./frontend/public/images/screenshots/auto.jpg" alt="Auto Page screenshots" width="300px">
 
 ### Learn Page
 
-<img src="./public/images/screenshots/learn.jpg" alt="Learn Page screenshot" width="300px">
+<img src="./frontend/public/images/screenshots/learn.jpg" alt="Learn Page screenshot" width="300px">
 
 ### Test Page
 
-<img src="./public/images/screenshots/test.jpg" alt="Test Page screenshot" width="300px">
+<img src="./frontend/public/images/screenshots/test.jpg" alt="Test Page screenshot" width="300px">
 
 ### Test Result Page
 
-<img src="./public/images/screenshots/result.jpg" alt="Test Result Page screenshot" width=" 300px">
+<img src="./frontend/public/images/screenshots/result.jpg" alt="Test Result Page screenshot" width=" 300px">
 
 ### Contact Me Page
 
-<img src="./public/images/screenshots/contact-me.jpg" alt="Contact Me Page screenshot" width=" 300px">
+<img src="./frontend/public/images/screenshots/contact-me.jpg" alt="Contact Me Page screenshot" width=" 300px">
 
 <h2 id="features">Features</h2>
 
