@@ -8,6 +8,8 @@ router.use("/users", usersRouter);
 
 router.use("/reset-password", resetPasswordRouter);
 
+// Test routes
+
 // router.post("/test", function(req, res) {
 //     res.json({ requestBody: req.body });
 // })
