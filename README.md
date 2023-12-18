@@ -78,11 +78,12 @@ To run the project locally, follow these steps:
 2. Navigate to the project directory: `cd nyc-permit-hub`
 3. Navigate to the backend directory: `cd backend`
 4. Install backend dependencies: `npm install`
-5. Start the backend development server: `npm start`
+5. Create the database: `npm run db:create`
+6. Start the backend development server: `npm start`
     - The backend server should now be accessible in your browser at `http://localhost:3000`
-6. Navigate to the frontend directory: `cd ../frontend`
-7. Install the frontend dependencies: `npm install`
-8. Start the development server: `npm start`
+7. Navigate to the frontend directory: `cd ../frontend`
+8. Install the frontend dependencies: `npm install`
+9. Start the development server: `npm start`
     - The website should now be accessible in your browser at: `http://localhost:3001`
 
 <h3 id="usage">Usage</h3>
