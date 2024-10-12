@@ -82,5 +82,27 @@ app.use((err, _req, res, _next) => {
     });
 });
 
+// Keep-Alive Function (Cyclic Task)
+const cyclicFunc = async () => {
+    while (true) {
+        try {
+            // Send request to your /api/keep-alive endpoint
+            await axios.get('https://soccer-players.onrender.com/api/alive');
+            console.log('Keep-alive request made to the server');
+
+            // Wait for 14 minutes (14 * 60 * 1000 milliseconds)
+            await new Promise(resolve => setTimeout(resolve, 840000));
+
+        } catch (error) {
+            console.error('Error in cyclicFunc:', error);
+            // Wait 1 minute before retrying in case of an error
+            await new Promise(resolve => setTimeout(resolve, 60000));
+        }
+    }
+};
+
+// Start the cyclic function
+cyclicFunc();
+
 
 module.exports = app;
