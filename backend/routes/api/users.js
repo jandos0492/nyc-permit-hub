@@ -15,10 +15,10 @@ const validateSignup = [
         .exists({ checkFalsy: true })
         .isEmail()
         .withMessage("Please provide a valid email."),
-    check("username")
-        .exists({ checkFalsy: true })
-        .isLength({ min: 4 })
-        .withMessage("Please provide a username with at least 4 characters."),
+    // check("username")
+    //     .exists({ checkFalsy: true })
+    //     .isLength({ min: 4 })
+    //     .withMessage("Please provide a username with at least 4 characters."),
     check("username")
         .not()
         .isEmail()
@@ -34,9 +34,9 @@ const validateSignup = [
             }
 
             // Custom validation function to check for at least one uppercase letter
-            if (!/[A-Z]/.test(value)) {
-                throw new Error("Password must contain at least one uppercase letter.");
-            }
+            // if (!/[A-Z]/.test(value)) {
+            //     throw new Error("Password must contain at least one uppercase letter.");
+            // }
 
             return true;
         }),
@@ -48,6 +48,7 @@ router.post(
     "",
     validateSignup,
     asyncHandler(async (req, res, next) => {
+        console.log(req.body);
         const { email, password, username } = req.body;
 
         try {
@@ -55,7 +56,7 @@ router.post(
 
             await setTokenCookie(res, user);
 
-            return res.json({
+            return res.status(201).json({
                 user,
             });
         } catch (err) {
@@ -66,7 +67,7 @@ router.post(
             });
             if (registeredUserWithEmail) {
                 return res.status(401).json({
-                    errors: ["This email is already registered with NYC Permit Hub. Please Login."]
+                    errors: ["This email is already taken. Please choose another."]
                 });
             }
 
@@ -78,7 +79,7 @@ router.post(
 
             if (registeredUserWithUsername) {
                 return res.status(401).json({
-                    errors: ["This username is already registered with NYC Permit Hub. Please Choose another one."]
+                    errors: ["This username is already taken. Please choose another."]
                 })
             }
 

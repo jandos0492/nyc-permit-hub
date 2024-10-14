@@ -10,6 +10,7 @@ const Field = ({ field, onChange, value }) => {
                 value={value}
                 onChange={onChange}
                 className="bg-slate-50 border border-slate-200 rounded-lg px-2 py-1 focus:outline-emerald-600 w-64"
+                required
             />
         </div>
     );

@@ -20,7 +20,10 @@ app.use(express.json());
 // Security Middleware
 if (!isProduction) {
     // enable cors only in development
-    app.use(cors());
+    app.use(cors({
+        origin: 'http://localhost:3001',
+        credentials: true
+    }));
 }
 
 // helmet helps set a variety of headers to better secure your app
