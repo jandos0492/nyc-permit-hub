@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import * as sessionActions from "../../store/session";
+import * as sessionActions from "store/session";
 import AuthForm from "./AuthForm";
 import FormContainer from "./AuthForm/FormContainer";
 
