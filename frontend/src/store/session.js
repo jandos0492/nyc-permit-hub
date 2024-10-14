@@ -13,10 +13,10 @@ const removeUser = () => ({
 });
 
 export const login = (user) => async (dispatch) => {
-    const { username, password } = user;
+    const { credential, password } = user;
     const response = await csrfFetch('/api/session', {
         method: 'POST',
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ credential, password }),
     });
     const data = await response.json();
     dispatch(setUser(data.user));
