@@ -15,7 +15,7 @@ const SignInPage = () => {
             <FormContainer>
                 <div className="text-red-700 font-lato">{error}</div>
                 {location.state?.accountCreated && (
-                    <div className="mt-2 mb-8 p-4 py-2 border border-emerald-500 rounded-lg bg-green-200 text-emerald-700 font-lato">
+                    <div className="mt-2 mb-8 p-4 py-2 border border-cyan-500 rounded-lg bg-teal-200 text-cyan-700 font-lato">
                         Account created successfully. Please sign in
                     </div>
                 )}
@@ -47,7 +47,7 @@ const SignInPage = () => {
                     }}
                 />
                 <Link
-                    className="text-green-600 underline text-sm"
+                    className="text-teal-600 underline text-sm"
                     to="/sign-up"
                 >
                     create an account

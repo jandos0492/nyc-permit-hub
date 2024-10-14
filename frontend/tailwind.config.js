@@ -5,10 +5,13 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        primary: '#d5e2e6'
+      },
       fontFamily: {
         playfair: ['Playfair Display'],
         lato: ['Lato']
-      }
+      },
     },
   },
   plugins: [],

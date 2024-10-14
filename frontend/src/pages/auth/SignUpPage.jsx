@@ -87,10 +87,10 @@ const SignUpPage = () => {
                             type: "password",
                         },
                     ]}
-                    submitButtonLabel="Create account"
+                    submitButtonLabel="create account"
                     onSubmit={handleSubmit}
                 />
-                <Link className="text-green-600 underline text-sm" to="/">
+                <Link className="text-teal-600 underline text-sm" to="/">
                     sign in
                 </Link>
             </FormContainer>

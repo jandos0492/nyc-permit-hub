@@ -9,12 +9,12 @@ const FormContainer = ({ children }) => {
                         alt="NYC"
                     />
                     <div className="absolute top-0 left-0 w-full h-full bg-black/10"></div>
-                    <div className="absolute top-0 left-0 w-full h-full bg-green-800/30"></div>
+                    <div className="absolute top-0 left-0 w-full h-full bg-teal-800/30"></div>
                 </div>
             </div>
-            <div className="h-screen flex flex-col items-center justify-center bg-green-50 w-full">
+            <div className="h-screen flex flex-col items-center justify-center bg-teal-50 w-full">
                 <div className="flex flex-col items-center mx-2 my-8">
-                    <div className="font-playfair text-emerald-700 text-3xl">
+                    <div className="font-playfair text-cyan-700 text-3xl">
                         NYC Permit Hub
                     </div>
                 </div>

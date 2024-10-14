@@ -31,11 +31,11 @@ const AuthForm = ({ fields, submitButtonLabel, onSubmit }) => {
                     value={values[field.label]}
                 />
             ))}
-            <button className="bg-emerald-700 text-white w-full rounded-lg py-2 mt-4 relative">
+            <button className="bg-cyan-700 text-white w-full rounded-lg py-2 mt-4 relative">
                 {submitButtonLabel}
                 {isLoading && (
                     <div className="absolute top-0 right-4 flex items-center h-full">
-                        <i className="fa-regular fa-spinner text-green-300 text-xl animate-spin"></i>
+                        <i className="fa-regular fa-spinner text-teal-300 text-xl animate-spin"></i>
                     </div>
                 )}
             </button>
