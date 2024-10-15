@@ -24,7 +24,7 @@ const SignInPage = () => {
                     <AuthForm
                         fields={[
                             {
-                                label: "username",
+                                label: "username or email",
                                 type: "text",
                             },
                             {
@@ -37,7 +37,7 @@ const SignInPage = () => {
                             try {
                                 await dispatch(
                                     sessionActions.login({
-                                        credential: values.username,
+                                        credential: values["username or email"],
                                         password: values.password,
                                     })
                                 );
