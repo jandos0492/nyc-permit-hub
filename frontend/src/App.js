@@ -4,8 +4,10 @@ import { useDispatch } from "react-redux";
 import SignInPage from "./pages/auth/SignInPage";
 import SignUpPage from "./pages/auth/SignUpPage";
 import HomePage from "pages/HomePage";
-import * as sessionActions from "./store/session";
 import AutoChooseLanguage from "pages/auto/AutoChooseLanguage";
+import AutoEnglish from "pages/AutoEnglish";
+import * as sessionActions from "./store/session";
+import AutoRussian from "pages/AutoRussian";
 
 const App = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -23,6 +25,8 @@ const App = () => {
           <Route path="/sign-up" element={<SignUpPage />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/auto/choose-language" element={<AutoChooseLanguage />} />
+          <Route path="/auto/english" element={<AutoEnglish />} />
+          <Route path="/auto/russian" element={<AutoRussian />} />
         </Routes>
       )}
     </>
