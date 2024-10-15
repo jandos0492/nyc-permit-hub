@@ -5,6 +5,7 @@ import SignInPage from "./pages/auth/SignInPage";
 import SignUpPage from "./pages/auth/SignUpPage";
 import HomePage from "pages/HomePage";
 import * as sessionActions from "./store/session";
+import AutoChooseLanguage from "pages/auto/AutoChooseLanguage";
 
 const App = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/" element={<SignInPage />} />
           <Route path="/sign-up" element={<SignUpPage />} />
           <Route path="/home" element={<HomePage />} />
+          <Route path="/auto/choose-language" element={<AutoChooseLanguage />} />
         </Routes>
       )}
     </>

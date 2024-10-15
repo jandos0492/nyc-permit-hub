@@ -32,7 +32,7 @@ const NavBar = () => {
                         </Link>
                     </div>
                     <div className="text-2xl text-cyan-200">
-                        <Link to="/choose-language">
+                        <Link to="/auto/choose-language">
                             <i className="fa-duotone fa-solid fa-car"></i>
                         </Link>
                     </div>
