@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import * as sessionActions from "store/session";
 import AuthForm from "./AuthForm";
 import FormContainer from "./AuthForm/FormContainer";
+import RedirectToHomeIfSignedIn from "shared-components/RedirectToHomeIfSignedIn";
 
 const SignUpPage = () => {
     const [error, setError] = useState("");
@@ -65,36 +66,38 @@ const SignUpPage = () => {
     };
 
     return (
-        <div className="flex justify-center items-center">
-            <FormContainer>
-                <div className="text-red-700 font-lato">{error}</div>
-                <AuthForm
-                    fields={[
-                        {
-                            label: "email",
-                            type: "text",
-                        },
-                        {
-                            label: "username",
-                            type: "text",
-                        },
-                        {
-                            label: "password",
-                            type: "password",
-                        },
-                        {
-                            label: "confirm password",
-                            type: "password",
-                        },
-                    ]}
-                    submitButtonLabel="create account"
-                    onSubmit={handleSubmit}
-                />
-                <Link className="text-teal-600 underline text-sm" to="/">
-                    sign in
-                </Link>
-            </FormContainer>
-        </div>
+        <RedirectToHomeIfSignedIn>
+            <div className="flex justify-center items-center">
+                <FormContainer>
+                    <div className="text-red-700 font-lato">{error}</div>
+                    <AuthForm
+                        fields={[
+                            {
+                                label: "email",
+                                type: "text",
+                            },
+                            {
+                                label: "username",
+                                type: "text",
+                            },
+                            {
+                                label: "password",
+                                type: "password",
+                            },
+                            {
+                                label: "confirm password",
+                                type: "password",
+                            },
+                        ]}
+                        submitButtonLabel="create account"
+                        onSubmit={handleSubmit}
+                    />
+                    <Link className="text-teal-600 underline text-sm" to="/">
+                        sign in
+                    </Link>
+                </FormContainer>
+            </div>
+        </RedirectToHomeIfSignedIn>
     );
 };
 
