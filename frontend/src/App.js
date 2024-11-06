@@ -5,9 +5,9 @@ import SignInPage from "./pages/auth/SignInPage";
 import SignUpPage from "./pages/auth/SignUpPage";
 import HomePage from "pages/HomePage";
 import AutoChooseLanguage from "pages/auto/AutoChooseLanguage";
-import AutoEnglish from "pages/AutoEnglish";
+import AutoEnglish from "pages/auto/AutoEnglish";
 import * as sessionActions from "./store/session";
-import AutoRussian from "pages/AutoRussian";
+import AutoRussian from "pages/auto/AutoRussian";
 
 const App = () => {
   const [isLoaded, setIsLoaded] = useState(false);

@@ -9,7 +9,7 @@ const LearningOrTestCard = ({ imageSrc, text, header, link }) => {
                     src={imageSrc}
                     alt={header}
                 />
-                <div className="text-cyan-200 pt-6 font-playfair">{header}</div>
+                <div className="text-cyan-200 pt-6">{header}</div>
                 <div className="text-xs text-center text-cyan-100 mt-2 mb-4 mx-4">
                     {text}
                 </div>
