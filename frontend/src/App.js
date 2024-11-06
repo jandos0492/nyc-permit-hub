@@ -8,6 +8,7 @@ import AutoChooseLanguage from "pages/auto/AutoChooseLanguage";
 import AutoEnglish from "pages/auto/AutoEnglish";
 import * as sessionActions from "./store/session";
 import AutoRussian from "pages/auto/AutoRussian";
+import TrafficSignsPage from "pages/auto/LearnTrafficSigns";
 
 const App = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -27,6 +28,7 @@ const App = () => {
           <Route path="/auto/choose-language" element={<AutoChooseLanguage />} />
           <Route path="/auto/english" element={<AutoEnglish />} />
           <Route path="/auto/russian" element={<AutoRussian />} />
+          <Route path="/auto/english/traffic-signs" element={<TrafficSignsPage />} />
         </Routes>
       )}
     </>
