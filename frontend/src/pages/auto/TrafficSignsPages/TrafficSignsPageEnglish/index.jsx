@@ -20,6 +20,7 @@ const TrafficSignsPageEnglish = () => {
         })();
     }, []);
 
+    // Func for switch the traffic signs card with right and left arrow using the keyboard
     useEffect(() => {
         const handleKeyDown = (event) => {
             if (event.key === "ArrowLeft" && trafficSignIdx > 0) {
@@ -46,35 +47,39 @@ const TrafficSignsPageEnglish = () => {
                 <LoadingSpinner />
             ) : (
                 trafficSignsData.length > 0 && (
-                    <div className="flex justify-center items-center h-screen bg-teal-50">
-                        <NavButton
-                            icon="fa-circle-chevron-left"
-                            onClick={() =>
-                                setTrafficSignIdx(trafficSignIdx - 1)
-                            }
-                            onKeyboardLeftClick={(e) => {
-                                if (e.key === "leftArrow") {
-                                    setTrafficSignIdx(trafficSignIdx - 1);
+                    <div className="bg-teal-50 h-screen pt-20 md:pt-48">
+                        <div className="flex justify-center items-center">
+                            <NavButton
+                                icon="fa-circle-chevron-left"
+                                onClick={() =>
+                                    setTrafficSignIdx(trafficSignIdx - 1)
                                 }
-                            }}
-                            show={trafficSignIdx > 0}
-                        />
-                        <TrafficSignCard
-                            image={trafficSignsData[trafficSignIdx].image}
-                            description={
-                                trafficSignsData[trafficSignIdx]
-                                    .descriptionEnglish
-                            }
-                            no={trafficSignsData[trafficSignIdx].no}
-                            signsQty={trafficSignsData.length}
-                        />
-                        <NavButton
-                            icon="fa-circle-chevron-right"
-                            onClick={() =>
-                                setTrafficSignIdx(trafficSignIdx + 1)
-                            }
-                            show={trafficSignIdx < trafficSignsData.length - 1}
-                        />
+                                onKeyboardLeftClick={(e) => {
+                                    if (e.key === "leftArrow") {
+                                        setTrafficSignIdx(trafficSignIdx - 1);
+                                    }
+                                }}
+                                show={trafficSignIdx > 0}
+                            />
+                            <TrafficSignCard
+                                image={trafficSignsData[trafficSignIdx].image}
+                                description={
+                                    trafficSignsData[trafficSignIdx]
+                                        .descriptionEnglish
+                                }
+                                no={trafficSignsData[trafficSignIdx].no}
+                                signsQty={trafficSignsData.length}
+                            />
+                            <NavButton
+                                icon="fa-circle-chevron-right"
+                                onClick={() =>
+                                    setTrafficSignIdx(trafficSignIdx + 1)
+                                }
+                                show={
+                                    trafficSignIdx < trafficSignsData.length - 1
+                                }
+                            />
+                        </div>
                     </div>
                 )
             )}

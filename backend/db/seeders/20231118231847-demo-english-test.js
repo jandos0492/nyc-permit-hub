@@ -135,7 +135,7 @@ module.exports = {
         {
           "no": 12,
           "question": "What does this road sign mean?",
-          "image": "images/traffic-signs/1.jpg",
+          "image": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/traffic-signs/1.jpg",
           "answers": [
             "Slow down and prepare to stop only if cars are approaching you",
             "Come to a full stop, then go when it is safe to do so",
@@ -1089,7 +1089,7 @@ module.exports = {
             "A blasting zone"
           ],
           "correctAnswerIndex": 2,
-          "image": "images/traffic-signs/3.jpg",
+          "image": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/traffic-signs/3.jpg",
         },
         {
           "no": 99,
@@ -1266,7 +1266,7 @@ module.exports = {
             "Keep to the right"
           ],
           "correctAnswerIndex": 3,
-          "image": "images/traffic-signs/7.jpg",
+          "image": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/traffic-signs/7.jpg",
         },
         {
           "no": 115,
@@ -1278,7 +1278,7 @@ module.exports = {
             "There is a traffic signal ahead"
           ],
           "correctAnswerIndex": 3,
-          "image": "images/traffic-signs/13.jpg",
+          "image": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/traffic-signs/13.jpg",
         },
         {
           "no": 116,
@@ -1290,7 +1290,7 @@ module.exports = {
             "Hospital ahead to the right"
           ],
           "correctAnswerIndex": 3,
-          "image": "images/traffic-signs/16.jpg",
+          "image": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/traffic-signs/16.jpg",
         },
         {
           "no": 117,
@@ -1302,7 +1302,7 @@ module.exports = {
             "Highway curves ahead"
           ],
           "correctAnswerIndex": 2,
-          "image": "images/traffic-signs/14.jpg",
+          "image": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/traffic-signs/14.jpg",
         },
         {
           "no": 118,
@@ -1314,7 +1314,7 @@ module.exports = {
             "Wrong-way entrance on one-way streets and expressway ramps"
           ],
           "correctAnswerIndex": 3,
-          "image": "images/traffic-signs/4.jpg",
+          "image": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/traffic-signs/4.jpg",
         },
         {
           "no": 119,
@@ -1326,7 +1326,7 @@ module.exports = {
             "You are approaching a hill"
           ],
           "correctAnswerIndex": 1,
-          "image": "images/traffic-signs/12.jpg",
+          "image": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/traffic-signs/12.jpg",
         },
         {
           "no": 120,
@@ -1338,7 +1338,7 @@ module.exports = {
             "School crossing ahead"
           ],
           "correctAnswerIndex": 3,
-          "image": "images/traffic-signs/15.jpg",
+          "image": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/traffic-signs/15.jpg",
         },
         {
           "no": 121,
@@ -1350,7 +1350,7 @@ module.exports = {
             "Slow down and be prepared to stop if necessary"
           ],
           "correctAnswerIndex": 3,
-          "image": "images/traffic-signs/2.jpg",
+          "image": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/traffic-signs/2.jpg",
         },
         {
           "no": 122,
@@ -1362,7 +1362,7 @@ module.exports = {
             "Divided highway ahead"
           ],
           "correctAnswerIndex": 2,
-          "image": "images/traffic-signs/8.jpg",
+          "image": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/traffic-signs/8.jpg",
         },
         {
           "no": 123,
@@ -1374,7 +1374,7 @@ module.exports = {
             "Truck route to the left"
           ],
           "correctAnswerIndex": 1,
-          "image": "images/traffic-signs/6.jpg",
+          "image": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/traffic-signs/6.jpg",
         },
         {
           "no": 124,
@@ -1386,7 +1386,7 @@ module.exports = {
             "Divided highway ends"
           ],
           "correctAnswerIndex": 3,
-          "image": "images/traffic-signs/9.jpg",
+          "image": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/traffic-signs/9.jpg",
         },
         {
           "no": 125,
@@ -1398,7 +1398,7 @@ module.exports = {
             "No trucks allowed"
           ],
           "correctAnswerIndex": 1,
-          "image": "images/traffic-signs/11.jpg",
+          "image": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/traffic-signs/11.jpg",
         },
         {
           "no": 126,
@@ -1410,7 +1410,7 @@ module.exports = {
             "Stop only for traffic on an intersecting road"
           ],
           "correctAnswerIndex": 1,
-          "image": "images/traffic-signs/1.jpg",
+          "image": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/traffic-signs/1.jpg",
         },
         {
           "no": 127,
@@ -1422,7 +1422,7 @@ module.exports = {
             "A blasting zone"
           ],
           "correctAnswerIndex": 2,
-          "image": "images/traffic-signs/3.jpg",
+          "image": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/traffic-signs/3.jpg",
         },
         {
           "no": 128,
@@ -1434,7 +1434,7 @@ module.exports = {
             "Detour ahead"
           ],
           "correctAnswerIndex": 2,
-          "image": "images/traffic-signs/5.jpg",
+          "image": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/traffic-signs/5.jpg",
         },
         {
           "no": 129,
@@ -1446,7 +1446,7 @@ module.exports = {
             "Intersection ahead",
           ],
           "correctAnswerIndex": 2,
-          "image": "images/traffic-signs/10.jpg",
+          "image": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/traffic-signs/10.jpg",
         },
       ])
   },

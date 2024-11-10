@@ -10,6 +10,7 @@ import * as sessionActions from "./store/session";
 import AutoRussian from "pages/auto/AutoRussian";
 import TrafficSignsPageEnglish from "pages/auto/TrafficSignsPages/TrafficSignsPageEnglish";
 import TrafficSignsPageRussian from "pages/auto/TrafficSignsPages/TrafficSignsPageRussian";
+import AutoEnglishLearn from "pages/auto/AutoEnglishLearn";
 
 const App = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -31,6 +32,7 @@ const App = () => {
           <Route path="/auto/russian" element={<AutoRussian />} />
           <Route path="/auto/english/traffic-signs" element={<TrafficSignsPageEnglish />} />
           <Route path="/auto/russian/traffic-signs" element={<TrafficSignsPageRussian />} />
+          <Route path="/auto/english/learn" element={<AutoEnglishLearn />} />
         </Routes>
       )}
     </>
