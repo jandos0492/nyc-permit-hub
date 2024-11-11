@@ -11,6 +11,7 @@ import AutoRussian from "pages/auto/AutoRussian";
 import TrafficSignsPageEnglish from "pages/auto/TrafficSignsPages/TrafficSignsPageEnglish";
 import TrafficSignsPageRussian from "pages/auto/TrafficSignsPages/TrafficSignsPageRussian";
 import AutoEnglishLearn from "pages/auto/AutoEnglishLearn";
+import AutoRussianLearn from "pages/auto/AutoRussianLearn";
 
 const App = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -33,6 +34,7 @@ const App = () => {
           <Route path="/auto/english/traffic-signs" element={<TrafficSignsPageEnglish />} />
           <Route path="/auto/russian/traffic-signs" element={<TrafficSignsPageRussian />} />
           <Route path="/auto/english/learn" element={<AutoEnglishLearn />} />
+          <Route path="/auto/russian/learn" element={<AutoRussianLearn />} />
         </Routes>
       )}
     </>

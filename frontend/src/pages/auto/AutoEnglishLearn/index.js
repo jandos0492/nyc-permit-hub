@@ -3,7 +3,7 @@ import NavBar from "shared-components/NavBar";
 import LoadingSpinner from "shared-components/LoadingSpinner";
 import NavButton from "../TrafficSignsPages/TrafficSignsPageEnglish/NavButton";
 import AutoEnglishLearnCard from "./AutoEnglishLearnCard";
-import * as englishQuestionsAndAnswersService from "services/testEnglish";
+import * as englishLearnService from "services/autoLearn";
 
 const AutoEnglishLearn = () => {
     const [englishLearnData, setEnglishLearnData] = useState([]);
@@ -13,7 +13,7 @@ const AutoEnglishLearn = () => {
     useEffect(() => {
         (async () => {
             setIsLoading(true);
-            const response = await englishQuestionsAndAnswersService.getTestEnglish();
+            const response = await englishLearnService.getLearnEnglish();
             const data = await response.json();
             setEnglishLearnData(data);
             setIsLoading(false);
