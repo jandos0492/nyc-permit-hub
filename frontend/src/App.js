@@ -13,6 +13,10 @@ import TrafficSignsPageRussian from "pages/auto/TrafficSignsPages/TrafficSignsPa
 import AutoEnglishLearn from "pages/auto/AutoEnglishLearn";
 import AutoRussianLearn from "pages/auto/AutoRussianLearn";
 import CDLPage from "pages/cdl/CDLPage";
+import GeneralKnowledgePage from "pages/cdl/generalKnowledge/GeneralKnowledgePage";
+import GeneralKnowledgeLearnPage from "pages/cdl/generalKnowledge/GeneralKnowledgeLearnPage";
+import AirBrakesPage from "pages/cdl/airBrakes/AirBrakesPage";
+import AirBrakesLearnPage from "pages/cdl/airBrakes/AirBrakesLearnPage";
 
 const App = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -37,6 +41,10 @@ const App = () => {
           <Route path="/auto/english/learn" element={<AutoEnglishLearn />} />
           <Route path="/auto/russian/learn" element={<AutoRussianLearn />} />
           <Route path="/cdl" element={<CDLPage />} />
+          <Route path="/cdl/general-knowledge" element={<GeneralKnowledgePage />} />
+          <Route path="/cdl/general-knowledge/learn" element={<GeneralKnowledgeLearnPage />} />
+          <Route path="/cdl/air-brakes" element={<AirBrakesPage />} />
+          <Route path="/cdl/air-brakes/learn" element={<AirBrakesLearnPage />} />
         </Routes>
       )}
     </>

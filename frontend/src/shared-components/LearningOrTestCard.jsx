@@ -6,7 +6,7 @@ const LearningOrTestCard = ({ imageSrc, text, header, link }) => {
     const location = useLocation();
 
     const locationPathnameHasCDL = () => {
-        return location.pathname.includes("cdl");
+        return location.pathname.endsWith("cdl");
     }
 
     return (
@@ -14,7 +14,7 @@ const LearningOrTestCard = ({ imageSrc, text, header, link }) => {
             <div
                 className={clsx(
                     "w-[160px] h-[240px] md:w-[200px] md:h-[340px] bg-cyan-800 flex flex-col items-center justify-start pt-2 rounded-lg pb-2 transform transition-transform duration-300 hover:scale-105",
-                    locationPathnameHasCDL() ? "h-[200px]" : "h-[240px]"
+                    locationPathnameHasCDL() ? "h-[200px] md:pb-4" : "h-[240px]"
                 )}
             >
                 <img
