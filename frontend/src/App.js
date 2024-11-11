@@ -18,6 +18,7 @@ import GeneralKnowledgeLearnPage from "pages/cdl/generalKnowledge/GeneralKnowled
 import AirBrakesPage from "pages/cdl/airBrakes/AirBrakesPage";
 import AirBrakesLearnPage from "pages/cdl/airBrakes/AirBrakesLearnPage";
 import CombinationVehiclesPage from "pages/cdl/combinationVehicles/CombinationVehiclesPage";
+import CombinationVehiclesLearnPage from "pages/cdl/combinationVehicles/CombinationVehiclesLearnPage";
 
 const App = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -47,6 +48,7 @@ const App = () => {
           <Route path="/cdl/air-brakes" element={<AirBrakesPage />} />
           <Route path="/cdl/air-brakes/learn" element={<AirBrakesLearnPage />} />
           <Route path="/cdl/combination-vehicles" element={<CombinationVehiclesPage />} />
+          <Route path="/cdl/combination-vehicles/learn" element={<CombinationVehiclesLearnPage />} />
         </Routes>
       )}
     </>
