@@ -20,8 +20,6 @@ const GeneralKnowledgeLearnPage = () => {
         })();
     }, []);
 
-    console.log(generalKnowledgeLearnData);
-
     useEffect(() => {
         const handleKeyDown = (event) => {
             if (event.key === "ArrowLeft" && generalKnowledgeLearnIdx > 0) {
@@ -55,11 +53,6 @@ const GeneralKnowledgeLearnPage = () => {
                                 onClick={() =>
                                     setGeneralKnowledgeLearnIdx(generalKnowledgeLearnIdx - 1)
                                 }
-                                onKeyboardLeftClick={(e) => {
-                                    if (e.key === "leftArrow") {
-                                        setGeneralKnowledgeLearnIdx(generalKnowledgeLearnIdx - 1);
-                                    }
-                                }}
                                 show={generalKnowledgeLearnIdx > 0}
                             />
                             <GeneralKnowledgePageCard

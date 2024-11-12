@@ -57,13 +57,6 @@ const AirBrakesLearnPage = () => {
                                         airBrakesLearnIdx - 1
                                     )
                                 }
-                                onKeyboardLeftClick={(e) => {
-                                    if (e.key === "leftArrow") {
-                                        setAirBrakesLearnIdx(
-                                            airBrakesLearnIdx - 1
-                                        );
-                                    }
-                                }}
                                 show={airBrakesLearnIdx > 0}
                             />
                             <AirBrakesLearnCard

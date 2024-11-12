@@ -8,7 +8,7 @@ const GeneralKnowledgePageCard = ({
                 {generalKnowledgeLearn.no} / {generalKnowledgeLearnQuestionQty}
             </div>
             <div className="border border-teal-800 rounded-lg p-4 md:p-12 flex flex-col items-center">
-                <div className="flex flex-shrink justify-center w-48 md:w-96 mt-4 text-cyan-900 text-sm md:text-xl font-bold font-playfair text-center">
+                <div className="flex flex-shrink justify-center w-48 md:w-96 mt-4 text-cyan-900 text-sm md:text-xl  font-playfair font-bold text-center">
                     {generalKnowledgeLearn.question}
                 </div>
                 <div className="flex flex-shrink justify-center w-48 md:w-96 mt-8 text-cyan-900 text-sm md:text-lg font-playfair text-center">

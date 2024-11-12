@@ -53,11 +53,6 @@ const TrafficSignsPageRussian = () => {
                                 onClick={() =>
                                     setTrafficSignIdx(trafficSignIdx - 1)
                                 }
-                                onKeyboardLeftClick={(e) => {
-                                    if (e.key === "leftArrow") {
-                                        setTrafficSignIdx(trafficSignIdx - 1);
-                                    }
-                                }}
                                 show={trafficSignIdx > 0}
                             />
                             <TrafficSignCard

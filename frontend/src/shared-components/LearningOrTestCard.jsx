@@ -18,7 +18,7 @@ const LearningOrTestCard = ({ imageSrc, text, header, link }) => {
                 )}
             >
                 <img
-                    className="w-[140px] h-[120px] md:w-[180px] md:h-[300px] object-contain object-cover rounded-lg"
+                    className="w-[140px] h-[120px] md:w-[180px] md:h-[300px] object-cover rounded-lg"
                     src={imageSrc}
                     alt={header}
                 />

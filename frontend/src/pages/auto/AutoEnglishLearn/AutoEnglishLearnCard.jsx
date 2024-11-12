@@ -12,7 +12,7 @@ const AutoEnglishLearnCard = ({ autoEnglishLearn, englishLearnQuestionQty }) => 
                         alt="auto english learn"
                     />
                 )}
-                <div className="flex flex-shrink justify-center w-48 md:w-96 mt-4 text-cyan-900 text-sm md:text-xl font-bold font-playfair text-center">
+                <div className="flex flex-shrink justify-center w-48 md:w-96 mt-4 text-cyan-900 text-sm md:text-xl font-playfair font-bold text-center">
                     {autoEnglishLearn.question}
                 </div>
                 <div className="flex flex-shrink justify-center w-48 md:w-96 mt-8 text-cyan-900 text-sm md:text-lg font-playfair text-center">

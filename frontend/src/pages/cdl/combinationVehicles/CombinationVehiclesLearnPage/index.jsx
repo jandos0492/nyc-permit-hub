@@ -20,8 +20,6 @@ const CombinationVehiclesLearnPage = () => {
         })();
     }, []);
 
-    console.log(combinationVehiclesLearnData);
-
     useEffect(() => {
         const handleKeyDown = (event) => {
             if (event.key === "ArrowLeft" && combinationVehiclesLearnIdx > 0) {
@@ -55,13 +53,6 @@ const CombinationVehiclesLearnPage = () => {
                                 onClick={() =>
                                     setCombinationVehiclesLearnIdx(combinationVehiclesLearnIdx - 1)
                                 }
-                                onKeyboardLeftClick={(e) => {
-                                    if (e.key === "leftArrow") {
-                                        setCombinationVehiclesLearnIdx(
-                                            combinationVehiclesLearnIdx - 1
-                                        );
-                                    }
-                                }}
                                 show={combinationVehiclesLearnIdx > 0}
                             />
                             <CombinationVehiclesLearnCard

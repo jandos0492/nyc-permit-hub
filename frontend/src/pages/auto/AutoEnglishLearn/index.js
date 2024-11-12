@@ -52,11 +52,6 @@ const AutoEnglishLearn = () => {
                                     onClick={() =>
                                         setEnglishLearnIdx(englishLearnIdx - 1)
                                     }
-                                    onKeyboardLeftClick={(e) => {
-                                        if (e.key === "leftArrow") {
-                                            setEnglishLearnIdx(englishLearnIdx - 1);
-                                        }
-                                    }}
                                     show={englishLearnIdx > 0}
                                 />
                                 <AutoEnglishLearnCard
