@@ -19,7 +19,7 @@ import AirBrakesPage from "pages/cdl/airBrakes/AirBrakesPage";
 import AirBrakesLearnPage from "pages/cdl/airBrakes/AirBrakesLearnPage";
 import CombinationVehiclesPage from "pages/cdl/combinationVehicles/CombinationVehiclesPage";
 import CombinationVehiclesLearnPage from "pages/cdl/combinationVehicles/CombinationVehiclesLearnPage";
-import AutoEnglishFullTest from "pages/auto/AutoEnglishFullTest";
+import AutoEnglishFullTest from "pages/auto/AutoEnglishLearn/AutoEnglishFullTest";
 
 const App = () => {
   const [isLoaded, setIsLoaded] = useState(false);

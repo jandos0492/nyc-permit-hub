@@ -2,7 +2,7 @@ const TestRadioButton = ({ checked, onChange, disabled, label }) => {
     return (
         <div className="flex items-center mb-2 text-xs md:text-base">
             <input
-                type="radio"
+                type="checkbox"
                 checked={checked}
                 onChange={onChange}
                 disabled={disabled}

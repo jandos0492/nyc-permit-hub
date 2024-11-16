@@ -1,16 +1,21 @@
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import NavBar from "shared-components/NavBar";
 import LoadingSpinner from "shared-components/LoadingSpinner";
 import NavButton from "pages/auto/TrafficSignsPages/TrafficSignsPageEnglish/NavButton";
 import AutoEnglishFullTestCard from "./AutoEnglishFullTestCard";
+import ResultModal from "shared-components/ResultModal";
 import * as englishTestService from "services/autoLearn";
+import * as testResult from "services/testResult";
 
 const AutoEnglishFullTest = () => {
     const [englishFullTestData, setEnglishFullTestData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [englishFullTestIdx, setEnglishFullTestIdx] = useState(0);
     const [selectedAnswers, setSelectedAnswers] = useState({});
-    const [countCorrectAnswers, setCountCorrectAnswers] = useState(0)
+    const [countCorrectAnswers, setCountCorrectAnswers] = useState(0);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const userId = useSelector((state) => state.session.user.id);
 
     useEffect(() => {
         (async () => {
@@ -21,6 +26,20 @@ const AutoEnglishFullTest = () => {
             setIsLoading(false);
         })();
     }, []);
+
+    const handleSubmit = () => {
+        testResult.sendTestResult({
+            userId,
+            score: String(calculatePercentage()),
+            vehicleType: "auto",
+            testType: "auto full test",
+            testLanguage: "english",
+            pass: calculatePercentage() >= 70,
+            requiredScore: "70",
+        });
+
+        setIsModalOpen(true);
+    };
 
     useEffect(() => {
         const handleKeyDown = (event) => {
@@ -55,6 +74,12 @@ const AutoEnglishFullTest = () => {
         }));
     };
 
+    const calculatePercentage = () => {
+        const totalQuestions = englishFullTestData.length;
+        const percentage = (countCorrectAnswers / totalQuestions) * 100;
+        return percentage.toFixed(0);
+    };
+
     return (
         <>
             <NavBar />
@@ -62,18 +87,19 @@ const AutoEnglishFullTest = () => {
                 <LoadingSpinner />
             ) : (
                 englishFullTestData.length > 0 && (
-                    <div className="bg-teal-50 h-screen pt-20 md:pt-48">
+                    <form
+                        onSubmit={(e) => e.preventDefault()}
+                        className=" flex flex-col items-center bg-teal-50 h-screen pt-20 md:pt-48"
+                    >
                         <div className="flex justify-center items-center">
                             <NavButton
                                 icon="fa-circle-chevron-left"
                                 onClick={() =>
                                     setEnglishFullTestIdx(
-                                        englishFullTestIdx -1
+                                        englishFullTestIdx - 1
                                     )
                                 }
-                                show={
-                                    englishFullTestIdx > 1000 
-                                }
+                                show={englishFullTestIdx > 1000}
                             />
                             <AutoEnglishFullTestCard
                                 englishFullTestDataCard={
@@ -95,6 +121,8 @@ const AutoEnglishFullTest = () => {
                                         answerIdx
                                     )
                                 }
+                                countCorrectAnswers={countCorrectAnswers}
+                                setCountCorrectAnswers={setCountCorrectAnswers}
                             />
                             <NavButton
                                 icon="fa-circle-chevron-right"
@@ -113,8 +141,27 @@ const AutoEnglishFullTest = () => {
                                 }
                             />
                         </div>
-                    </div>
+                        {selectedAnswers.hasOwnProperty(
+                            englishFullTestData.length
+                        ) && (
+                            <button
+                                onClick={handleSubmit}
+                                className="flex justify-center items-center font-bold text-xl md:text-3xl text-cyan-900 w-24 md:w-32 mt-4 bg-cyan-50 border border-cyan-900 rounded-lg"
+                            >
+                                submit
+                            </button>
+                        )}
+                    </form>
                 )
+            )}
+            {isModalOpen && (
+                <ResultModal
+                    onClose={() => {
+                        setIsModalOpen(false);
+                        window.location.reload();
+                    }}
+                    score={calculatePercentage()}
+                />
             )}
         </>
     );

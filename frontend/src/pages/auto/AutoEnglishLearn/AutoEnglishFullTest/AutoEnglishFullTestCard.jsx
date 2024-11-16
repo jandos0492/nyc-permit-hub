@@ -7,6 +7,8 @@ const AutoEnglishFullTestCard = ({
     englishFullTestQuestionQty,
     selectedAnswer,
     onSelectAnswer,
+    countCorrectAnswers,
+    setCountCorrectAnswers,
 }) => {
 
     const [correctOrWrongAnswerMessage, setCorrectOrWrongAnswerMessage] = useState("");
@@ -19,7 +21,14 @@ const AutoEnglishFullTestCard = ({
         } else if (englishFullTestDataCard.correctAnswerIndex !== selectedAnswer && selectedAnswer !== undefined) {
             setCorrectOrWrongAnswerMessage("Wrong");
         }
-    }, [englishFullTestDataCard.correctAnswerIndex, selectedAnswer])
+    }, [englishFullTestDataCard.correctAnswerIndex, selectedAnswer]);
+
+    
+    useEffect(() => {
+        if (selectedAnswer === englishFullTestDataCard.correctAnswerIndex) {
+            setCountCorrectAnswers((prevCount) => prevCount + 1);
+        }
+    }, [selectedAnswer, englishFullTestDataCard.correctAnswerIndex, setCountCorrectAnswers])
 
 
     return (
