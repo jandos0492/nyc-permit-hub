@@ -3,18 +3,19 @@ import { useSelector } from "react-redux";
 import NavBar from "shared-components/NavBar";
 import LoadingSpinner from "shared-components/LoadingSpinner";
 import NavButton from "pages/auto/TrafficSignsPages/TrafficSignsPageEnglish/NavButton";
-import AutoEnglishFullTestCard from "./AutoEnglishFullTestCard";
+import AutoEnglishExpressTestCard from "./AutoEnglishExpressTestCard";
 import ResultModal from "shared-components/ResultModal";
 import * as englishTestService from "services/autoLearn";
 import * as testResult from "services/testResult";
 
-const AutoEnglishFullTest = () => {
-    const [englishFullTestData, setEnglishFullTestData] = useState([]);
+const AutoEnglishExpressTest = () => {
+    const [englishExpressTestData, setEnglishExpressTestData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [englishFullTestIdx, setEnglishFullTestIdx] = useState(0);
+    const [englishExpressTestIdx, setEnglishExpressTestIdx] = useState(0);
     const [selectedAnswers, setSelectedAnswers] = useState({});
     const [countCorrectAnswers, setCountCorrectAnswers] = useState(0);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [randomEnglishData, setRandomEnglishData] = useState([]);
     const userId = useSelector((state) => state.session.user.id);
 
     useEffect(() => {
@@ -22,17 +23,29 @@ const AutoEnglishFullTest = () => {
             setIsLoading(true);
             const response = await englishTestService.getLearnEnglish();
             const data = await response.json();
-            setEnglishFullTestData(data);
+            setEnglishExpressTestData(data);
             setIsLoading(false);
         })();
     }, []);
+
+    console.log("selected answers", selectedAnswers);
+
+    useEffect(() => {
+        if (englishExpressTestData.length > 0) {
+            const shuffledArray = [...englishExpressTestData].sort(
+                () => Math.random() - 0.5
+            );
+            const randomData = shuffledArray.slice(0, 20);
+            setRandomEnglishData(randomData);
+        }
+    }, [englishExpressTestData]);
 
     const handleSubmit = () => {
         testResult.sendTestResult({
             userId,
             score: String(calculatePercentage()),
             vehicleType: "auto",
-            testType: "auto full test",
+            testType: "auto express test",
             testLanguage: "english",
             pass: calculatePercentage() >= 70,
             requiredScore: "70",
@@ -43,15 +56,16 @@ const AutoEnglishFullTest = () => {
 
     useEffect(() => {
         const handleKeyDown = (event) => {
-            if (event.key === "ArrowLeft" && englishFullTestIdx > 0) {
-                setEnglishFullTestIdx((prevIdx) => prevIdx - 1);
+            if (event.key === "ArrowLeft" && randomEnglishData.length > 0) {
+                setEnglishExpressTestIdx((prevIdx) => prevIdx - 1);
             } else if (
                 event.key === "ArrowRight" &&
-                englishFullTestIdx < englishFullTestData.length - 1 &&
-                selectedAnswers[englishFullTestData[englishFullTestIdx].id] !==
-                    undefined
+                englishExpressTestIdx < randomEnglishData.length - 1 &&
+                selectedAnswers[
+                    englishExpressTestIdx + 1
+                ] !== undefined
             ) {
-                setEnglishFullTestIdx((prevIdx) => prevIdx + 1);
+                setEnglishExpressTestIdx((prevIdx) => prevIdx + 1);
             }
         };
 
@@ -61,10 +75,10 @@ const AutoEnglishFullTest = () => {
             window.removeEventListener("keydown", handleKeyDown);
         };
     }, [
-        englishFullTestIdx,
-        englishFullTestData.length,
+        englishExpressTestIdx,
+        randomEnglishData.length,
         selectedAnswers,
-        englishFullTestData,
+        randomEnglishData,
     ]);
 
     const handleAnswerSelect = (questionId, answerIdx) => {
@@ -75,7 +89,7 @@ const AutoEnglishFullTest = () => {
     };
 
     const calculatePercentage = () => {
-        const totalQuestions = englishFullTestData.length;
+        const totalQuestions = randomEnglishData.length;
         const percentage = (countCorrectAnswers / totalQuestions) * 100;
         return percentage.toFixed(0);
     };
@@ -86,7 +100,7 @@ const AutoEnglishFullTest = () => {
             {isLoading ? (
                 <LoadingSpinner />
             ) : (
-                englishFullTestData.length > 0 && (
+                randomEnglishData.length > 0 && (
                     <form
                         onSubmit={(e) => e.preventDefault()}
                         className=" flex flex-col items-center bg-teal-50 h-screen pt-20 md:pt-48"
@@ -95,60 +109,62 @@ const AutoEnglishFullTest = () => {
                             <NavButton
                                 icon="fa-circle-chevron-left"
                                 onClick={() =>
-                                    setEnglishFullTestIdx(
-                                        englishFullTestIdx - 1
+                                    setEnglishExpressTestIdx(
+                                        englishExpressTestIdx - 1
                                     )
                                 }
-                                show={englishFullTestIdx > 1000}
+                                show={englishExpressTestIdx > 1000}
                             />
-                            <AutoEnglishFullTestCard
-                                englishFullTestDataCard={
-                                    englishFullTestData[englishFullTestIdx]
-                                }
-                                englishFullTestQuestionQty={
-                                    englishFullTestData.length
-                                }
-                                selectedAnswer={
-                                    selectedAnswers[
-                                        englishFullTestData[englishFullTestIdx]
-                                            .id
-                                    ]
-                                }
-                                onSelectAnswer={(answerIdx) =>
-                                    handleAnswerSelect(
-                                        englishFullTestData[englishFullTestIdx]
-                                            .id,
-                                        answerIdx
-                                    )
-                                }
-                                countCorrectAnswers={countCorrectAnswers}
-                                setCountCorrectAnswers={setCountCorrectAnswers}
-                            />
+                            {randomEnglishData.length > 0 && (
+                                <AutoEnglishExpressTestCard
+                                    randomEnglishData={
+                                        randomEnglishData[englishExpressTestIdx]
+                                    }
+                                    index={englishExpressTestIdx}
+                                    englishExpressTestQuestionQty={
+                                        randomEnglishData.length
+                                    }
+                                    selectedAnswer={
+                                        selectedAnswers[
+                                            englishExpressTestIdx + 1
+                                        ]
+                                    }
+                                    onSelectAnswer={(answerIdx) =>
+                                        handleAnswerSelect(
+                                            englishExpressTestIdx + 1,
+                                            answerIdx
+                                        )
+                                    }
+                                    countCorrectAnswers={countCorrectAnswers}
+                                    setCountCorrectAnswers={
+                                        setCountCorrectAnswers
+                                    }
+                                />
+                            )}
                             <NavButton
                                 icon="fa-circle-chevron-right"
                                 onClick={() =>
-                                    setEnglishFullTestIdx(
-                                        englishFullTestIdx + 1
+                                    setEnglishExpressTestIdx(
+                                        englishExpressTestIdx + 1
                                     )
                                 }
                                 show={
-                                    englishFullTestIdx <
-                                        englishFullTestData.length - 1 &&
+                                    englishExpressTestIdx <
+                                        randomEnglishData.length - 1 &&
                                     selectedAnswers[
-                                        englishFullTestData[englishFullTestIdx]
-                                            .id
+                                        englishExpressTestIdx + 1
                                     ] !== undefined
                                 }
                             />
                         </div>
                         {selectedAnswers.hasOwnProperty(
-                            englishFullTestData.length
+                            randomEnglishData.length
                         ) && (
                             <button
                                 onClick={handleSubmit}
-                                className="flex justify-center items-center font-bold text-xl md:text-3xl text-cyan-900 w-24 md:w-32 mt-4 bg-cyan-50 border border-cyan-900 rounded-lg"
+                                className="flex justify-center items-center font-bold text-xl md:text-2xl text-white w-32 md:w-40 h-12 bg-gradient-to-r from-cyan-900 to-cyan-400 mt-4 rounded-lg shadow-md hover:shadow-lg transition-transform transform hover:scale-105 active:scale-95"
                             >
-                                submit
+                                Submit
                             </button>
                         )}
                     </form>
@@ -167,4 +183,4 @@ const AutoEnglishFullTest = () => {
     );
 };
 
-export default AutoEnglishFullTest;
+export default AutoEnglishExpressTest;

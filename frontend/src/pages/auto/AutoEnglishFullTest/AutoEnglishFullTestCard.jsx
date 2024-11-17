@@ -61,21 +61,27 @@ const AutoEnglishFullTestCard = ({
                 {correctOrWrongAnswerMessage && (
                     <div
                         className={clsx(
-                            "font-lato text-3xl text-red-700 mt-4 italic",
-                            correctOrWrongAnswerMessage === "Correct" &&
-                                "text-green-700"
+                            "font-lato text-3xl mt-4 italic px-4 py-2 rounded-lg shadow-md",
+                            correctOrWrongAnswerMessage === "Correct"
+                                ? "text-green-700 bg-green-100 border border-green-300"
+                                : "text-red-700 bg-red-100 border border-red-300"
                         )}
                     >
                         {correctOrWrongAnswerMessage}
                     </div>
                 )}
                 {correctOrWrongAnswerMessage === "Wrong" && (
-                    <div className="mt-2 flex flex-shrink justify-center w-48 md:w-96 text-green-700 text-sm md:text-xl font-playfair font-bold text-center">
-                        {
-                            englishFullTestDataCard.answers[
-                                englishFullTestDataCard.correctAnswerIndex
-                            ]
-                        }
+                    <div className="mt-4 flex flex-col items-center">
+                        <div className="text-red-700 text-lg md:text-2xl font-lato italic">
+                            Oops! The correct answer is:
+                        </div>
+                        <div className="mt-2 flex justify-center text-center px-4 py-2 bg-green-50 border border-green-300 rounded-lg text-green-800 text-sm md:text-xl font-playfair font-bold shadow-sm">
+                            {
+                                englishFullTestDataCard.answers[
+                                    englishFullTestDataCard.correctAnswerIndex
+                                ]
+                            }
+                        </div>
                     </div>
                 )}
             </div>
