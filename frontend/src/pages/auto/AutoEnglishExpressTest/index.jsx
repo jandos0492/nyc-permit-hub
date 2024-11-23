@@ -28,8 +28,6 @@ const AutoEnglishExpressTest = () => {
         })();
     }, []);
 
-    console.log("selected answers", selectedAnswers);
-
     useEffect(() => {
         if (englishExpressTestData.length > 0) {
             const shuffledArray = [...englishExpressTestData].sort(
@@ -46,7 +44,8 @@ const AutoEnglishExpressTest = () => {
             score: String(calculatePercentage()),
             vehicleType: "auto",
             testType: "auto express test",
-            testLanguage: "english",
+            testLanguage:
+                "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/english.jpg",
             pass: calculatePercentage() >= 70,
             requiredScore: "70",
         });

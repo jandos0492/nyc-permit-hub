@@ -3,38 +3,49 @@ import { useSelector } from "react-redux";
 import NavBar from "shared-components/NavBar";
 import LoadingSpinner from "shared-components/LoadingSpinner";
 import NavButton from "pages/auto/TrafficSignsPages/TrafficSignsPageEnglish/NavButton";
-import AutoEnglishFullTestCard from "./AutoEnglishFullTestCard";
+import AutoRussianExpressTestCard from "./AutoRussianExpressTestCard";
 import ResultModal from "shared-components/ResultModal";
-import * as englishTestService from "services/autoLearn";
+import * as russianTestService from "services/autoLearn";
 import * as testResult from "services/testResult";
 
-const AutoEnglishFullTest = () => {
-    const [englishFullTestData, setEnglishFullTestData] = useState([]);
+const AutoRussianExpressTest = () => {
+    const [russianExpressTestData, setRussianExpressTestData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [englishFullTestIdx, setEnglishFullTestIdx] = useState(0);
+    const [russianExpressTestIdx, setrussianExpressTestIdx] = useState(0);
     const [selectedAnswers, setSelectedAnswers] = useState({});
     const [countCorrectAnswers, setCountCorrectAnswers] = useState(0);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [randomRussianData, setRandomRussianData] = useState([]);
     const userId = useSelector((state) => state.session.user.id);
 
     useEffect(() => {
         (async () => {
             setIsLoading(true);
-            const response = await englishTestService.getLearnEnglish();
+            const response = await russianTestService.getLearnRussian();
             const data = await response.json();
-            setEnglishFullTestData(data);
+            setRussianExpressTestData(data);
             setIsLoading(false);
         })();
     }, []);
+
+    useEffect(() => {
+        if (russianExpressTestData.length > 0) {
+            const shuffledArray = [...russianExpressTestData].sort(
+                () => Math.random() - 0.5
+            );
+            const randomData = shuffledArray.slice(0, 20);
+            setRandomRussianData(randomData);
+        }
+    }, [russianExpressTestData]);
 
     const handleSubmit = () => {
         testResult.sendTestResult({
             userId,
             score: String(calculatePercentage()),
             vehicleType: "auto",
-            testType: "auto full test",
+            testType: "auto express test",
             testLanguage:
-                "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/english.jpg",
+                "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/russian.jpg",
             pass: calculatePercentage() >= 70,
             requiredScore: "70",
         });
@@ -44,15 +55,14 @@ const AutoEnglishFullTest = () => {
 
     useEffect(() => {
         const handleKeyDown = (event) => {
-            if (event.key === "ArrowLeft" && englishFullTestIdx > 0) {
-                setEnglishFullTestIdx((prevIdx) => prevIdx - 1);
+            if (event.key === "ArrowLeft" && randomRussianData.length > 0) {
+                setrussianExpressTestIdx((prevIdx) => prevIdx - 1);
             } else if (
                 event.key === "ArrowRight" &&
-                englishFullTestIdx < englishFullTestData.length - 1 &&
-                selectedAnswers[englishFullTestData[englishFullTestIdx].id] !==
-                    undefined
+                russianExpressTestIdx < randomRussianData.length - 1 &&
+                selectedAnswers[russianExpressTestIdx + 1] !== undefined
             ) {
-                setEnglishFullTestIdx((prevIdx) => prevIdx + 1);
+                setrussianExpressTestIdx((prevIdx) => prevIdx + 1);
             }
         };
 
@@ -62,10 +72,10 @@ const AutoEnglishFullTest = () => {
             window.removeEventListener("keydown", handleKeyDown);
         };
     }, [
-        englishFullTestIdx,
-        englishFullTestData.length,
+        russianExpressTestIdx,
+        randomRussianData.length,
         selectedAnswers,
-        englishFullTestData,
+        randomRussianData,
     ]);
 
     const handleAnswerSelect = (questionId, answerIdx) => {
@@ -76,7 +86,7 @@ const AutoEnglishFullTest = () => {
     };
 
     const calculatePercentage = () => {
-        const totalQuestions = englishFullTestData.length;
+        const totalQuestions = randomRussianData.length;
         const percentage = (countCorrectAnswers / totalQuestions) * 100;
         return percentage.toFixed(0);
     };
@@ -87,7 +97,7 @@ const AutoEnglishFullTest = () => {
             {isLoading ? (
                 <LoadingSpinner />
             ) : (
-                englishFullTestData.length > 0 && (
+                randomRussianData.length > 0 && (
                     <form
                         onSubmit={(e) => e.preventDefault()}
                         className=" flex flex-col items-center bg-teal-50 h-screen pt-20 md:pt-48"
@@ -96,54 +106,56 @@ const AutoEnglishFullTest = () => {
                             <NavButton
                                 icon="fa-circle-chevron-left"
                                 onClick={() =>
-                                    setEnglishFullTestIdx(
-                                        englishFullTestIdx - 1
+                                    setrussianExpressTestIdx(
+                                        russianExpressTestIdx - 1
                                     )
                                 }
-                                show={englishFullTestIdx > 1000}
+                                show={russianExpressTestIdx > 1000}
                             />
-                            <AutoEnglishFullTestCard
-                                englishFullTestDataCard={
-                                    englishFullTestData[englishFullTestIdx]
-                                }
-                                englishFullTestQuestionQty={
-                                    englishFullTestData.length
-                                }
-                                selectedAnswer={
-                                    selectedAnswers[
-                                        englishFullTestData[englishFullTestIdx]
-                                            .id
-                                    ]
-                                }
-                                onSelectAnswer={(answerIdx) =>
-                                    handleAnswerSelect(
-                                        englishFullTestData[englishFullTestIdx]
-                                            .id,
-                                        answerIdx
-                                    )
-                                }
-                                countCorrectAnswers={countCorrectAnswers}
-                                setCountCorrectAnswers={setCountCorrectAnswers}
-                            />
+                            {randomRussianData.length > 0 && (
+                                <AutoRussianExpressTestCard
+                                    randomRussianData={
+                                        randomRussianData[russianExpressTestIdx]
+                                    }
+                                    index={russianExpressTestIdx}
+                                    russianExpressTestQuestionQty={
+                                        randomRussianData.length
+                                    }
+                                    selectedAnswer={
+                                        selectedAnswers[
+                                            russianExpressTestIdx + 1
+                                        ]
+                                    }
+                                    onSelectAnswer={(answerIdx) =>
+                                        handleAnswerSelect(
+                                            russianExpressTestIdx + 1,
+                                            answerIdx
+                                        )
+                                    }
+                                    countCorrectAnswers={countCorrectAnswers}
+                                    setCountCorrectAnswers={
+                                        setCountCorrectAnswers
+                                    }
+                                />
+                            )}
                             <NavButton
                                 icon="fa-circle-chevron-right"
                                 onClick={() =>
-                                    setEnglishFullTestIdx(
-                                        englishFullTestIdx + 1
+                                    setrussianExpressTestIdx(
+                                        russianExpressTestIdx + 1
                                     )
                                 }
                                 show={
-                                    englishFullTestIdx <
-                                        englishFullTestData.length - 1 &&
+                                    russianExpressTestIdx <
+                                        randomRussianData.length - 1 &&
                                     selectedAnswers[
-                                        englishFullTestData[englishFullTestIdx]
-                                            .id
+                                        russianExpressTestIdx + 1
                                     ] !== undefined
                                 }
                             />
                         </div>
                         {selectedAnswers.hasOwnProperty(
-                            englishFullTestData.length
+                            randomRussianData.length
                         ) && (
                             <button
                                 onClick={handleSubmit}
@@ -168,4 +180,4 @@ const AutoEnglishFullTest = () => {
     );
 };
 
-export default AutoEnglishFullTest;
+export default AutoRussianExpressTest;

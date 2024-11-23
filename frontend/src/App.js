@@ -21,6 +21,8 @@ import CombinationVehiclesPage from "pages/cdl/combinationVehicles/CombinationVe
 import CombinationVehiclesLearnPage from "pages/cdl/combinationVehicles/CombinationVehiclesLearnPage";
 import AutoEnglishFullTest from "pages/auto/AutoEnglishFullTest";
 import AutoEnglishExpressTest from "pages/auto/AutoEnglishExpressTest";
+import AutoRussianFullTest from "pages/auto/AutoRussianFullTest";
+import AutoRussianExpressTest from "pages/auto/AutoRussianExpressTest";
 
 const App = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -53,6 +55,8 @@ const App = () => {
           <Route path="/cdl/combination-vehicles/learn" element={<CombinationVehiclesLearnPage />} />
           <Route path="/auto/english/full-test" element={<AutoEnglishFullTest />} />
           <Route path="/auto/english/express-test" element={<AutoEnglishExpressTest />} />
+          <Route path="/auto/russian/full-test" element={<AutoRussianFullTest />} />
+          <Route path="/auto/russian/express-test" element={<AutoRussianExpressTest />} />
         </Routes>
       )}
     </>
