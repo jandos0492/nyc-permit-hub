@@ -3,47 +3,54 @@ import { useSelector } from "react-redux";
 import NavBar from "shared-components/NavBar";
 import LoadingSpinner from "shared-components/LoadingSpinner";
 import NavButton from "pages/auto/TrafficSignsPages/TrafficSignsPageEnglish/NavButton";
-import GeneralKnowledgeExpressTestCard from "./GeneralKnowledgeExpressTestCard";
+import AirBrakesExpressTestCard from "./AirBrakesExpressTestCard";
 import ResultModal from "shared-components/ResultModal";
 import * as cdlService from "services/cdl";
 import * as testResult from "services/testResult";
 
-const GeneralKnowledgeExpressTest = () => {
-    const [generalKnowledgeExpressTestData, setGeneralKnowledgeExpressTestData] = useState([]);
+const AirBrakesExpressTest = () => {
+    const [
+        airBrakesExpressTestData,
+        setAirBrakesExpressTestData,
+    ] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [generalKnowledgeExpressTestIdx, setGeneralKnowledgeExpressTestIdx] = useState(0);
+    const [airBrakesExpressTestIdx, setAirBrakesExpressTestIdx] =
+        useState(0);
     const [selectedAnswers, setSelectedAnswers] = useState({});
     const [countCorrectAnswers, setCountCorrectAnswers] = useState(0);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [randowGeneralKnowledgeExpressTestData, setRandowGeneralKnowledgeExpressTestData] = useState([]);
+    const [
+        randowAirBrakesExpressTestData,
+        setRandowAirBrakesExpressTestData,
+    ] = useState([]);
     const userId = useSelector((state) => state.session.user.id);
 
     useEffect(() => {
         (async () => {
             setIsLoading(true);
-            const response = await cdlService.getGeneralKnowledge();
+            const response = await cdlService.getAirBrakes();
             const data = await response.json();
-            setGeneralKnowledgeExpressTestData(data);
+            setAirBrakesExpressTestData(data);
             setIsLoading(false);
         })();
     }, []);
 
     useEffect(() => {
-        if (generalKnowledgeExpressTestData.length > 0) {
-            const shuffledArray = [...generalKnowledgeExpressTestData].sort(
+        if (airBrakesExpressTestData.length > 0) {
+            const shuffledArray = [...airBrakesExpressTestData].sort(
                 () => Math.random() - 0.5
             );
-            const randomData = shuffledArray.slice(0, 50);
-            setRandowGeneralKnowledgeExpressTestData(randomData);
+            const randomData = shuffledArray.slice(0, 30);
+            setRandowAirBrakesExpressTestData(randomData);
         }
-    }, [generalKnowledgeExpressTestData]);
+    }, [airBrakesExpressTestData]);
 
     const handleSubmit = () => {
         testResult.sendTestResult({
             userId,
             score: String(calculatePercentage()),
             vehicleType: "cdl",
-            testType: "general knowledge express test",
+            testType: "air brakes express test",
             testLanguage:
                 "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/english.jpg",
             pass: calculatePercentage() >= 70,
@@ -55,14 +62,19 @@ const GeneralKnowledgeExpressTest = () => {
 
     useEffect(() => {
         const handleKeyDown = (event) => {
-            if (event.key === "ArrowLeft" && randowGeneralKnowledgeExpressTestData.length > 0) {
-                setGeneralKnowledgeExpressTestIdx((prevIdx) => prevIdx - 1);
+            if (
+                event.key === "ArrowLeft" &&
+                randowAirBrakesExpressTestData.length > 0
+            ) {
+                setAirBrakesExpressTestIdx((prevIdx) => prevIdx - 1);
             } else if (
                 event.key === "ArrowRight" &&
-                generalKnowledgeExpressTestIdx < randowGeneralKnowledgeExpressTestData.length - 1 &&
-                selectedAnswers[generalKnowledgeExpressTestIdx + 1] !== undefined
+                airBrakesExpressTestIdx <
+                    randowAirBrakesExpressTestData.length - 1 &&
+                selectedAnswers[airBrakesExpressTestIdx + 1] !==
+                    undefined
             ) {
-                setGeneralKnowledgeExpressTestIdx((prevIdx) => prevIdx + 1);
+                setAirBrakesExpressTestIdx((prevIdx) => prevIdx + 1);
             }
         };
 
@@ -72,10 +84,10 @@ const GeneralKnowledgeExpressTest = () => {
             window.removeEventListener("keydown", handleKeyDown);
         };
     }, [
-        generalKnowledgeExpressTestIdx,
-        randowGeneralKnowledgeExpressTestData.length,
+        airBrakesExpressTestIdx,
+        randowAirBrakesExpressTestData.length,
         selectedAnswers,
-        randowGeneralKnowledgeExpressTestData,
+        randowAirBrakesExpressTestData,
     ]);
 
     const handleAnswerSelect = (questionId, answerIdx) => {
@@ -86,7 +98,7 @@ const GeneralKnowledgeExpressTest = () => {
     };
 
     const calculatePercentage = () => {
-        const totalQuestions = randowGeneralKnowledgeExpressTestData.length;
+        const totalQuestions = randowAirBrakesExpressTestData.length;
         const percentage = (countCorrectAnswers / totalQuestions) * 100;
         return percentage.toFixed(0);
     };
@@ -97,7 +109,7 @@ const GeneralKnowledgeExpressTest = () => {
             {isLoading ? (
                 <LoadingSpinner />
             ) : (
-                randowGeneralKnowledgeExpressTestData.length > 0 && (
+                randowAirBrakesExpressTestData.length > 0 && (
                     <form
                         onSubmit={(e) => e.preventDefault()}
                         className=" flex flex-col items-center bg-cyan-50 h-screen pt-20 md:pt-48"
@@ -106,29 +118,32 @@ const GeneralKnowledgeExpressTest = () => {
                             <NavButton
                                 icon="fa-circle-chevron-left"
                                 onClick={() =>
-                                    setGeneralKnowledgeExpressTestIdx(
-                                        generalKnowledgeExpressTestIdx - 1
+                                    setAirBrakesExpressTestIdx(
+                                        airBrakesExpressTestIdx - 1
                                     )
                                 }
-                                show={generalKnowledgeExpressTestIdx > 1000}
+                                show={airBrakesExpressTestIdx > 1000}
                             />
-                            {randowGeneralKnowledgeExpressTestData.length > 0 && (
-                                <GeneralKnowledgeExpressTestCard
-                                    randowGeneralKnowledgeExpressTestData={
-                                        randowGeneralKnowledgeExpressTestData[generalKnowledgeExpressTestIdx]
+                            {randowAirBrakesExpressTestData.length >
+                                0 && (
+                                <AirBrakesExpressTestCard
+                                    randowAirBrakesExpressTestData={
+                                        randowAirBrakesExpressTestData[
+                                            airBrakesExpressTestIdx
+                                        ]
                                     }
-                                    index={generalKnowledgeExpressTestIdx}
-                                    generalKnowledgeExpressTestQuestionQty={
-                                        randowGeneralKnowledgeExpressTestData.length
+                                    index={airBrakesExpressTestIdx}
+                                    airBrakesExpressTestQuestionQty={
+                                        randowAirBrakesExpressTestData.length
                                     }
                                     selectedAnswer={
                                         selectedAnswers[
-                                            generalKnowledgeExpressTestIdx + 1
+                                            airBrakesExpressTestIdx + 1
                                         ]
                                     }
                                     onSelectAnswer={(answerIdx) =>
                                         handleAnswerSelect(
-                                            generalKnowledgeExpressTestIdx + 1,
+                                            airBrakesExpressTestIdx + 1,
                                             answerIdx
                                         )
                                     }
@@ -141,21 +156,22 @@ const GeneralKnowledgeExpressTest = () => {
                             <NavButton
                                 icon="fa-circle-chevron-right"
                                 onClick={() =>
-                                    setGeneralKnowledgeExpressTestIdx(
-                                        generalKnowledgeExpressTestIdx + 1
+                                    setAirBrakesExpressTestIdx(
+                                        airBrakesExpressTestIdx + 1
                                     )
                                 }
                                 show={
-                                    generalKnowledgeExpressTestIdx <
-                                        randowGeneralKnowledgeExpressTestData.length - 1 &&
+                                    airBrakesExpressTestIdx <
+                                        randowAirBrakesExpressTestData.length -
+                                            1 &&
                                     selectedAnswers[
-                                        generalKnowledgeExpressTestIdx + 1
+                                        airBrakesExpressTestIdx + 1
                                     ] !== undefined
                                 }
                             />
                         </div>
                         {selectedAnswers.hasOwnProperty(
-                            randowGeneralKnowledgeExpressTestData.length
+                            randowAirBrakesExpressTestData.length
                         ) && (
                             <button
                                 onClick={handleSubmit}
@@ -180,4 +196,4 @@ const GeneralKnowledgeExpressTest = () => {
     );
 };
 
-export default GeneralKnowledgeExpressTest;
+export default AirBrakesExpressTest;
