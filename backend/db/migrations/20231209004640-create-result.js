@@ -38,7 +38,7 @@ module.exports = {
         allowNull: false,
       },
       testType: {
-        type: Sequelize.STRING(30),
+        type: Sequelize.STRING(45),
         allowNull: false,
       },
       testLanguage: {

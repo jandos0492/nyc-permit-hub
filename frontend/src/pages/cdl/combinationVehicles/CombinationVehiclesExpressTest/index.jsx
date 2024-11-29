@@ -3,47 +3,50 @@ import { useSelector } from "react-redux";
 import NavBar from "shared-components/NavBar";
 import LoadingSpinner from "shared-components/LoadingSpinner";
 import NavButton from "pages/auto/TrafficSignsPages/TrafficSignsPageEnglish/NavButton";
-import GeneralKnowledgeExpressTestCard from "./GeneralKnowledgeExpressTestCard";
+import CombinationVehiclesExpressTestCard from "./CombinationVehiclesExpressTestCard";
 import ResultModal from "shared-components/ResultModal";
 import * as cdlService from "services/cdl";
 import * as testResult from "services/testResult";
 
-const GeneralKnowledgeExpressTest = () => {
-    const [generalKnowledgeExpressTestData, setGeneralKnowledgeExpressTestData] = useState([]);
+const CombinationVehiclesExpressTest = () => {
+    const [combinationVehiclesExpressTestData, setCombinationVehiclesExpressTestData] = useState(
+        []
+    );
     const [isLoading, setIsLoading] = useState(false);
-    const [generalKnowledgeExpressTestIdx, setGeneralKnowledgeExpressTestIdx] = useState(0);
+    const [combinationVehiclesExpressTestIdx, setCombinationVehiclesExpressTestIdx] = useState(0);
     const [selectedAnswers, setSelectedAnswers] = useState({});
     const [countCorrectAnswers, setCountCorrectAnswers] = useState(0);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [randowGeneralKnowledgeExpressTestData, setRandowGeneralKnowledgeExpressTestData] = useState([]);
+    const [randowCombinationVehiclesExpressTestData, setRandowCombinationVehiclesExpressTestData] =
+        useState([]);
     const userId = useSelector((state) => state.session.user.id);
 
     useEffect(() => {
         (async () => {
             setIsLoading(true);
-            const response = await cdlService.getGeneralKnowledge();
+            const response = await cdlService.getCombinationVehicles();
             const data = await response.json();
-            setGeneralKnowledgeExpressTestData(data);
+            setCombinationVehiclesExpressTestData(data);
             setIsLoading(false);
         })();
     }, []);
 
     useEffect(() => {
-        if (generalKnowledgeExpressTestData.length > 0) {
-            const shuffledArray = [...generalKnowledgeExpressTestData].sort(
+        if (combinationVehiclesExpressTestData.length > 0) {
+            const shuffledArray = [...combinationVehiclesExpressTestData].sort(
                 () => Math.random() - 0.5
             );
-            const randomData = shuffledArray.slice(0, 50);
-            setRandowGeneralKnowledgeExpressTestData(randomData);
+            const randomData = shuffledArray.slice(0, 25);
+            setRandowCombinationVehiclesExpressTestData(randomData);
         }
-    }, [generalKnowledgeExpressTestData]);
+    }, [combinationVehiclesExpressTestData]);
 
     const handleSubmit = () => {
         testResult.sendTestResult({
             userId,
             score: String(calculatePercentage()),
             vehicleType: "cdl",
-            testType: "general knowledge express test",
+            testType: "combination vehicles express test",
             testLanguage:
                 "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/english-flag.jpg",
             pass: calculatePercentage() >= 70,
@@ -55,14 +58,18 @@ const GeneralKnowledgeExpressTest = () => {
 
     useEffect(() => {
         const handleKeyDown = (event) => {
-            if (event.key === "ArrowLeft" && randowGeneralKnowledgeExpressTestData.length > 0) {
-                setGeneralKnowledgeExpressTestIdx((prevIdx) => prevIdx - 1);
+            if (
+                event.key === "ArrowLeft" &&
+                randowCombinationVehiclesExpressTestData.length > 0
+            ) {
+                setCombinationVehiclesExpressTestIdx((prevIdx) => prevIdx - 1);
             } else if (
                 event.key === "ArrowRight" &&
-                generalKnowledgeExpressTestIdx < randowGeneralKnowledgeExpressTestData.length - 1 &&
-                selectedAnswers[generalKnowledgeExpressTestIdx + 1] !== undefined
+                combinationVehiclesExpressTestIdx <
+                    randowCombinationVehiclesExpressTestData.length - 1 &&
+                selectedAnswers[combinationVehiclesExpressTestIdx + 1] !== undefined
             ) {
-                setGeneralKnowledgeExpressTestIdx((prevIdx) => prevIdx + 1);
+                setCombinationVehiclesExpressTestIdx((prevIdx) => prevIdx + 1);
             }
         };
 
@@ -72,10 +79,10 @@ const GeneralKnowledgeExpressTest = () => {
             window.removeEventListener("keydown", handleKeyDown);
         };
     }, [
-        generalKnowledgeExpressTestIdx,
-        randowGeneralKnowledgeExpressTestData.length,
+        combinationVehiclesExpressTestIdx,
+        randowCombinationVehiclesExpressTestData.length,
         selectedAnswers,
-        randowGeneralKnowledgeExpressTestData,
+        randowCombinationVehiclesExpressTestData,
     ]);
 
     const handleAnswerSelect = (questionId, answerIdx) => {
@@ -86,7 +93,7 @@ const GeneralKnowledgeExpressTest = () => {
     };
 
     const calculatePercentage = () => {
-        const totalQuestions = randowGeneralKnowledgeExpressTestData.length;
+        const totalQuestions = randowCombinationVehiclesExpressTestData.length;
         const percentage = (countCorrectAnswers / totalQuestions) * 100;
         return percentage.toFixed(0);
     };
@@ -97,7 +104,7 @@ const GeneralKnowledgeExpressTest = () => {
             {isLoading ? (
                 <LoadingSpinner />
             ) : (
-                randowGeneralKnowledgeExpressTestData.length > 0 && (
+                randowCombinationVehiclesExpressTestData.length > 0 && (
                     <form
                         onSubmit={(e) => e.preventDefault()}
                         className=" flex flex-col items-center bg-cyan-50 h-screen pt-20 md:pt-48"
@@ -106,29 +113,31 @@ const GeneralKnowledgeExpressTest = () => {
                             <NavButton
                                 icon="fa-circle-chevron-left"
                                 onClick={() =>
-                                    setGeneralKnowledgeExpressTestIdx(
-                                        generalKnowledgeExpressTestIdx - 1
+                                    setCombinationVehiclesExpressTestIdx(
+                                        combinationVehiclesExpressTestIdx - 1
                                     )
                                 }
-                                show={generalKnowledgeExpressTestIdx > 1000}
+                                show={combinationVehiclesExpressTestIdx > 1000}
                             />
-                            {randowGeneralKnowledgeExpressTestData.length > 0 && (
-                                <GeneralKnowledgeExpressTestCard
-                                    randowGeneralKnowledgeExpressTestData={
-                                        randowGeneralKnowledgeExpressTestData[generalKnowledgeExpressTestIdx]
+                            {randowCombinationVehiclesExpressTestData.length > 0 && (
+                                <CombinationVehiclesExpressTestCard
+                                    randowCombinationVehiclesExpressTestData={
+                                        randowCombinationVehiclesExpressTestData[
+                                            combinationVehiclesExpressTestIdx
+                                        ]
                                     }
-                                    index={generalKnowledgeExpressTestIdx}
-                                    generalKnowledgeExpressTestQuestionQty={
-                                        randowGeneralKnowledgeExpressTestData.length
+                                    index={combinationVehiclesExpressTestIdx}
+                                    combinationVehiclesExpressTestQuestionQty={
+                                        randowCombinationVehiclesExpressTestData.length
                                     }
                                     selectedAnswer={
                                         selectedAnswers[
-                                            generalKnowledgeExpressTestIdx + 1
+                                            combinationVehiclesExpressTestIdx + 1
                                         ]
                                     }
                                     onSelectAnswer={(answerIdx) =>
                                         handleAnswerSelect(
-                                            generalKnowledgeExpressTestIdx + 1,
+                                            combinationVehiclesExpressTestIdx + 1,
                                             answerIdx
                                         )
                                     }
@@ -141,21 +150,22 @@ const GeneralKnowledgeExpressTest = () => {
                             <NavButton
                                 icon="fa-circle-chevron-right"
                                 onClick={() =>
-                                    setGeneralKnowledgeExpressTestIdx(
-                                        generalKnowledgeExpressTestIdx + 1
+                                    setCombinationVehiclesExpressTestIdx(
+                                        combinationVehiclesExpressTestIdx + 1
                                     )
                                 }
                                 show={
-                                    generalKnowledgeExpressTestIdx <
-                                        randowGeneralKnowledgeExpressTestData.length - 1 &&
+                                    combinationVehiclesExpressTestIdx <
+                                        randowCombinationVehiclesExpressTestData.length -
+                                            1 &&
                                     selectedAnswers[
-                                        generalKnowledgeExpressTestIdx + 1
+                                        combinationVehiclesExpressTestIdx + 1
                                     ] !== undefined
                                 }
                             />
                         </div>
                         {selectedAnswers.hasOwnProperty(
-                            randowGeneralKnowledgeExpressTestData.length
+                            randowCombinationVehiclesExpressTestData.length
                         ) && (
                             <button
                                 onClick={handleSubmit}
@@ -180,4 +190,4 @@ const GeneralKnowledgeExpressTest = () => {
     );
 };
 
-export default GeneralKnowledgeExpressTest;
+export default CombinationVehiclesExpressTest;
