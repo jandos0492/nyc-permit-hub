@@ -24,6 +24,7 @@ import AutoEnglishExpressTest from "pages/auto/AutoEnglishExpressTest";
 import AutoRussianFullTest from "pages/auto/AutoRussianFullTest";
 import AutoRussianExpressTest from "pages/auto/AutoRussianExpressTest";
 import GeneralKnowledgeFullTest from "pages/cdl/generalKnowledge/GeneralKnowledgeFullTest";
+import AirBrakesFullTest from "pages/cdl/airBrakes/AirBrakesFullTest";
 
 const App = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -59,6 +60,7 @@ const App = () => {
           <Route path="/auto/russian/full-test" element={<AutoRussianFullTest />} />
           <Route path="/auto/russian/express-test" element={<AutoRussianExpressTest />} />
           <Route path="/cdl/general-knowledge/full-test" element={<GeneralKnowledgeFullTest />} />
+          <Route path="/cdl/air-brakes/full-test" element={<AirBrakesFullTest />} />
         </Routes>
       )}
     </>
