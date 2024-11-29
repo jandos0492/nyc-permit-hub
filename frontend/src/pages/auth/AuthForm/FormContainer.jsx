@@ -12,7 +12,7 @@ const FormContainer = ({ children }) => {
                     <div className="absolute top-0 left-0 w-full h-full bg-teal-800/30"></div>
                 </div>
             </div>
-            <div className="h-screen flex flex-col items-center justify-center bg-teal-50 w-full">
+            <div className="h-screen flex flex-col items-center justify-center bg-cyan-50 w-full">
                 <div className="flex flex-col items-center mx-2 my-8">
                     <div className="font-playfair text-cyan-700 text-3xl">
                         NYC Permit Hub

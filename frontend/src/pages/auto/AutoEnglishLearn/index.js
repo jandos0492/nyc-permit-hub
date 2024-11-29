@@ -45,7 +45,7 @@ const AutoEnglishLearn = () => {
                 <LoadingSpinner />
             ) : (
                 englishLearnData.length > 0 && (
-                    <div className="bg-teal-50 h-screen pt-20 md:pt-48">
+                    <div className="bg-cyan-50 h-screen pt-20 md:pt-48">
                         <div className="flex justify-center items-center">
                                 <NavButton
                                     icon="fa-circle-chevron-left"

@@ -9,10 +9,11 @@ import * as cdlService from "services/cdl";
 import * as testResult from "services/testResult";
 
 const GeneralKnowledgeFullTest = () => {
-
-    const [generalKnowledgeFullTestData, setGeneralKnowledgeFullTestData] = useState([]);
+    const [generalKnowledgeFullTestData, setGeneralKnowledgeFullTestData] =
+        useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [generalKnowledgeFullTestIdx, setGeneralKnowledgeFullTestIdx] = useState(0);
+    const [generalKnowledgeFullTestIdx, setGeneralKnowledgeFullTestIdx] =
+        useState(0);
     const [selectedAnswers, setSelectedAnswers] = useState({});
     const [countCorrectAnswers, setCountCorrectAnswers] = useState(0);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -48,9 +49,11 @@ const GeneralKnowledgeFullTest = () => {
                 setGeneralKnowledgeFullTestIdx((prevIdx) => prevIdx - 1);
             } else if (
                 event.key === "ArrowRight" &&
-                generalKnowledgeFullTestIdx < generalKnowledgeFullTestData.length - 1 &&
-                selectedAnswers[generalKnowledgeFullTestData[generalKnowledgeFullTestIdx].id] !==
-                    undefined
+                generalKnowledgeFullTestIdx <
+                    generalKnowledgeFullTestData.length - 1 &&
+                selectedAnswers[
+                    generalKnowledgeFullTestData[generalKnowledgeFullTestIdx].id
+                ] !== undefined
             ) {
                 setGeneralKnowledgeFullTestIdx((prevIdx) => prevIdx + 1);
             }
@@ -90,7 +93,7 @@ const GeneralKnowledgeFullTest = () => {
                 generalKnowledgeFullTestData.length > 0 && (
                     <form
                         onSubmit={(e) => e.preventDefault()}
-                        className=" flex flex-col items-center bg-teal-50 h-screen pt-20 md:pt-48"
+                        className=" flex flex-col items-center bg-cyan-50 h-screen pt-20 md:pt-48"
                     >
                         <div className="flex justify-center items-center">
                             <NavButton
@@ -104,21 +107,25 @@ const GeneralKnowledgeFullTest = () => {
                             />
                             <GeneralKnowledgeFullTestCard
                                 generalKnowledgeFullTestCard={
-                                    generalKnowledgeFullTestData[generalKnowledgeFullTestIdx]
+                                    generalKnowledgeFullTestData[
+                                        generalKnowledgeFullTestIdx
+                                    ]
                                 }
                                 generalKnowledgeFullTestQuestionQty={
                                     generalKnowledgeFullTestData.length
                                 }
                                 selectedAnswer={
                                     selectedAnswers[
-                                        generalKnowledgeFullTestData[generalKnowledgeFullTestIdx]
-                                            .id
+                                        generalKnowledgeFullTestData[
+                                            generalKnowledgeFullTestIdx
+                                        ].id
                                     ]
                                 }
                                 onSelectAnswer={(answerIdx) =>
                                     handleAnswerSelect(
-                                        generalKnowledgeFullTestData[generalKnowledgeFullTestIdx]
-                                            .id,
+                                        generalKnowledgeFullTestData[
+                                            generalKnowledgeFullTestIdx
+                                        ].id,
                                         answerIdx
                                     )
                                 }
@@ -134,10 +141,12 @@ const GeneralKnowledgeFullTest = () => {
                                 }
                                 show={
                                     generalKnowledgeFullTestIdx <
-                                        generalKnowledgeFullTestData.length - 1 &&
+                                        generalKnowledgeFullTestData.length -
+                                            1 &&
                                     selectedAnswers[
-                                        generalKnowledgeFullTestData[generalKnowledgeFullTestIdx]
-                                            .id
+                                        generalKnowledgeFullTestData[
+                                            generalKnowledgeFullTestIdx
+                                        ].id
                                     ] !== undefined
                                 }
                             />

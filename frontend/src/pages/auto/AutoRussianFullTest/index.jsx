@@ -90,7 +90,7 @@ const AutoRussianFullTest = () => {
                 russianFullTestData.length > 0 && (
                     <form
                         onSubmit={(e) => e.preventDefault()}
-                        className=" flex flex-col items-center bg-teal-50 h-screen pt-20 md:pt-48"
+                        className=" flex flex-col items-center bg-cyan-50 h-screen pt-20 md:pt-48"
                     >
                         <div className="flex justify-center items-center">
                             <NavButton

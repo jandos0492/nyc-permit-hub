@@ -23,7 +23,7 @@ const AirBrakesFullTest = () => {
         (async () => {
             const response = await cdlService.getAirBrakes();
             const data = await response.json();
-            setAirBrakesFullTestData(data.slice(0, 5));
+            setAirBrakesFullTestData(data);
             setIsLoading(false);
         })();
     }, []);
@@ -93,7 +93,7 @@ const AirBrakesFullTest = () => {
                 airBrakesFullTestData.length > 0 && (
                     <form
                         onSubmit={(e) => e.preventDefault()}
-                        className=" flex flex-col items-center bg-teal-50 h-screen pt-20 md:pt-48"
+                        className=" flex flex-col items-center bg-cyan-50 h-screen pt-20 md:pt-48"
                     >
                         <div className="flex justify-center items-center">
                             <NavButton

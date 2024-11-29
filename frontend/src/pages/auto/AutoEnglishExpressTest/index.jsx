@@ -43,7 +43,7 @@ const AutoEnglishExpressTest = () => {
             userId,
             score: String(calculatePercentage()),
             vehicleType: "auto",
-            testType: "auto express test",
+            testType: "express test",
             testLanguage:
                 "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/english.jpg",
             pass: calculatePercentage() >= 70,
@@ -102,7 +102,7 @@ const AutoEnglishExpressTest = () => {
                 randomEnglishData.length > 0 && (
                     <form
                         onSubmit={(e) => e.preventDefault()}
-                        className=" flex flex-col items-center bg-teal-50 h-screen pt-20 md:pt-48"
+                        className=" flex flex-col items-center bg-cyan-50 h-screen pt-20 md:pt-48"
                     >
                         <div className="flex justify-center items-center">
                             <NavButton

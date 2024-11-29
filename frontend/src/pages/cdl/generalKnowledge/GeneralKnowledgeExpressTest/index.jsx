@@ -3,36 +3,47 @@ import { useSelector } from "react-redux";
 import NavBar from "shared-components/NavBar";
 import LoadingSpinner from "shared-components/LoadingSpinner";
 import NavButton from "pages/auto/TrafficSignsPages/TrafficSignsPageEnglish/NavButton";
-import AutoEnglishFullTestCard from "./AutoEnglishFullTestCard";
+import GeneralKnowledgeExpressTestCard from "./GeneralKnowledgeExpressTestCard";
 import ResultModal from "shared-components/ResultModal";
-import * as englishTestService from "services/autoLearn";
+import * as cdlService from "services/cdl";
 import * as testResult from "services/testResult";
 
-const AutoEnglishFullTest = () => {
-    const [englishFullTestData, setEnglishFullTestData] = useState([]);
+const GeneralKnowledgeExpressTest = () => {
+    const [generalKnowledgeExpressTestData, setGeneralKnowledgeExpressTestData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [englishFullTestIdx, setEnglishFullTestIdx] = useState(0);
+    const [generalKnowledgeExpressTestIdx, setGeneralKnowledgeExpressTestIdx] = useState(0);
     const [selectedAnswers, setSelectedAnswers] = useState({});
     const [countCorrectAnswers, setCountCorrectAnswers] = useState(0);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [randowGeneralKnowledgeExpressTestData, setRandowGeneralKnowledgeExpressTestData] = useState([]);
     const userId = useSelector((state) => state.session.user.id);
 
     useEffect(() => {
         (async () => {
             setIsLoading(true);
-            const response = await englishTestService.getLearnEnglish();
+            const response = await cdlService.getGeneralKnowledge();
             const data = await response.json();
-            setEnglishFullTestData(data);
+            setGeneralKnowledgeExpressTestData(data);
             setIsLoading(false);
         })();
     }, []);
+
+    useEffect(() => {
+        if (generalKnowledgeExpressTestData.length > 0) {
+            const shuffledArray = [...generalKnowledgeExpressTestData].sort(
+                () => Math.random() - 0.5
+            );
+            const randomData = shuffledArray.slice(0, 5);
+            setRandowGeneralKnowledgeExpressTestData(randomData);
+        }
+    }, [generalKnowledgeExpressTestData]);
 
     const handleSubmit = () => {
         testResult.sendTestResult({
             userId,
             score: String(calculatePercentage()),
-            vehicleType: "auto",
-            testType: "auto full test",
+            vehicleType: "cdl",
+            testType: "express test",
             testLanguage:
                 "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/english.jpg",
             pass: calculatePercentage() >= 70,
@@ -44,15 +55,14 @@ const AutoEnglishFullTest = () => {
 
     useEffect(() => {
         const handleKeyDown = (event) => {
-            if (event.key === "ArrowLeft" && englishFullTestIdx > 0) {
-                setEnglishFullTestIdx((prevIdx) => prevIdx - 1);
+            if (event.key === "ArrowLeft" && randowGeneralKnowledgeExpressTestData.length > 0) {
+                setGeneralKnowledgeExpressTestIdx((prevIdx) => prevIdx - 1);
             } else if (
                 event.key === "ArrowRight" &&
-                englishFullTestIdx < englishFullTestData.length - 1 &&
-                selectedAnswers[englishFullTestData[englishFullTestIdx].id] !==
-                    undefined
+                generalKnowledgeExpressTestIdx < randowGeneralKnowledgeExpressTestData.length - 1 &&
+                selectedAnswers[generalKnowledgeExpressTestIdx + 1] !== undefined
             ) {
-                setEnglishFullTestIdx((prevIdx) => prevIdx + 1);
+                setGeneralKnowledgeExpressTestIdx((prevIdx) => prevIdx + 1);
             }
         };
 
@@ -62,10 +72,10 @@ const AutoEnglishFullTest = () => {
             window.removeEventListener("keydown", handleKeyDown);
         };
     }, [
-        englishFullTestIdx,
-        englishFullTestData.length,
+        generalKnowledgeExpressTestIdx,
+        randowGeneralKnowledgeExpressTestData.length,
         selectedAnswers,
-        englishFullTestData,
+        randowGeneralKnowledgeExpressTestData,
     ]);
 
     const handleAnswerSelect = (questionId, answerIdx) => {
@@ -76,7 +86,7 @@ const AutoEnglishFullTest = () => {
     };
 
     const calculatePercentage = () => {
-        const totalQuestions = englishFullTestData.length;
+        const totalQuestions = randowGeneralKnowledgeExpressTestData.length;
         const percentage = (countCorrectAnswers / totalQuestions) * 100;
         return percentage.toFixed(0);
     };
@@ -87,7 +97,7 @@ const AutoEnglishFullTest = () => {
             {isLoading ? (
                 <LoadingSpinner />
             ) : (
-                englishFullTestData.length > 0 && (
+                randowGeneralKnowledgeExpressTestData.length > 0 && (
                     <form
                         onSubmit={(e) => e.preventDefault()}
                         className=" flex flex-col items-center bg-cyan-50 h-screen pt-20 md:pt-48"
@@ -96,54 +106,56 @@ const AutoEnglishFullTest = () => {
                             <NavButton
                                 icon="fa-circle-chevron-left"
                                 onClick={() =>
-                                    setEnglishFullTestIdx(
-                                        englishFullTestIdx - 1
+                                    setGeneralKnowledgeExpressTestIdx(
+                                        generalKnowledgeExpressTestIdx - 1
                                     )
                                 }
-                                show={englishFullTestIdx > 1000}
+                                show={generalKnowledgeExpressTestIdx > 1000}
                             />
-                            <AutoEnglishFullTestCard
-                                englishFullTestDataCard={
-                                    englishFullTestData[englishFullTestIdx]
-                                }
-                                englishFullTestQuestionQty={
-                                    englishFullTestData.length
-                                }
-                                selectedAnswer={
-                                    selectedAnswers[
-                                        englishFullTestData[englishFullTestIdx]
-                                            .id
-                                    ]
-                                }
-                                onSelectAnswer={(answerIdx) =>
-                                    handleAnswerSelect(
-                                        englishFullTestData[englishFullTestIdx]
-                                            .id,
-                                        answerIdx
-                                    )
-                                }
-                                countCorrectAnswers={countCorrectAnswers}
-                                setCountCorrectAnswers={setCountCorrectAnswers}
-                            />
+                            {randowGeneralKnowledgeExpressTestData.length > 0 && (
+                                <GeneralKnowledgeExpressTestCard
+                                    randowGeneralKnowledgeExpressTestData={
+                                        randowGeneralKnowledgeExpressTestData[generalKnowledgeExpressTestIdx]
+                                    }
+                                    index={generalKnowledgeExpressTestIdx}
+                                    generalKnowledgeExpressTestQuestionQty={
+                                        randowGeneralKnowledgeExpressTestData.length
+                                    }
+                                    selectedAnswer={
+                                        selectedAnswers[
+                                            generalKnowledgeExpressTestIdx + 1
+                                        ]
+                                    }
+                                    onSelectAnswer={(answerIdx) =>
+                                        handleAnswerSelect(
+                                            generalKnowledgeExpressTestIdx + 1,
+                                            answerIdx
+                                        )
+                                    }
+                                    countCorrectAnswers={countCorrectAnswers}
+                                    setCountCorrectAnswers={
+                                        setCountCorrectAnswers
+                                    }
+                                />
+                            )}
                             <NavButton
                                 icon="fa-circle-chevron-right"
                                 onClick={() =>
-                                    setEnglishFullTestIdx(
-                                        englishFullTestIdx + 1
+                                    setGeneralKnowledgeExpressTestIdx(
+                                        generalKnowledgeExpressTestIdx + 1
                                     )
                                 }
                                 show={
-                                    englishFullTestIdx <
-                                        englishFullTestData.length - 1 &&
+                                    generalKnowledgeExpressTestIdx <
+                                        randowGeneralKnowledgeExpressTestData.length - 1 &&
                                     selectedAnswers[
-                                        englishFullTestData[englishFullTestIdx]
-                                            .id
+                                        generalKnowledgeExpressTestIdx + 1
                                     ] !== undefined
                                 }
                             />
                         </div>
                         {selectedAnswers.hasOwnProperty(
-                            englishFullTestData.length
+                            randowGeneralKnowledgeExpressTestData.length
                         ) && (
                             <button
                                 onClick={handleSubmit}
@@ -168,4 +180,4 @@ const AutoEnglishFullTest = () => {
     );
 };
 
-export default AutoEnglishFullTest;
+export default GeneralKnowledgeExpressTest;

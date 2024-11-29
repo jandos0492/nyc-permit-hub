@@ -6,7 +6,7 @@ const HomePage = () => {
         <>
             <NavBar />
             <div className="bg-cyan-50 flex justify-center font-lato">
-                <div className="w-full max-w-6xl h-screen bg-teal-50 flex mt-24 flex-col items-center gap-8 md:gap-0 md:flex-row md:items-start md:mt-60 md:justify-between">
+                <div className="w-full max-w-6xl h-screen bg-cyan-50 flex mt-24 flex-col items-center gap-8 md:gap-0 md:flex-row md:items-start md:mt-60 md:justify-between">
                     <Link to="/auto/choose-language">
                         <div className="w-[300px] h-[370px] md:w-[420px] md:h-[500px] bg-cyan-800 flex flex-col items-center justify-center py-16 rounded-lg transform transition-transform duration-300 hover:scale-105">
                             <img
