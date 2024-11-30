@@ -32,8 +32,8 @@ const AirBrakesFullTest = () => {
         testResult.sendTestResult({
             userId,
             score: String(calculatePercentage()),
-            vehicleType: "cdl",
-            testType: "air brakes full test",
+            vehicleType: "cdl air brakes",
+            testType: "full test",
             testLanguage:
                 "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/english-flag.jpg",
             pass: calculatePercentage() >= 70,

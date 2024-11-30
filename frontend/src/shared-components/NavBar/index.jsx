@@ -41,6 +41,11 @@ const NavBar = () => {
                             <i className="fa-duotone fa-solid fa-truck"></i>
                         </Link>
                     </div>
+                    <div className="text-xl text-cyan-200">
+                        <Link to="/results">
+                            results
+                        </Link>
+                    </div>
                     <div className=" flex justify-end">
                         <div className="relative min-w-32">
                             <button

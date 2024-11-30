@@ -32,7 +32,7 @@ const AutoEnglishFullTest = () => {
             userId,
             score: String(calculatePercentage()),
             vehicleType: "auto",
-            testType: "auto full test",
+            testType: "full test",
             testLanguage:
                 "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/english-flag.jpg",
             pass: calculatePercentage() >= 70,

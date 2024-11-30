@@ -1,7 +1,24 @@
+import { useEffect } from "react";
 import clsx from "clsx";
 import { useLocation } from "react-router-dom";
 
 const ResultModal = ({ onClose, score }) => {
+
+    useEffect(() => {
+        const handleKeyDown = (event) => {
+            event.preventDefault();
+            if (event.key === "Enter") {
+                onClose();
+            }
+        };
+
+        window.addEventListener("keydown", handleKeyDown);
+
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [onClose]);
+
     const location = useLocation();
     const isPass = score >= 70;
 

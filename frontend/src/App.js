@@ -29,6 +29,7 @@ import CombinationVehiclesFullTest from "pages/cdl/combinationVehicles/Combinati
 import GeneralKnowledgeExpressTest from "pages/cdl/generalKnowledge/GeneralKnowledgeExpressTest";
 import AirBrakesExpressTest from "pages/cdl/airBrakes/AirBrakesExpressTest";
 import CombinationVehiclesExpressTest from "pages/cdl/combinationVehicles/CombinationVehiclesExpressTest";
+import ResultsPage from "pages/ResultsPage";
 
 const App = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -69,6 +70,7 @@ const App = () => {
           <Route path="/cdl/air-brakes/express-test" element={<AirBrakesExpressTest />} />
           <Route path="/cdl/combination-vehicles/full-test" element={<CombinationVehiclesFullTest />} />
           <Route path="/cdl/combination-vehicles/express-test" element={<CombinationVehiclesExpressTest />} />
+          <Route path="/results" element={<ResultsPage />} />
         </Routes>
       )}
     </>

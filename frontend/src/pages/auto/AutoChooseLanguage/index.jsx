@@ -14,7 +14,9 @@ const AutoChooseLanguage = () => {
                                 src="https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/english.jpg"
                                 alt="car"
                             />
-                            <div className="text-cyan-200 mt-8">english</div>
+                            <div className="text-cyan-200 text-lg font-bold tracking-wide group-hover:text-white mt-8">
+                                english
+                            </div>
                         </div>
                     </Link>
                     <Link to="/auto/russian">
@@ -24,7 +26,9 @@ const AutoChooseLanguage = () => {
                                 src="https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/russian.jpg"
                                 alt="truck"
                             />
-                            <div className="text-cyan-200 mt-8">russian</div>
+                            <div className="text-cyan-200 text-lg font-bold tracking-wide group-hover:text-white mt-8">
+                                russian
+                            </div>
                         </div>
                     </Link>
                 </div>
