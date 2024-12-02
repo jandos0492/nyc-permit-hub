@@ -1,34 +1,35 @@
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import clsx from "clsx";
-import ResultItem from "./ResultItem";
+import UserItem from "./UserItem";
 import NavBar from "shared-components/NavBar";
 import LoadingSpinner from "shared-components/LoadingSpinner";
-import * as resultsService from "services/testResult";
+import * as usersService from "services/allUsers";
 
 const PAGE_SIZE = 3;
 
-const ResultsPage = () => {
-    const [resultsData, setResultsData] = useState([]);
+const AllUsers = () => {
+    const [allUsersData, setAllUsersData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [pageIdx, setPageIdx] = useState(0);
-    const userId = useSelector((state) => state.session.user?.id);
 
     useEffect(() => {
         (async () => {
             setIsLoading(true);
-            const response = await resultsService.getTestResults({ userId });
+            const response = await usersService.getAllUsers();
             const data = await response.json();
-            setResultsData(data);
+            setAllUsersData(data);
             setIsLoading(false);
         })();
     }, []);
 
-    const resultItems = resultsData
+    console.log(allUsersData[0]);
+
+    const users = allUsersData
         .slice(PAGE_SIZE * pageIdx, PAGE_SIZE * (pageIdx + 1))
-        .map((result, idx) => <motion.div
-                key={result.id}
+        .map((user, idx) => (
+            <motion.div
+                key={user.id}
                 initial={{
                     opacity: 0,
                     translateY: "20px",
@@ -43,11 +44,11 @@ const ResultsPage = () => {
                     duration: 0.4,
                 }}
             >
-                <ResultItem result={result} />
+                <UserItem user={user} />
             </motion.div>
-        )
+        ));
 
-    const numPages = Math.ceil(resultsData.length / PAGE_SIZE);
+    const numPages = Math.ceil(allUsersData.length / PAGE_SIZE);
     const buttons = [];
     for (let i = 0; i < numPages; i++) {
         buttons.push(
@@ -68,14 +69,12 @@ const ResultsPage = () => {
     return (
         <>
             <NavBar />
-            {isLoading ? (
-                <LoadingSpinner />
-            ) : resultsData.length > 0 ? (
+            {isLoading ? <LoadingSpinner /> : allUsersData.length > 0 ? (
                 <div className="flex flex-col items-center bg-cyan-50 h-screen pt-12 md:pt-20">
                     <div className="w-full max-w-sm flex flex-col justify-center">
-                        {resultItems}
+                        {users}
                     </div>
-                    <div className="w-full max-w-2xl flex justify-center">{buttons}</div>
+                    <div className="w-full max-w-2xl mt-4 flex justify-center">{buttons}</div>
                 </div>
             ) : (
                 <div className="flex justify-center pt-24 md:pt-48 text-slate-400 text-xl md:text-3xl">
@@ -86,4 +85,4 @@ const ResultsPage = () => {
     );
 };
 
-export default ResultsPage;
+export default AllUsers;

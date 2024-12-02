@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import SignInPage from "./pages/auth/SignInPage";
 import SignUpPage from "./pages/auth/SignUpPage";
 import HomePage from "pages/HomePage";
@@ -30,6 +30,8 @@ import GeneralKnowledgeExpressTest from "pages/cdl/generalKnowledge/GeneralKnowl
 import AirBrakesExpressTest from "pages/cdl/airBrakes/AirBrakesExpressTest";
 import CombinationVehiclesExpressTest from "pages/cdl/combinationVehicles/CombinationVehiclesExpressTest";
 import ResultsPage from "pages/ResultsPage";
+import AllUsers from "admin-pages/AllUsers";
+import DefaultComponent from "pages/DefaultComponent";
 
 const App = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -39,10 +41,13 @@ const App = () => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
+  const isAdmin = useSelector((state) => Boolean(state.session.user?.isAdmin));
+
   return (
     <>
       {isLoaded && (
         <Routes>
+          <Route path="/*" element={<DefaultComponent />} />
           <Route path="/" element={<SignInPage />} />
           <Route path="/sign-up" element={<SignUpPage />} />
           <Route path="/home" element={<HomePage />} />
@@ -71,6 +76,9 @@ const App = () => {
           <Route path="/cdl/combination-vehicles/full-test" element={<CombinationVehiclesFullTest />} />
           <Route path="/cdl/combination-vehicles/express-test" element={<CombinationVehiclesExpressTest />} />
           <Route path="/results" element={<ResultsPage />} />
+          {isAdmin && (
+            <Route path="/all-users" element={<AllUsers />} />
+          )}
         </Routes>
       )}
     </>

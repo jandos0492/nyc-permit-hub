@@ -8,6 +8,9 @@ const NavBar = () => {
     const [userMenuOpen, setUserMenuOpen] = useState(false);
     const username = useSelector((state) => state.session.user?.username);
     const dispatch = useDispatch();
+    const isAdmin = useSelector((state) =>
+        Boolean(state.session.user?.isAdmin)
+    );
 
     const signOut = (e) => {
         e.preventDefault();
@@ -31,6 +34,11 @@ const NavBar = () => {
                             NYC Permit Hub
                         </Link>
                     </div>
+                    {isAdmin && (
+                        <div className="text-2xl text-cyan-200">
+                            <Link to="/all-users">users</Link>
+                        </div>
+                    )}
                     <div className="text-2xl text-cyan-200">
                         <Link to="/auto/choose-language">
                             <i className="fa-duotone fa-solid fa-car"></i>
@@ -42,9 +50,7 @@ const NavBar = () => {
                         </Link>
                     </div>
                     <div className="text-xl text-cyan-200">
-                        <Link to="/results">
-                            results
-                        </Link>
+                        <Link to="/results">results</Link>
                     </div>
                     <div className=" flex justify-end">
                         <div className="relative min-w-32">

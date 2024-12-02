@@ -8,9 +8,9 @@ const ResultItem = ({ result }) => {
 
     return (
         <div
-            className={`border rounded-lg p-4 shadow-lg flex flex-col gap-2 ${cardColor} transition-transform duration-300 hover:scale-105 mb-8`}
+            className={`border rounded-lg p-2 shadow-lg flex flex-col gap-1 ${cardColor} transition-transform duration-300 hover:scale-105 mb-8`}
         >
-            <div className="flex flex-col items-center gap-4">
+            <div className="flex flex-col items-center gap-1">
                 <div className="flex items-center justify-center gap-8">
                     <img
                         className="w-12 h-12 rounded-full border"
@@ -31,7 +31,7 @@ const ResultItem = ({ result }) => {
                     </div>
                 )}
             </div>
-            <div className="border-t border-gray-300 pt-4 flex flex-col gap-1">
+            <div className="border-t border-gray-300 pt-2 flex flex-col">
                 <div className="flex justify-around items-center">
                     <div className="w-[82px] font-medium text-gray-700">
                         Date:
@@ -75,7 +75,7 @@ const ResultItem = ({ result }) => {
                     </div>
                 )}
             </div>
-            <div className={`font-bold text-center text-lg mt-4 ${textColor}`}>
+            <div className={`font-bold text-center text-lg mt-1 ${textColor}`}>
                 {result.pass ? "Passed" : "Failed"}
             </div>
         </div>
