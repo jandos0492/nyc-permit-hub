@@ -15,6 +15,8 @@ const AutoEnglishFullTest = () => {
     const [selectedAnswers, setSelectedAnswers] = useState({});
     const [countCorrectAnswers, setCountCorrectAnswers] = useState(0);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [wrong, setWrong] = useState(0);
+    const [correct, setCorrect] = useState(0);
     const userId = useSelector((state) => state.session.user.id);
 
     useEffect(() => {
@@ -30,12 +32,14 @@ const AutoEnglishFullTest = () => {
     const handleSubmit = () => {
         testResult.sendTestResult({
             userId,
-            score: String(calculatePercentage()),
+            score: String(
+                ((correct / englishFullTestData.length) * 100).toFixed(0)
+            ),
             vehicleType: "auto",
             testType: "full test",
             testLanguage:
                 "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/english-flag.jpg",
-            pass: calculatePercentage() >= 70,
+            pass: ((correct / englishFullTestData.length) * 100).toFixed(0) >= 70,
             requiredScore: "70",
         });
 
@@ -73,12 +77,15 @@ const AutoEnglishFullTest = () => {
             ...prev,
             [questionId]: answerIdx,
         }));
-    };
 
-    const calculatePercentage = () => {
-        const totalQuestions = englishFullTestData.length;
-        const percentage = (countCorrectAnswers / totalQuestions) * 100;
-        return percentage.toFixed(0);
+        const isCorrect = englishFullTestData[englishFullTestIdx].correctAnswerIndex === answerIdx;
+
+        if (isCorrect) {
+            setCorrect((prev) => prev + 1);
+            setCountCorrectAnswers((prevCount) => prevCount + 1);
+        } else {
+            setWrong((prev) => prev + 1);
+        }
     };
 
     return (
@@ -92,6 +99,27 @@ const AutoEnglishFullTest = () => {
                         onSubmit={(e) => e.preventDefault()}
                         className=" flex flex-col items-center bg-cyan-50 h-screen pt-20 md:pt-48"
                     >
+                        <div className="w-full flex justify-center bg-cyan-50 pb-12">
+                            <div className="flex justify-around w-full max-w-xs md:max-w-lg">
+                                <div className="flex items-center justify-center bg-green-100 text-green-700 border border-green-300 font-lato text-xs md:text-lg p-2 md:p-4 rounded-lg shadow-md">
+                                    Correct: {correct}
+                                </div>
+                                {correct > 0 && (
+                                    <div className="flex items-center justify-center bg-cyan-800 border border-cyan-300 font-bold font-lato text-white text-xs md:text-lg p-2 md:p-4  rounded-lg shadow-md">
+                                        Score:{" "}
+                                        {(
+                                            (correct /
+                                                englishFullTestData.length) *
+                                            100
+                                        ).toFixed(0)}
+                                        %
+                                    </div>
+                                )}
+                                <div className="flex items-center justify-center bg-red-100 text-red-700 border border-red-300 font-lato text-xs md:text-lg p-2 md:p-4 rounded-lg shadow-md">
+                                    Wrong: {wrong}
+                                </div>
+                            </div>
+                        </div>
                         <div className="flex justify-center items-center">
                             <NavButton
                                 icon="fa-circle-chevron-left"
@@ -161,7 +189,7 @@ const AutoEnglishFullTest = () => {
                         setIsModalOpen(false);
                         window.location.reload();
                     }}
-                    score={calculatePercentage()}
+                    score={((correct / englishFullTestData.length) * 100).toFixed(0)}
                 />
             )}
         </>

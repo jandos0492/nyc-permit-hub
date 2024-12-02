@@ -89,4 +89,36 @@ router.post(
     }),
 );
 
+// Delete user
+router.delete(
+    "/:id",
+    requireAuth, // Ensure only authenticated users can perform this action
+    asyncHandler(async (req, res, next) => {
+        const { id } = req.params;
+
+        try {
+            // Find the user by ID
+            const user = await User.findByPk(id);
+
+            if (!user) {
+                // Return 404 if user not found
+                return res.status(404).json({
+                    message: "User not found",
+                });
+            }
+
+            // Delete the user
+            await user.destroy();
+
+            // Send a success response
+            return res.status(200).json({
+                message: "User deleted successfully",
+            });
+        } catch (error) {
+            console.error("Error deleting user:", error);
+            return next(error); // Pass error to global error handler
+        }
+    })
+);
+
 module.exports = router;

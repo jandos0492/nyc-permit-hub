@@ -35,7 +35,8 @@ const NavBar = () => {
                         </Link>
                     </div>
                     {isAdmin && (
-                        <div className="text-2xl text-cyan-200">
+                        <div className="text-xl text-cyan-200">
+                            <i className="fa-light fa-users mr-2"></i>
                             <Link to="/all-users">users</Link>
                         </div>
                     )}
@@ -50,6 +51,7 @@ const NavBar = () => {
                         </Link>
                     </div>
                     <div className="text-xl text-cyan-200">
+                        <i className="fa-solid fa-square-poll-horizontal mr-2"></i>
                         <Link to="/results">results</Link>
                     </div>
                     <div className=" flex justify-end">

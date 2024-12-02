@@ -32,6 +32,7 @@ import CombinationVehiclesExpressTest from "pages/cdl/combinationVehicles/Combin
 import ResultsPage from "pages/ResultsPage";
 import AllUsers from "admin-pages/AllUsers";
 import DefaultComponent from "pages/DefaultComponent";
+import SeeResults from "admin-pages/SeeResults";
 
 const App = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -77,7 +78,10 @@ const App = () => {
           <Route path="/cdl/combination-vehicles/express-test" element={<CombinationVehiclesExpressTest />} />
           <Route path="/results" element={<ResultsPage />} />
           {isAdmin && (
-            <Route path="/all-users" element={<AllUsers />} />
+            <>
+              <Route path="/all-users" element={<AllUsers />} />
+              <Route path="/users/:userId/results" element={<SeeResults />} />
+            </>
           )}
         </Routes>
       )}

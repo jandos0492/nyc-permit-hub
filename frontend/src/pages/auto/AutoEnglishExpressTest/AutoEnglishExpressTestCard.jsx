@@ -8,9 +8,9 @@ const AutoEnglishExpressTestCard = ({
     englishExpressTestQuestionQty,
     selectedAnswer,
     onSelectAnswer,
-    countCorrectAnswers,
     setCountCorrectAnswers,
 }) => {
+
     const [correctOrWrongAnswerMessage, setCorrectOrWrongAnswerMessage] =
         useState("");
 

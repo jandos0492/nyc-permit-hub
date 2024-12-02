@@ -1,6 +1,15 @@
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import * as deleteUserService from "services/deleteUser";
 
-const UserItem = ({ user }) => {
+const UserItem = ({ user, fetchUsers }) => {
+    const myUserId = useSelector((state) => state.session.user.id);
+
+    const handleDeleteUser = async () => {
+        const response = await deleteUserService.deleteUser({ id: user.id });
+        fetchUsers();
+    };
+
     const cardColor = user.isAdmin
         ? "bg-indigo-100 border-indigo-400"
         : "bg-gray-200 border-gray-400";
@@ -29,14 +38,8 @@ const UserItem = ({ user }) => {
                     <div className="font-medium text-gray-700">Username:</div>
                     <div className="text-gray-900">{user.username}</div>
                 </div>
-                <div className="flex justify-between items-center">
-                    <div className="font-medium text-gray-700">Is Admin:</div>
-                    <div className="text-gray-900">
-                        {user.isAdmin ? "Yes" : "No"}
-                    </div>
-                </div>
             </div>
-            <div className="flex-1 flex justify-center">
+            <div className="flex-1 flex justify-around mt-4">
                 <Link
                     to={`/users/${user.id}/results`}
                     className="text-white bg-blue-600 hover:bg-blue-700 active:bg-blue-800 font-semibold border border-blue-700 py-1 px-3 rounded-lg shadow-md transition-all duration-200
@@ -44,6 +47,14 @@ const UserItem = ({ user }) => {
                 >
                     See Results
                 </Link>
+                {myUserId !== user.id && (
+                    <button
+                        className="bg-red-600 text-white hover:bg-red-700 active:bg-red-800 font-semibold border border-red-700 py-1 px-3 rounded-lg shadow-md transition-all duration-200"
+                        onClick={handleDeleteUser}
+                    >
+                        <i className="fa-solid fa-trash mr-2"></i>Delete user
+                    </button>
+                )}
             </div>
         </div>
     );

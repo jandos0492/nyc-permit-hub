@@ -16,6 +16,8 @@ const AutoRussianExpressTest = () => {
     const [countCorrectAnswers, setCountCorrectAnswers] = useState(0);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [randomRussianData, setRandomRussianData] = useState([]);
+    const [correct, setCorrect] = useState(0);
+    const [wrong, setWrong] = useState(0);
     const userId = useSelector((state) => state.session.user.id);
 
     useEffect(() => {
@@ -41,12 +43,14 @@ const AutoRussianExpressTest = () => {
     const handleSubmit = () => {
         testResult.sendTestResult({
             userId,
-            score: String(calculatePercentage()),
+            score: String(
+                ((correct / randomRussianData.length) * 100).toFixed(0)
+            ),
             vehicleType: "auto",
             testType: "express test",
             testLanguage:
                 "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/russian-flag.jpg",
-            pass: calculatePercentage() >= 70,
+            pass: ((correct / randomRussianData.length) * 100).toFixed(0) >= 70,
             requiredScore: "70",
         });
 
@@ -83,12 +87,17 @@ const AutoRussianExpressTest = () => {
             ...prev,
             [questionId]: answerIdx,
         }));
-    };
 
-    const calculatePercentage = () => {
-        const totalQuestions = randomRussianData.length;
-        const percentage = (countCorrectAnswers / totalQuestions) * 100;
-        return percentage.toFixed(0);
+        const isCorrect =
+            randomRussianData[russianExpressTestIdx].correctAnswerIndex ===
+            answerIdx;
+
+        if (isCorrect) {
+            setCorrect((prev) => prev + 1);
+            setCountCorrectAnswers((prevCount) => prevCount + 1);
+        } else {
+            setWrong((prev) => prev + 1);
+        }
     };
 
     return (
@@ -102,6 +111,27 @@ const AutoRussianExpressTest = () => {
                         onSubmit={(e) => e.preventDefault()}
                         className=" flex flex-col items-center bg-cyan-50 h-screen pt-20 md:pt-48"
                     >
+                        <div className="w-full flex justify-center bg-cyan-50 pb-12">
+                            <div className="flex justify-around w-full max-w-xs md:max-w-lg">
+                                <div className="flex items-center justify-center bg-green-100 text-green-700 border border-green-300 font-lato text-xs md:text-lg p-2 md:p-4 rounded-lg shadow-md">
+                                    Правильно: {correct}
+                                </div>
+                                {correct > 0 && (
+                                    <div className="flex items-center justify-center bg-cyan-800 border border-cyan-300 font-bold font-lato text-white text-xs md:text-lg p-2 md:p-4  rounded-lg shadow-md">
+                                        Результат:{" "}
+                                        {(
+                                            (correct /
+                                                randomRussianData.length) *
+                                            100
+                                        ).toFixed(0)}
+                                        %
+                                    </div>
+                                )}
+                                <div className="flex items-center justify-center bg-red-100 text-red-700 border border-red-300 font-lato text-xs md:text-lg p-2 md:p-4 rounded-lg shadow-md">
+                                    Ошибки: {wrong}
+                                </div>
+                            </div>
+                        </div>
                         <div className="flex justify-center items-center">
                             <NavButton
                                 icon="fa-circle-chevron-left"
@@ -173,7 +203,9 @@ const AutoRussianExpressTest = () => {
                         setIsModalOpen(false);
                         window.location.reload();
                     }}
-                    score={calculatePercentage()}
+                    score={((correct / randomRussianData.length) * 100).toFixed(
+                        0
+                    )}
                 />
             )}
         </>
