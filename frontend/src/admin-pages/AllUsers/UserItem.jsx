@@ -6,7 +6,7 @@ const UserItem = ({ user, fetchUsers }) => {
     const myUserId = useSelector((state) => state.session.user.id);
 
     const handleDeleteUser = async () => {
-        const response = await deleteUserService.deleteUser({ id: user.id });
+        await deleteUserService.deleteUser({ id: user.id });
         fetchUsers();
     };
 

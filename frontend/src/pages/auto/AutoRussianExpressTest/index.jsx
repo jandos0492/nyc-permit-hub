@@ -18,7 +18,7 @@ const AutoRussianExpressTest = () => {
     const [randomRussianData, setRandomRussianData] = useState([]);
     const [correct, setCorrect] = useState(0);
     const [wrong, setWrong] = useState(0);
-    const userId = useSelector((state) => state.session.user.id);
+    const userId = useSelector((state) => state?.session?.user?.id);
 
     useEffect(() => {
         (async () => {

@@ -16,7 +16,7 @@ const GeneralKnowledgeExpressTest = () => {
     const [countCorrectAnswers, setCountCorrectAnswers] = useState(0);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [randowGeneralKnowledgeExpressTestData, setRandowGeneralKnowledgeExpressTestData] = useState([]);
-    const userId = useSelector((state) => state.session.user.id);
+    const userId = useSelector((state) => state?.session?.user?.id);
 
     useEffect(() => {
         (async () => {

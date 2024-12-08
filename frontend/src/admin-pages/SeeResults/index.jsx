@@ -27,7 +27,8 @@ const SeeResults = () => {
 
     const resultItems = resultsData
         ?.slice(PAGE_SIZE * pageIdx, PAGE_SIZE * (pageIdx + 1))
-        ?.map((result, idx) => <motion.div
+        ?.map((result, idx) => (
+            <motion.div
                 key={result.id}
                 initial={{
                     opacity: 0,
@@ -45,7 +46,7 @@ const SeeResults = () => {
             >
                 <ResultItem result={result} />
             </motion.div>
-        )
+        ));
 
     const numPages = Math.ceil(resultsData.length / PAGE_SIZE);
     const buttons = [];
@@ -75,7 +76,11 @@ const SeeResults = () => {
                     <div className="w-full max-w-sm flex flex-col justify-center">
                         {resultItems}
                     </div>
-                    <div className="w-full max-w-2xl flex justify-center">{buttons}</div>
+                    {buttons.length > 1 && (
+                        <div className="w-full max-w-2xl flex justify-center">
+                            {buttons}
+                        </div>
+                    )}
                 </div>
             ) : (
                 <div className="flex justify-center pt-24 md:pt-48 text-slate-400 text-xl md:text-3xl">

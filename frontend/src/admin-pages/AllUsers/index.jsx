@@ -34,11 +34,11 @@ const AllUsers = () => {
             console.error("Error fetching users.", error);
             setIsLoading(false);
         }
-    }
+    };
 
     useEffect(() => {
         fetchUsers();
-    }, [])
+    }, []);
 
     const users = allUsersData
         .slice(PAGE_SIZE * pageIdx, PAGE_SIZE * (pageIdx + 1))
@@ -84,12 +84,18 @@ const AllUsers = () => {
     return (
         <>
             <NavBar />
-            {isLoading ? <LoadingSpinner /> : allUsersData.length > 0 ? (
+            {isLoading ? (
+                <LoadingSpinner />
+            ) : allUsersData.length > 0 ? (
                 <div className="flex flex-col items-center bg-cyan-50 h-screen pt-12 md:pt-20">
                     <div className="w-full max-w-sm flex flex-col justify-center">
                         {users}
                     </div>
-                    <div className="w-full max-w-2xl mt-4 flex justify-center">{buttons}</div>
+                    {buttons.length > 1 && (
+                        <div className="w-full max-w-2xl mt-4 flex justify-center">
+                            {buttons}
+                        </div>
+                    )}
                 </div>
             ) : (
                 <div className="flex justify-center pt-24 md:pt-48 text-slate-400 text-xl md:text-3xl">

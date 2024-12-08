@@ -23,7 +23,7 @@ const AirBrakesExpressTest = () => {
         randowAirBrakesExpressTestData,
         setRandowAirBrakesExpressTestData,
     ] = useState([]);
-    const userId = useSelector((state) => state.session.user.id);
+    const userId = useSelector((state) => state?.session?.user?.id);
 
     useEffect(() => {
         (async () => {
