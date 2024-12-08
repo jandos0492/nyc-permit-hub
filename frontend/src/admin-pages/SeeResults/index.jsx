@@ -23,7 +23,7 @@ const SeeResults = () => {
             setResultsData(data);
             setIsLoading(false);
         })();
-    }, []);
+    }, [userId]);
 
     const resultItems = resultsData
         ?.slice(PAGE_SIZE * pageIdx, PAGE_SIZE * (pageIdx + 1))

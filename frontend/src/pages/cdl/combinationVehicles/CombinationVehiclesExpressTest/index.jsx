@@ -9,16 +9,24 @@ import * as cdlService from "services/cdl";
 import * as testResult from "services/testResult";
 
 const CombinationVehiclesExpressTest = () => {
-    const [combinationVehiclesExpressTestData, setCombinationVehiclesExpressTestData] = useState(
-        []
-    );
+    const [
+        combinationVehiclesExpressTestData,
+        setCombinationVehiclesExpressTestData,
+    ] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [combinationVehiclesExpressTestIdx, setCombinationVehiclesExpressTestIdx] = useState(0);
+    const [
+        combinationVehiclesExpressTestIdx,
+        setCombinationVehiclesExpressTestIdx,
+    ] = useState(0);
     const [selectedAnswers, setSelectedAnswers] = useState({});
     const [countCorrectAnswers, setCountCorrectAnswers] = useState(0);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [randowCombinationVehiclesExpressTestData, setRandowCombinationVehiclesExpressTestData] =
-        useState([]);
+    const [
+        randomCombinationVehiclesExpressTestData,
+        setRandomCombinationVehiclesExpressTestData,
+    ] = useState([]);
+    const [correct, setCorrect] = useState(0);
+    const [wrong, setWrong] = useState(0);
     const userId = useSelector((state) => state?.session?.user?.id);
 
     useEffect(() => {
@@ -37,19 +45,28 @@ const CombinationVehiclesExpressTest = () => {
                 () => Math.random() - 0.5
             );
             const randomData = shuffledArray.slice(0, 25);
-            setRandowCombinationVehiclesExpressTestData(randomData);
+            setRandomCombinationVehiclesExpressTestData(randomData);
         }
     }, [combinationVehiclesExpressTestData]);
 
     const handleSubmit = () => {
         testResult.sendTestResult({
             userId,
-            score: String(calculatePercentage()),
+            score: String(
+                (
+                    (correct /
+                        randomCombinationVehiclesExpressTestData.length) *
+                    100
+                ).toFixed(0)
+            ),
             vehicleType: "cdl combination vehicles",
             testType: "express test",
             testLanguage:
                 "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/english-flag.jpg",
-            pass: calculatePercentage() >= 70,
+            pass:
+                ((correct / randomCombinationVehiclesExpressTestData.length) * 100).toFixed(
+                    0
+                ) >= 70,
             requiredScore: "70",
         });
 
@@ -60,14 +77,15 @@ const CombinationVehiclesExpressTest = () => {
         const handleKeyDown = (event) => {
             if (
                 event.key === "ArrowLeft" &&
-                randowCombinationVehiclesExpressTestData.length > 0
+                randomCombinationVehiclesExpressTestData.length > 0
             ) {
                 setCombinationVehiclesExpressTestIdx((prevIdx) => prevIdx - 1);
             } else if (
                 event.key === "ArrowRight" &&
                 combinationVehiclesExpressTestIdx <
-                    randowCombinationVehiclesExpressTestData.length - 1 &&
-                selectedAnswers[combinationVehiclesExpressTestIdx + 1] !== undefined
+                    randomCombinationVehiclesExpressTestData.length - 1 &&
+                selectedAnswers[combinationVehiclesExpressTestIdx + 1] !==
+                    undefined
             ) {
                 setCombinationVehiclesExpressTestIdx((prevIdx) => prevIdx + 1);
             }
@@ -80,9 +98,9 @@ const CombinationVehiclesExpressTest = () => {
         };
     }, [
         combinationVehiclesExpressTestIdx,
-        randowCombinationVehiclesExpressTestData.length,
+        randomCombinationVehiclesExpressTestData.length,
         selectedAnswers,
-        randowCombinationVehiclesExpressTestData,
+        randomCombinationVehiclesExpressTestData,
     ]);
 
     const handleAnswerSelect = (questionId, answerIdx) => {
@@ -90,12 +108,17 @@ const CombinationVehiclesExpressTest = () => {
             ...prev,
             [questionId]: answerIdx,
         }));
-    };
 
-    const calculatePercentage = () => {
-        const totalQuestions = randowCombinationVehiclesExpressTestData.length;
-        const percentage = (countCorrectAnswers / totalQuestions) * 100;
-        return percentage.toFixed(0);
+        const isCorrect =
+            randomCombinationVehiclesExpressTestData[combinationVehiclesExpressTestIdx]
+                .correctAnswerIndex === answerIdx;
+
+        if (isCorrect) {
+            setCorrect((prev) => prev + 1);
+            setCountCorrectAnswers((prevCount) => prevCount + 1);
+        } else {
+            setWrong((prev) => prev + 1);
+        }
     };
 
     return (
@@ -104,11 +127,32 @@ const CombinationVehiclesExpressTest = () => {
             {isLoading ? (
                 <LoadingSpinner />
             ) : (
-                randowCombinationVehiclesExpressTestData.length > 0 && (
+                randomCombinationVehiclesExpressTestData.length > 0 && (
                     <form
                         onSubmit={(e) => e.preventDefault()}
                         className=" flex flex-col items-center bg-cyan-50 h-screen pt-20 md:pt-48"
                     >
+                        <div className="w-full flex justify-center bg-cyan-50 pb-12">
+                            <div className="flex justify-around w-full max-w-xs md:max-w-lg">
+                                <div className="flex items-center justify-center bg-green-100 text-green-700 border border-green-300 font-lato text-xs md:text-lg p-2 md:p-4 rounded-lg shadow-md">
+                                    Correct: {correct}
+                                </div>
+                                {correct > 0 && (
+                                    <div className="flex items-center justify-center bg-cyan-800 border border-cyan-300 font-bold font-lato text-white text-xs md:text-lg p-2 md:p-4  rounded-lg shadow-md">
+                                        Score:{" "}
+                                        {(
+                                            (correct /
+                                                randomCombinationVehiclesExpressTestData.length) *
+                                            100
+                                        ).toFixed(0)}
+                                        %
+                                    </div>
+                                )}
+                                <div className="flex items-center justify-center bg-red-100 text-red-700 border border-red-300 font-lato text-xs md:text-lg p-2 md:p-4 rounded-lg shadow-md">
+                                    Wrong: {wrong}
+                                </div>
+                            </div>
+                        </div>
                         <div className="flex justify-center items-center">
                             <NavButton
                                 icon="fa-circle-chevron-left"
@@ -119,25 +163,28 @@ const CombinationVehiclesExpressTest = () => {
                                 }
                                 show={combinationVehiclesExpressTestIdx > 1000}
                             />
-                            {randowCombinationVehiclesExpressTestData.length > 0 && (
+                            {randomCombinationVehiclesExpressTestData.length >
+                                0 && (
                                 <CombinationVehiclesExpressTestCard
-                                    randowCombinationVehiclesExpressTestData={
-                                        randowCombinationVehiclesExpressTestData[
+                                    randomCombinationVehiclesExpressTestData={
+                                        randomCombinationVehiclesExpressTestData[
                                             combinationVehiclesExpressTestIdx
                                         ]
                                     }
                                     index={combinationVehiclesExpressTestIdx}
                                     combinationVehiclesExpressTestQuestionQty={
-                                        randowCombinationVehiclesExpressTestData.length
+                                        randomCombinationVehiclesExpressTestData.length
                                     }
                                     selectedAnswer={
                                         selectedAnswers[
-                                            combinationVehiclesExpressTestIdx + 1
+                                            combinationVehiclesExpressTestIdx +
+                                                1
                                         ]
                                     }
                                     onSelectAnswer={(answerIdx) =>
                                         handleAnswerSelect(
-                                            combinationVehiclesExpressTestIdx + 1,
+                                            combinationVehiclesExpressTestIdx +
+                                                1,
                                             answerIdx
                                         )
                                     }
@@ -156,7 +203,7 @@ const CombinationVehiclesExpressTest = () => {
                                 }
                                 show={
                                     combinationVehiclesExpressTestIdx <
-                                        randowCombinationVehiclesExpressTestData.length -
+                                        randomCombinationVehiclesExpressTestData.length -
                                             1 &&
                                     selectedAnswers[
                                         combinationVehiclesExpressTestIdx + 1
@@ -165,7 +212,7 @@ const CombinationVehiclesExpressTest = () => {
                             />
                         </div>
                         {selectedAnswers.hasOwnProperty(
-                            randowCombinationVehiclesExpressTestData.length
+                            randomCombinationVehiclesExpressTestData.length
                         ) && (
                             <button
                                 onClick={handleSubmit}
@@ -183,7 +230,10 @@ const CombinationVehiclesExpressTest = () => {
                         setIsModalOpen(false);
                         window.location.reload();
                     }}
-                    score={calculatePercentage()}
+                    score={(
+                        (correct / randomCombinationVehiclesExpressTestData.length) *
+                        100
+                    ).toFixed(0)}
                 />
             )}
         </>

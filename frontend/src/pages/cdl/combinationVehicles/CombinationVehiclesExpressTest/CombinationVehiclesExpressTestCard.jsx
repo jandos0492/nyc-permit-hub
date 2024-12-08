@@ -3,7 +3,7 @@ import clsx from "clsx";
 import TestRadioButton from "shared-components/TestRadioButton";
 
 const CombinationVehiclesExpressTestCard = ({
-    randowCombinationVehiclesExpressTestData,
+    randomCombinationVehiclesExpressTestData,
     index,
     combinationVehiclesExpressTestQuestionQty,
     selectedAnswer,
@@ -18,29 +18,29 @@ const CombinationVehiclesExpressTestCard = ({
         setCorrectOrWrongAnswerMessage("");
 
         if (
-            randowCombinationVehiclesExpressTestData.correctAnswerIndex ===
+            randomCombinationVehiclesExpressTestData.correctAnswerIndex ===
                 selectedAnswer &&
             selectedAnswer !== undefined
         ) {
             setCorrectOrWrongAnswerMessage("Correct");
         } else if (
-            randowCombinationVehiclesExpressTestData.correctAnswerIndex !==
+            randomCombinationVehiclesExpressTestData.correctAnswerIndex !==
                 selectedAnswer &&
             selectedAnswer !== undefined
         ) {
             setCorrectOrWrongAnswerMessage("Wrong");
         }
-    }, [randowCombinationVehiclesExpressTestData.correctAnswerIndex, selectedAnswer]);
+    }, [randomCombinationVehiclesExpressTestData.correctAnswerIndex, selectedAnswer]);
 
     useEffect(() => {
         if (
-            selectedAnswer === randowCombinationVehiclesExpressTestData.correctAnswerIndex
+            selectedAnswer === randomCombinationVehiclesExpressTestData.correctAnswerIndex
         ) {
             setCountCorrectAnswers((prevCount) => prevCount + 1);
         }
     }, [
         selectedAnswer,
-        randowCombinationVehiclesExpressTestData.correctAnswerIndex,
+        randomCombinationVehiclesExpressTestData.correctAnswerIndex,
         setCountCorrectAnswers,
     ]);
 
@@ -50,18 +50,18 @@ const CombinationVehiclesExpressTestCard = ({
                 {index + 1} / {combinationVehiclesExpressTestQuestionQty}
             </div>
             <div className="border border-teal-800 rounded-lg p-4 md:p-12 flex flex-col items-center">
-                {randowCombinationVehiclesExpressTestData.image && (
+                {randomCombinationVehiclesExpressTestData.image && (
                     <img
                         className="w-24 h-24 md:w-48 md:h-48 object-contain"
-                        src={randowCombinationVehiclesExpressTestData.image}
+                        src={randomCombinationVehiclesExpressTestData.image}
                         alt="auto english learn"
                     />
                 )}
                 <div className="flex flex-shrink justify-center w-48 md:w-96 mt-4 text-cyan-900 text-sm md:text-xl font-playfair font-bold text-center">
-                    {randowCombinationVehiclesExpressTestData.question}
+                    {randomCombinationVehiclesExpressTestData.question}
                 </div>
                 <div className="mt-8 text-cyan-900 text-sm md:text-lg font-playfair flex flex-col items-start">
-                    {randowCombinationVehiclesExpressTestData.answers.map(
+                    {randomCombinationVehiclesExpressTestData.answers.map(
                         (answer, idx) => (
                             <TestRadioButton
                                 key={idx}
@@ -92,8 +92,8 @@ const CombinationVehiclesExpressTestCard = ({
                         </div>
                         <div className="mt-2 flex justify-center text-center px-4 py-2 bg-green-50 border border-green-300 rounded-lg text-green-800 text-sm md:text-xl font-playfair font-bold shadow-sm">
                             {
-                                randowCombinationVehiclesExpressTestData.answers[
-                                    randowCombinationVehiclesExpressTestData
+                                randomCombinationVehiclesExpressTestData.answers[
+                                    randomCombinationVehiclesExpressTestData
                                         .correctAnswerIndex
                                 ]
                             }
