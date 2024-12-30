@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+// import { Link } from "react-router-dom";
 import NavBar from "shared-components/NavBar";
 import LoadingSpinner from "shared-components/LoadingSpinner";
 import TrafficSignCard from "./TrafficSignCard";
@@ -47,7 +48,7 @@ const TrafficSignsPageEnglish = () => {
                 <LoadingSpinner />
             ) : (
                 trafficSignsData.length > 0 && (
-                    <div className="bg-cyan-50 h-screen pt-20 md:pt-48">
+                    <div className="relative bg-cyan-50 h-screen pt-20 md:pt-48">
                         <div className="flex justify-center items-center">
                             <NavButton
                                 icon="fa-circle-chevron-left"
@@ -75,6 +76,21 @@ const TrafficSignsPageEnglish = () => {
                                 }
                             />
                         </div>
+                        {/* {trafficSignIdx === trafficSignsData.length - 1 && (
+                            <Link
+                                to="/auto/english/learn"
+                                className="absolute top-12 left-1/2 transform -translate-x-1/2 flex flex-col items-center bg-gradient-to-r from-teal-300 to-cyan-400 shadow-lg px-6 py-4 rounded-lg text-white text-center hover:scale-105 hover:shadow-xl transition-all duration-300"
+                            >
+                                <img
+                                    className="object-cover w-[80px] h-[80px] mb-2 rounded-full border-2 border-white shadow-sm"
+                                    src="https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/learn.jpg"
+                                    alt="Learn English"
+                                />
+                                <div className="font-bold text-lg">
+                                    Learn All Questions
+                                </div>
+                            </Link>
+                        )} */}
                     </div>
                 )
             )}

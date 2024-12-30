@@ -14,7 +14,7 @@ const HomePage = () => {
                                     src="https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/auto.jpg"
                                     alt="car"
                                 />
-                                <div className="text-cyan-200 mt-8">
+                                <div className="text-cyan-200 mt-8 font-bold text-lg">
                                     auto permit
                                 </div>
                             </div>
@@ -26,7 +26,7 @@ const HomePage = () => {
                                     src="https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/truck.jpg"
                                     alt="truck"
                                 />
-                                <div className="text-cyan-200 mt-8">
+                                <div className="text-cyan-200 mt-8 font-bold text-lg">
                                     cdl permit
                                 </div>
                             </div>

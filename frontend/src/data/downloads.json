@@ -1,0 +1,42 @@
+[
+    {
+        "no": 1,
+        "name": "Auto (English Version)",
+        "gif": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/downloads-english-version-video.gif",
+        "image": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/downloads-english-version.jpg",
+        "wordUrl": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/Auto-(English-Vershion).docx",
+        "pdfUrl": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/Auto-(English-Vershion).pdf"
+    },
+    {
+        "no": 2,
+        "name": "Auto (Russian Version)",
+        "gif": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/downloads-russian-version-video.gif",
+        "image": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/downloads-russian-version.jpg",
+        "wordUrl": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/Auto-(Russian-Version).docx",
+        "pdfUrl": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/Auto-(Russian-Version).pdf"
+    },
+    {
+        "no": 3,
+        "name": "CDL General Questions",
+        "gif": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/downloads-general-questions-video.gif",
+        "image": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/downloads-general-questions.jpg",
+        "wordUrl": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/CDL-General-Questions.docx",
+        "pdfUrl": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/CDL-General-Questions.pdf"
+    },
+    {
+        "no": 4,
+        "name": "CDL Air Brakes",
+        "gif": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/downloads-air-brakes-video.gif",
+        "image": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/downloads-air-brakes.jpg",
+        "wordUrl": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/CDL-Air-Brakes.docx",
+        "pdfUrl": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/CDL-Air-Brakes.pdf"
+    },
+    {
+        "no": 5,
+        "name": "CDL Combination Vehicles",
+        "gif": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/downloads-combination-vehicles-video.gif",
+        "image": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/downloads-combination-vehicles.jpg",
+        "wordUrl": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/CDL-Combination-Vehicles.docx",
+        "pdfUrl": "https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/CDL-Combination-Vehicles.pdf"
+    }
+]

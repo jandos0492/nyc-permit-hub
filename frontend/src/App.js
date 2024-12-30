@@ -33,6 +33,7 @@ import ResultsPage from "pages/ResultsPage";
 import AllUsers from "admin-pages/AllUsers";
 import DefaultComponent from "pages/DefaultComponent";
 import SeeResults from "admin-pages/SeeResults";
+import Downloads from "pages/Downloads";
 
 const App = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -77,6 +78,7 @@ const App = () => {
           <Route path="/cdl/combination-vehicles/full-test" element={<CombinationVehiclesFullTest />} />
           <Route path="/cdl/combination-vehicles/express-test" element={<CombinationVehiclesExpressTest />} />
           <Route path="/results" element={<ResultsPage />} />
+          <Route path="/downloads" element={<Downloads />} />
           {isAdmin && (
             <>
               <Route path="/all-users" element={<AllUsers />} />
