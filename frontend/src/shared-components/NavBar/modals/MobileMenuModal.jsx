@@ -41,7 +41,7 @@ const MobileMenuModal = () => {
             </Link>
             <Link to="/downloads"></Link>
             <Link className="px-8 py-4 flex" to="/downloads">
-                <i class="fa-regular fa-download text-xl mr-2"></i>
+                <i className="fa-regular fa-download text-xl mr-2"></i>
                 downloads
             </Link>
             <Link className="px-8 py-4 flex" to="/results">

@@ -20,7 +20,7 @@ const ModalWrapper = ({ children, isOpen, onCloseClick }) => {
                 className="fixed top-0 left-0 w-full h-full items-start z-[2] bg-black/30 backdrop-blur-sm flex justify-end font-lato"
             >
                 <button
-                    className="absolute z-[30] top-4 right-4 p-2 text-4xl text-cyan-400 hover:text-cyan-500 z-[3]"
+                    className="absolute  top-4 right-4 p-2 text-4xl text-cyan-400 hover:text-cyan-500 z-[30]"
                     onClick={onCloseClick}
                 >
                     <i className="fa-regular fa-circle-xmark"></i>

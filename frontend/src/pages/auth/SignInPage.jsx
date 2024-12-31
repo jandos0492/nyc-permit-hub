@@ -49,6 +49,7 @@ const SignInPage = () => {
                             }
                         }}
                     />
+
                     <Link
                         className="text-teal-600 underline text-sm"
                         to="/sign-up"
