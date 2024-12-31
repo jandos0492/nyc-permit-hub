@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import NavBar from "shared-components/NavBar";
 import LoadingSpinner from "shared-components/LoadingSpinner";
@@ -26,6 +27,7 @@ const AirBrakesExpressTest = () => {
     const [correct, setCorrect] = useState(0);
     const [wrong, setWrong] = useState(0);
     const userId = useSelector((state) => state?.session?.user?.id);
+    const navigate = useNavigate();
 
     useEffect(() => {
         (async () => {
@@ -222,7 +224,7 @@ const AirBrakesExpressTest = () => {
                 <ResultModal
                     onClose={() => {
                         setIsModalOpen(false);
-                        window.location.reload();
+                        navigate("/cdl/air-brakes");
                     }}
                     score={(
                         (correct / randowAirBrakesExpressTestData.length) *

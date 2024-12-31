@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import NavBar from "shared-components/NavBar";
 import LoadingSpinner from "shared-components/LoadingSpinner";
@@ -20,6 +21,7 @@ const CombinationVehiclesFullTest = () => {
     const [wrong, setWrong] = useState(0);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const userId = useSelector((state) => state?.session?.user?.id);
+    const navigate = useNavigate();
 
     useEffect(() => {
         (async () => {
@@ -204,7 +206,7 @@ const CombinationVehiclesFullTest = () => {
                 <ResultModal
                     onClose={() => {
                         setIsModalOpen(false);
-                        window.location.reload();
+                        navigate("/cdl/combination-vehicles");
                     }}
                     score={(
                         (correct / combinationVehiclesFullTestData.length) *

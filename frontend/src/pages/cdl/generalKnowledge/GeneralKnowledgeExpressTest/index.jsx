@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import NavBar from "shared-components/NavBar";
 import LoadingSpinner from "shared-components/LoadingSpinner";
@@ -19,6 +20,7 @@ const GeneralKnowledgeExpressTest = () => {
     const [correct, setCorrect] = useState(0);
     const [wrong, setWrong] = useState(0);
     const userId = useSelector((state) => state?.session?.user?.id);
+    const navigate = useNavigate();
 
     useEffect(() => {
         (async () => {
@@ -211,7 +213,7 @@ const GeneralKnowledgeExpressTest = () => {
                 <ResultModal
                     onClose={() => {
                         setIsModalOpen(false);
-                        window.location.reload();
+                        navigate("/cdl/general-knowledge");
                     }}
                     score={(
                         (correct / randowGeneralKnowledgeExpressTestData.length) *
