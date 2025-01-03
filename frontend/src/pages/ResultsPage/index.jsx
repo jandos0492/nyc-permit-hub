@@ -80,15 +80,15 @@ const ResultsPage = () => {
                 <LoadingSpinner />
             ) : resultsData.length > 0 ? (
                 <div className="flex flex-col items-center bg-cyan-50 h-screen pt-12 md:pt-20">
-                    <div className="w-full max-w-sm flex flex-col justify-center">
+                    <div className="w-full max-w-xs md:max-w-sm flex flex-col justify-center">
                         {resultItems}
                     </div>
                     {numPages > 1 && (
-                        <div className="w-full max-w-2xl flex justify-center mt-4">
+                        <div className="w-full max-w-2xl flex justify-center mt-1 md:mt-4">
                             <button
                                 onClick={() => handlePageChange(pageIdx - 1)}
                                 disabled={pageIdx === 0}
-                                className="bg-cyan-800 text-cyan-200 text-xl rounded-md m-1 w-[110px] px-4 py-2 disabled:opacity-50"
+                                className="bg-cyan-800 text-cyan-200 text-sm md:text-xl rounded-md m-1 w-[110px] px-4 py-2 disabled:opacity-50"
                             >
                                 Previous
                             </button>
@@ -110,7 +110,7 @@ const ResultsPage = () => {
                             <button
                                 onClick={() => handlePageChange(pageIdx + 1)}
                                 disabled={pageIdx === numPages - 1}
-                                className="bg-cyan-800 text-cyan-200 text-xl rounded-md m-1 px-4 w-[110px] py-2 disabled:opacity-50"
+                                className="bg-cyan-800 text-cyan-200 text-sm md:text-xl rounded-md m-1 px-4 w-[110px] py-2 disabled:opacity-50"
                             >
                                 Next
                             </button>

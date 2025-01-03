@@ -8,16 +8,16 @@ const ResultItem = ({ result }) => {
 
     return (
         <div
-            className={`border rounded-lg p-2 shadow-lg flex flex-col gap-1 ${cardColor} transition-transform duration-300 hover:scale-105 mb-8`}
+            className={`border rounded-lg p-2 w-full shadow-lg flex flex-col gap-1 ${cardColor} transition-transform duration-300 hover:scale-105 mb-8`}
         >
             <div className="flex flex-col items-center gap-1">
                 <div className="flex items-center justify-center gap-8">
                     <img
-                        className="w-12 h-12 rounded-full border"
+                        className="w-8 md:w-12 h-8 md:h-12 rounded-full border"
                         src={result.testLanguage}
                         alt="Language Flag"
                     />
-                    <div className="text-3xl font-bold">
+                    <div className="text-xl md:text-3xl font-bold">
                         {result.vehicleType === "auto" ? (
                             <i className="fa-duotone fa-solid fa-car"></i>
                         ) : (
@@ -31,7 +31,7 @@ const ResultItem = ({ result }) => {
                     </div>
                 )}
             </div>
-            <div className="border-t border-gray-300 pt-2 flex flex-col">
+            <div className="border-t border-gray-300 pt-2 flex flex-col text-xs md:text-base">
                 <div className="flex justify-around items-center">
                     <div className="w-[82px] font-medium text-gray-700">
                         Date:

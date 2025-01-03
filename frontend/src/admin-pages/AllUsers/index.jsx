@@ -79,7 +79,7 @@ const AllUsers = () => {
                 <LoadingSpinner />
             ) : allUsersData.length > 0 ? (
                 <div className="flex flex-col items-center bg-cyan-50 h-screen pt-12 md:pt-20">
-                    <div className="w-full max-w-sm flex flex-col justify-center">
+                    <div className="w-full max-w-xs md:max-w-sm flex flex-col justify-center">
                         {users}
                     </div>
                     {numPages > 1 && (
@@ -87,7 +87,7 @@ const AllUsers = () => {
                             <button
                                 onClick={() => handlePageChange(pageIdx - 1)}
                                 disabled={pageIdx === 0}
-                                className="bg-cyan-800 text-cyan-200 text-xl rounded-md m-1 w-[110px] px-4 py-2 disabled:opacity-50"
+                                className="bg-cyan-800 text-cyan-200 text-base md:text-xl rounded-md m-1 w-[110px] px-4 py-2 disabled:opacity-50"
                             >
                                 Previous
                             </button>
@@ -97,7 +97,7 @@ const AllUsers = () => {
                                     key={page}
                                     onClick={() => setPageIdx(page)}
                                     className={clsx(
-                                        "bg-cyan-800 text-cyan-200 text-xl rounded-md m-1 w-6 transition-transform duration-200",
+                                        "bg-cyan-800 text-cyan-200 text-sm md:text-xl rounded-md m-1 w-6 transition-transform duration-200",
                                         pageIdx === page &&
                                             "bg-cyan-700 text-white scale-125 font-bold"
                                     )}
@@ -109,7 +109,7 @@ const AllUsers = () => {
                             <button
                                 onClick={() => handlePageChange(pageIdx + 1)}
                                 disabled={pageIdx === numPages - 1}
-                                className="bg-cyan-800 text-cyan-200 text-xl rounded-md m-1 px-4 w-[110px] py-2 disabled:opacity-50"
+                                className="bg-cyan-800 text-cyan-200 text-base md:text-xl rounded-md m-1 px-4 w-[110px] py-2 disabled:opacity-50"
                             >
                                 Next
                             </button>
