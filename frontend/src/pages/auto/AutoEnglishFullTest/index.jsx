@@ -191,7 +191,10 @@ const AutoEnglishFullTest = () => {
                         setIsModalOpen(false);
                         navigate("/auto/english/");
                     }}
-                    score={((correct / englishFullTestData.length) * 100).toFixed(0)}
+                    score={(
+                        (correct / englishFullTestData.length) *
+                        100
+                    ).toFixed(0)}
                 />
             )}
         </>

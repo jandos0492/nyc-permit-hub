@@ -203,7 +203,7 @@ const AutoEnglishExpressTest = () => {
                 <ResultModal
                     onClose={() => {
                         setIsModalOpen(false);
-                        navigate("/auto/english/")
+                        navigate("/auto/english/");
                     }}
                     score={((correct / randomEnglishData.length) * 100).toFixed(
                         0
