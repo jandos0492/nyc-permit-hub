@@ -1,12 +1,14 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import * as resetPasswordService from "services/resetPassword";
 import AuthForm from "./AuthForm";
 import FormContainer from "./AuthForm/FormContainer";
 
-const ResetPasswordRequest = () => {
+const ResetPassword = () => {
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
+    const { token } = useParams();
+    const navigate = useNavigate();
 
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-50">
@@ -22,36 +24,47 @@ const ResetPasswordRequest = () => {
                 <AuthForm
                     fields={[
                         {
-                            label: "email",
+                            label: "password",
+                            type: "text",
+                        },
+                        {
+                            label: "confirm password",
                             type: "text",
                         },
                     ]}
-                    submitButtonLabel="Reset Password Request"
+                    submitButtonLabel="reset password"
                     onSubmit={async (values) => {
                         setError("");
                         setSuccess("");
 
+                        if (values.password !== values["confirm password"]) {
+                            setError("Passwords do not match");
+                            return;
+                        }
+
                         const response =
-                            await resetPasswordService.resetPasswordRequest({
-                                email: values.email,
+                            await resetPasswordService.resetPassword({
+                                token,
+                                password: values.password,
                             });
+
                         const data = await response.json();
 
                         if (response.ok) {
                             setSuccess(
-                                "Password reset link sent successfully."
+                                "Password reset successful. You can now log in with your new password."
                             );
                             setTimeout(() => {
                                 setSuccess("");
+                                navigate("/");
                             }, 2000);
                         } else {
-                            setError(
-                                data.errors
-                                    ? data.errors
-                                    : [
-                                          "The email is not associated with NYC Permit Hub.",
-                                      ]
-                            );
+                            console.log(data);
+                            if (data.message) {
+                                setError(data.message);
+                            } else if (data.errors.length) {
+                                setError(data.errors[0]);
+                            }
                         }
                     }}
                 />
@@ -62,10 +75,7 @@ const ResetPasswordRequest = () => {
                     >
                         create an account
                     </Link>
-                    <Link
-                        className="text-teal-600 underline text-sm"
-                        to="/"
-                    >
+                    <Link className="text-teal-600 underline text-sm" to="/">
                         sign in
                     </Link>
                 </div>
@@ -74,4 +84,4 @@ const ResetPasswordRequest = () => {
     );
 };
 
-export default ResetPasswordRequest;
+export default ResetPassword;

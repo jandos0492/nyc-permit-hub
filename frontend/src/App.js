@@ -35,6 +35,7 @@ import DefaultComponent from "pages/DefaultComponent";
 import SeeResults from "admin-pages/SeeResults";
 import Downloads from "pages/Downloads";
 import ResetPasswordRequest from "pages/auth/ResetPasswordRequest";
+import ResetPassword from "pages/auth/ResetPassword";
 
 const App = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -51,6 +52,7 @@ const App = () => {
       {isLoaded && (
         <Routes>
           <Route path="/reset-password" element={<ResetPasswordRequest />} />
+          <Route path="/reset-password/:token" element={<ResetPassword />} />
           <Route path="*" element={<SignInPage />} />
           <Route path="/*" element={<DefaultComponent />} />
           <Route path="/sign-up" element={<SignUpPage />} />

@@ -91,11 +91,6 @@ const validateResetPasswordWithToken = [
                 throw new Error("Password must not contain spaces.");
             }
 
-            // Custom validation function to check for at least one uppercase letter
-            if (!/[A-Z]/.test(value)) {
-                throw new Error("Password must contain at least one uppercase letter.");
-            }
-
             return true;
         }),
     handleValidationErrors,
@@ -111,7 +106,7 @@ router.post(
         const user = await User.findOne({ where: { resetToken: token } });
 
         if (!user) {
-            return res.status(400).json({ message: "Invalid or expired token" });
+            return res.status(400).json({ message: "Invalid or expired token. Please use the last email from NYC Permit Hub" });
         }
 
         // Updating the user's password and clear the reset token
