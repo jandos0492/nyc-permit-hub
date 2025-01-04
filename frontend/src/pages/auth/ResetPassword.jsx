@@ -25,11 +25,11 @@ const ResetPassword = () => {
                     fields={[
                         {
                             label: "password",
-                            type: "text",
+                            type: "password",
                         },
                         {
                             label: "confirm password",
-                            type: "text",
+                            type: "password",
                         },
                     ]}
                     submitButtonLabel="reset password"
@@ -38,6 +38,8 @@ const ResetPassword = () => {
                         setSuccess("");
 
                         if (values.password !== values["confirm password"]) {
+                            values.password = "";
+                            values["confirm password"] = "";
                             setError("Passwords do not match");
                             return;
                         }
