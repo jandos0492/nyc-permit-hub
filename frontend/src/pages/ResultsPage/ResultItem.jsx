@@ -1,6 +1,7 @@
 import React from "react";
 
 const ResultItem = ({ result }) => {
+    console.log(result);
     const cardColor = result.pass
         ? "bg-green-100 border-green-400"
         : "bg-red-100 border-red-400";
