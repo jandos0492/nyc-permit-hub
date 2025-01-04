@@ -1,5 +1,5 @@
 {
-    "name": "drive-pass",
+    "name": "nyc-permit-hub",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
