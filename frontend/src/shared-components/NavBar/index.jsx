@@ -44,7 +44,7 @@ const NavBar = () => {
                             <div className="justify-around flex-1 hidden lg:flex">
                                 {isAdmin && (
                                     <div className="text-xl text-cyan-200">
-                                        <i className="fa-light fa-users mr-2"></i>
+                                        <i className="fa-solid fa-users mr-2"></i>
                                         <Link to="/all-users">users</Link>
                                     </div>
                                 )}
@@ -60,7 +60,7 @@ const NavBar = () => {
                                 </div>
                                 <div className="text-xl text-cyan-200">
                                     <Link to="/downloads">
-                                        <i className="fa-regular fa-download text-xl mr-2"></i>
+                                        <i className="fa-solid fa-download text-xl mr-2"></i>
                                         downloads
                                     </Link>
                                 </div>
