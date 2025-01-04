@@ -68,17 +68,9 @@ const ResetPassword = () => {
                         }
                     }}
                 />
-                <div className="flex justify-around w-full max-w-xs">
-                    <Link
-                        className="text-teal-600 underline text-sm"
-                        to="/sign-up"
-                    >
-                        create an account
-                    </Link>
-                    <Link className="text-teal-600 underline text-sm" to="/">
-                        sign in
-                    </Link>
-                </div>
+                <Link className="text-teal-600 underline text-sm" to="/">
+                    sign in
+                </Link>
             </FormContainer>
         </div>
     );
