@@ -41,9 +41,13 @@ Here are some screnshots of the NYC DMV Driver Permit Website:
 
 <img src="./frontend/public/images/screenshots/result.jpg" alt="Test Result Page screenshot" width=" 300px">
 
-### Contact Me Page
+### Downloads Page
 
-<img src="./frontend/public/images/screenshots/contact-me.jpg" alt="Contact Me Page screenshot" width=" 300px">
+<img src="./frontend/public/images/screenshots/downloads.jpg" alt="Downloads Page screenshot" width=" 300px">
+
+### Users Page (for admins only)
+
+<img src="./frontend/public/images/screenshots/admin.jpg" alt="Users Page screenshot" width=" 300px">
 
 <h2 id="features">Features</h2>
 
@@ -57,7 +61,7 @@ Here are some screnshots of the NYC DMV Driver Permit Website:
 <h2 id="technologies-used">Technologies Used</h2>
 
 - HTML5
-- CSS
+- Tailwind CSS
 - JavaScript
 - React.js
 - Redux
@@ -142,25 +146,10 @@ After completing each quiz or test, you can view your test results on the "Test 
 
 Reviewing your test results provides valuable insights into your performance, allowing you to track your progress and focus on areas that may require further study. Use this information to enhance your preparation and increase your chances of success on the actual permit test.
 
-#### 9. Contact Me
+#### 9. Downloads Page
 
-If you have any questions, concerns, or feedback, we encourage you to use the "Contact Me" page. Follow these steps to submit your inquiries:
+User can download the learning materials in word and pdf formats.
 
-- Navigate to the "Contact Me" page on the website.
-
-- Fill out the provided form with the required information.
-
-  - **Name:** Enter your full name.
-  
-  - **Email:** Provide a valid email address for communication.
-  
-  - **Message:** Write your detailed message or question.
-
-- Click the "Submit" button to send your message.
-
-Our team is dedicated to providing assistance and addressing any queries you may have. We appreciate your engagement and look forward to helping you on your journey to obtaining your driver's permit.
-
-Feel free to reach out, and we'll get back to you as soon as possible!
 
 Remember, consistent practice and understanding of the material are key to performing well on your permit test. Feel free to revisit different sections as needed to reinforce your knowledge and build confidence for the real exam.
 
