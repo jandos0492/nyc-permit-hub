@@ -35,7 +35,7 @@ const AuthForm = ({ fields, submitButtonLabel, onSubmit }) => {
                 {submitButtonLabel}
                 {isLoading && (
                     <div className="absolute top-0 right-4 flex items-center h-full">
-                        <i className="fa-regular fa-spinner text-teal-300 text-xl animate-spin"></i>
+                        <i className="fa-solid fa-spinner text-teal-300 text-xl animate-spin"></i>
                     </div>
                 )}
             </button>
