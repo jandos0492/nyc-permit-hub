@@ -6,7 +6,7 @@ const CDLPage = () => {
         <div>
             <NavBar />
             <div className="min-h-screen bg-cyan-50 flex justify-center font-lato">
-                <div className="w-full max-w-6xl bg-cyan-50 flex flex-col items-center gap-8 py-20 md:flex-row md:justify-between md:gap-0 md:items-start md:mt-60 md:py-4">
+                <div className="w-full max-w-6xl bg-cyan-50 flex flex-col items-center gap-4 md md:flex-row md:justify-between md:gap-0 md:items-start mt-8 md:mt-60 md:py-4">
                     <LearningOrTestCard
                         imageSrc="https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/general-kowledge-image.jpg"
                         text=""

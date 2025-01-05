@@ -12,6 +12,9 @@ module.exports = {
         playfair: ['Playfair Display'],
         lato: ['Lato']
       },
+      maxWidth: {
+        'xxs': '16rem', // Adds a new max-width size
+      },
     },
   },
   plugins: [],

@@ -78,12 +78,12 @@ const AllUsers = () => {
             {isLoading ? (
                 <LoadingSpinner />
             ) : allUsersData.length > 0 ? (
-                <div className="flex flex-col items-center bg-cyan-50 h-screen pt-12 md:pt-20">
-                    <div className="w-full max-w-xs md:max-w-sm flex flex-col justify-center">
+                <div className="flex flex-col items-center bg-cyan-50 min-h-screen pt-8 md:pt-20 font-lato">
+                    <div className="w-full max-w-xxs md:max-w-sm flex flex-col justify-center">
                         {users}
                     </div>
                     {numPages > 1 && (
-                        <div className="w-full max-w-2xl mt-4 flex justify-center">
+                        <div className="w-full max-w-2xl mt-2 md:mt-4 flex justify-center">
                             <button
                                 onClick={() => handlePageChange(pageIdx - 1)}
                                 disabled={pageIdx === 0}

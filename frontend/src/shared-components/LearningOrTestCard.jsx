@@ -13,7 +13,7 @@ const LearningOrTestCard = ({ imageSrc, text, header, link }) => {
         <Link to={link}>
             <div
                 className={clsx(
-                    "w-[160px] h-[240px] md:w-[200px] md:h-[340px] bg-cyan-800 flex flex-col items-center justify-start pt-2 rounded-lg pb-2 transform transition-transform duration-300 hover:scale-105",
+                    "w-[160px] h-[200px] md:w-[200px] md:h-[340px] bg-cyan-800 flex flex-col items-center justify-start pt-2 rounded-lg pb-2 transform transition-transform duration-300 hover:scale-105",
                     locationPathnameHasCDL() ? "h-[200px] md:pb-4" : "h-[240px]"
                 )}
             >
@@ -22,7 +22,7 @@ const LearningOrTestCard = ({ imageSrc, text, header, link }) => {
                     src={imageSrc}
                     alt={header}
                 />
-                <div className="text-cyan-200 pt-6">{header}</div>
+                <div className="text-cyan-200 pt-2 md:pt-6">{header}</div>
                 {text && (
                     <div className="text-xs text-center text-cyan-100 mt-2 mb-4 mx-4">
                         {text}

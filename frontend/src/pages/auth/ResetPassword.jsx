@@ -61,7 +61,6 @@ const ResetPassword = () => {
                                 navigate("/");
                             }, 2000);
                         } else {
-                            console.log(data);
                             if (data.message) {
                                 setError(data.message);
                             } else if (data.errors.length) {

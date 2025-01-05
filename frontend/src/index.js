@@ -22,7 +22,7 @@ if (process.env.NODE_ENV !== "production") {
 function Root() {
   return (
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter future={{ v7_startTransition: true }}>
         <App />
       </BrowserRouter>
     </Provider>

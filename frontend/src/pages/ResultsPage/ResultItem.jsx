@@ -1,7 +1,6 @@
 import React from "react";
 
 const ResultItem = ({ result }) => {
-    console.log(result);
     const cardColor = result.pass
         ? "bg-green-100 border-green-400"
         : "bg-red-100 border-red-400";
@@ -9,10 +8,10 @@ const ResultItem = ({ result }) => {
 
     return (
         <div
-            className={`border rounded-lg p-2 w-full shadow-lg flex flex-col gap-1 ${cardColor} transition-transform duration-300 hover:scale-105 mb-8`}
+            className={`border rounded-lg p-2 w-full shadow-lg flex flex-col gap-1 ${cardColor} transition-transform duration-300 hover:scale-105 mb-6 md:mb-8`}
         >
             <div className="flex flex-col items-center gap-1">
-                <div className="flex items-center justify-center gap-8">
+                <div className="flex items-center justify-center gap-3 md:gap-8">
                     <img
                         className="w-8 md:w-12 h-8 md:h-12 rounded-full border"
                         src={result.testLanguage}
@@ -27,7 +26,7 @@ const ResultItem = ({ result }) => {
                     </div>
                 </div>
                 {result.vehicleType !== "auto" && (
-                    <div className="font-bold">
+                    <div className="text-sm md:text-base italic font-bold">
                         {result.vehicleType.slice(4)}
                     </div>
                 )}
@@ -76,7 +75,7 @@ const ResultItem = ({ result }) => {
                     </div>
                 )}
             </div>
-            <div className={`font-bold text-center text-lg mt-1 ${textColor}`}>
+            <div className={`font-bold text-center text-base md:text-lg mt-1 ${textColor}`}>
                 {result.pass ? "Passed" : "Failed"}
             </div>
         </div>

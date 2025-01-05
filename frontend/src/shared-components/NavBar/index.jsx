@@ -30,13 +30,13 @@ const NavBar = () => {
                         className="bg-cyan-800 flex justify-center font-lato"
                     >
                         <div className="w-full max-w-7xl flex items-center justify-between px-8 py-2 md:justify-around">
-                            <div className="text-white font-playfair text-2xl flex flex-col items-center">
+                            <div className="text-white font-playfair text-xl md:text-2xl flex flex-col items-center">
                                 <Link
                                     to="/"
                                     className="flex flex-col items-center"
                                 >
                                     <img
-                                        className="w-14"
+                                        className="w-10 md:w-14"
                                         src="https://algify-videos.s3.us-east-2.amazonaws.com/nyc-permit-hub-images/nyc-permit-hub-logo.jpg"
                                         alt="logo"
                                     />

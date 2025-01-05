@@ -13,7 +13,7 @@ const DownloadItem = ({ download }) => {
 
     return (
         <div
-            className="relative flex h-[300px] w-[200px] md:h-[380px] md:w-[260px] flex-col items-center bg-white shadow-md rounded-lg p-4 transition-transform duration-200 hover:scale-105"
+            className="relative flex h-[250px] w-[200px] md:h-[380px] md:w-[260px] flex-col items-center bg-white shadow-md rounded-lg p-2 md:p-4 transition-transform duration-200 hover:scale-105"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
@@ -21,7 +21,7 @@ const DownloadItem = ({ download }) => {
                 <span className="absolute left-2 top-1 text-xs md:text-md font-bold text-gray-500">
                     {download.no}
                 </span>
-                <h3 className="text-md md:text-lg font-semibold text-cyan-900 mt-2">
+                <h3 className="text-sm md:text-lg font-semibold text-cyan-900 mt-2">
                     {download.name}
                 </h3>
             </div>
@@ -29,9 +29,9 @@ const DownloadItem = ({ download }) => {
             <img
                 src={isHovered ? download.gif : download.image}
                 alt={download.name}
-                className="w-full h-24 md:h-40 object-cover rounded-md mb-2 md:mb-4"
+                className="w-22 h-24 md:h-40 object-cover rounded-md mb-2 md:mb-4"
             />
-            <div className="flex flex-col gap-3 w-full text-xs md:text-lg">
+            <div className="flex flex-col gap-2 md:gap-3 w-[150px] md:w-full text-xs md:text-lg">
                 <a
                     href={download.wordUrl}
                     download
