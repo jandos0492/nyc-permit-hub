@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import RedirectToSignInIfSignedOut from "shared-components/RedirectToSignInIfSignedOut";
 import MobileMenuModal from "./modals/MobileMenuModal";
 import ModalWrapper from "./modals/ModalWrapper";
+import ScrollToTop from "shared-components/ScrollToTop";
 import * as sessionActions from "store/session";
 
 const NavBar = () => {
@@ -22,7 +23,8 @@ const NavBar = () => {
 
     return (
         <RedirectToSignInIfSignedOut>
-            <>
+            <ScrollToTop>
+                <>
                     <nav
                         onMouseLeave={() => setUserMenuOpen(false)}
                         className="bg-cyan-800 flex justify-center font-lato"
@@ -107,7 +109,8 @@ const NavBar = () => {
                     >
                         <MobileMenuModal />
                     </ModalWrapper>
-            </>
+                </>
+            </ScrollToTop>
         </RedirectToSignInIfSignedOut>
     );
 };
